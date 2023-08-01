@@ -28,5 +28,40 @@ try {
     });
 }
 
+try {
+  router.get("/admin/:id", async (req, res) => {
+   const id = req.params.id;
+            const query = { _id }
+            const user = await ProductsCollections.findOne(query);
+            res.send({ isAdmin: user?.role === 'admin'});
+  });
+  } catch (error) {
+    res.status(404).send({
+      error: error.message
+    });
+}
+
+router.put("/verify/:id", async (req, res) => {
+  try {
+   const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: {
+          verification: "stockOut",
+        },
+      };
+      const result = await ProductsCollections.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send(result);
+  } catch (error) {
+    res.send({
+      error: error.message,
+    });
+  }
+});
 
 module.exports = router;
