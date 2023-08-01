@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
  import {  MdOutlineShoppingCart } from "react-icons/md";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 const ProductsSection = () => {
      const allProduct = useLoaderData()
 
