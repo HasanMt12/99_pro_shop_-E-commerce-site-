@@ -6,10 +6,11 @@ const {  usersCollections } = require("../collections/collections");
 
 
 try {
-  router.get("/jwt", async (req, res) => {
+  router.post("/", async (req, res) => {
+    
     const email = req.query.email;
             const query = { email: email };
-            const user = await usersCollection.findOne(query);
+            const user = await usersCollections.findOne(query);
             console.log(user)
             if (user) {
                 const token = jwt.sign({ email }, process.env.ACCESS_TOKEN, {

@@ -41,6 +41,18 @@ try {
     });
 }
 
+router.post("/", async (req, res) => {
+  try {
+    const product = req.body;
+    const result = await ProductsCollections.insertOne(product);
+    res.send(result);
+  } catch (error) {
+    res.send({
+      error: error.message,
+    });
+  }
+});
+
 router.put("/verify/:id", async (req, res) => {
   try {
    const id = req.params.id;
@@ -64,4 +76,16 @@ router.put("/verify/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const filter = {
+      _id: new ObjectId(id),
+    };
+    const result = ProductsCollections.deleteOne(filter);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(404).send({ error: error.message });
+  }
+});
 module.exports = router;

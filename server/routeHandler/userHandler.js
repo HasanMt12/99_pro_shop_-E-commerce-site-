@@ -45,6 +45,7 @@ try {
 
 
 
+
 router.post("/", async (req, res) => {
   try {
     const user = req.body;
@@ -61,7 +62,7 @@ router.post("/", async (req, res) => {
 router.put("/admin/:id", async (req, res) => {
   try {
       const id = req.params.id;
-              const filter = {_id:ObjectId(id)}
+              const filter = {_id: new ObjectId(id)}
               const options = {upsert: true};
               const updatedDoc = {
                 $set: {
