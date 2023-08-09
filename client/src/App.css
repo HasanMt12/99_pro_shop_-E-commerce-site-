@@ -4,4 +4,29 @@
   /* padding: 2rem; */
 
 }
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #5A5D66;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #bf74a3;
+  background: -webkit-linear-gradient(to bottom, #84b4d6, #bf74ab);
+  background: linear-gradient(to bottom, #81abc9, #bf74b1);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
 

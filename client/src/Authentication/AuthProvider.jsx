@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import {createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from 'firebase/auth'
 import app from '../firebase/firebase.config.js'
+import axios from 'axios';
 
 export const AuthContext = createContext()
 const auth = getAuth(app);
@@ -22,7 +23,26 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth , email , password)
     }
-
+//state observer
+	// useEffect(()=>{
+	// 	const unsubscribe =onAuthStateChanged(auth,currentUser=>{
+	// 		setUser(currentUser)
+	// 		//token set and get
+	// 		if(currentUser){
+	// 		axios.post('https://99-pro-server.vercel.app/jwt',{email:currentUser.email})
+	// 		.then(data=>{
+	// 			localStorage.setItem('access-token',data.data.token)
+	// 		})
+	// 		}else{
+	// 			localStorage.removeItem('access-token')
+	// 		}
+	// 		//loading state
+	// 		setLoading(false)
+	// 	})
+	// 	return ()=>{
+	// 		return unsubscribe
+	// 	}
+	// },[])
 //3. user State observer //
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser=>{
@@ -52,8 +72,13 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, googleProvider)
     }
     
+const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        });
+    }
 
-//6. context value 
+// context value 
     const authInfo = {
         signUp,
         signIn,
@@ -61,7 +86,8 @@ const AuthProvider = ({children}) => {
         logOut,
         updateUser,
         loading,
-        signInWithGoogle
+        signInWithGoogle,
+        updateUserProfile
         
     }
     return (

@@ -1,25 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const ProductAction = () => {
+
+      const [axiosSecure] = useAxiosSecure();
+
        const {data: products = [] , refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async() =>{
             const res = await fetch('https://99-pro-server.vercel.app/allProducts');
             const data = await res.json();
-            console.log(data);
+   
             return data;
             
         }
     });
+
      const handleMakeStockout = id => {
         fetch(`https://99-pro-server.vercel.app/allProducts/verify/${id}`, {
             method: 'PUT'
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+         
             if(data.modifiedCount > 0 ){
                 toast.success('make product stock out successfully')
                 refetch();
@@ -28,7 +34,7 @@ const ProductAction = () => {
     }
 
      const handleDeleteProduct = id =>{
-      fetch(`https://99-pro-server.vercel.app/products/${id}`, {
+      fetch(`https://99-pro-server.vercel.app/allProducts/${id}`, {
         method: 'DELETE', 
         
       })
@@ -40,6 +46,31 @@ const ProductAction = () => {
         }
         
       })
+    }
+
+    const handleDelete = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/allProducts/${item._id}`)
+                    .then(res => {
+                        console.log('deleted res', res.data);
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            toast.success('deleted successfully')
+                        }
+                    })
+
+            }
+        })
     }
 
     return (
@@ -69,7 +100,7 @@ const ProductAction = () => {
   </div>
  
 <div className="flex justify-between items-center">
-    <button onClick={()=> handleDeleteProduct(product._id)} htmlFor="confirmation-modal" className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-red-600 px-3 py-1.5 text-white">Delete</button>
+    <button onClick={() => handleDelete(product._id)}  className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-red-600 px-3 py-1.5 text-white">Delete</button>
     {product?.verification !== "stockOut" ? (
                        <strong onClick={() => handleMakeStockout(product._id)}
       className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-pink-600 px-3 py-1.5 text-white"

@@ -13,6 +13,8 @@ import ProductsSection from "../Pages/HomePages/products/ProductsSection";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import AllUsers from "../components/adminDashboard/AllUsers";
 import ProductAction from "../components/adminDashboard/ProductAction";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import AddProducts from "../components/adminDashboard/addProducts/AddProducts";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,25 +46,26 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <PrivateRoute><AddTocart></AddTocart></PrivateRoute> 
       },
-      //  {
-      //   path: "/products",
-      //   element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute> 
-      // },
     ],
   },
 
    {
-      path: 'dashboard',
+      path: '/dashboard',
       element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>, 
       children: [
         {
           path: '/dashboard/users',
-          element: <AllUsers></AllUsers>
+          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        },
+         {
+          path: '/dashboard/addProducts',
+          element: <AdminRoute><AddProducts></AddProducts></AdminRoute>
         },
          {
           path: '/dashboard/products',
-          element: <ProductAction></ProductAction>
+          element: <PrivateRoute><ProductAction></ProductAction></PrivateRoute>
         },
+       
         
       ]
     }
