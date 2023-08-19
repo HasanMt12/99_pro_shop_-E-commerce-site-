@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom";
 import DashboardNavbar from "../components/adminDashboard/DashboardNavbar";
 import DashboardSidebar from "../components/adminDashboard/DashboardSidebar";
+import useTitle from "../hooks/useTitle";
 
 
 const DashboardLayout = () => {
+  useTitle('Dashboard')
     return (
         <>
         <div className = "" >
