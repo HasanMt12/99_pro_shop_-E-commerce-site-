@@ -1,12 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-
-
+   
 const ProductAction = () => {
 
-      const [axiosSecure] = useAxiosSecure();
 
        const {data: products = [] , refetch } = useQuery({
         queryKey: ['products'],
@@ -33,22 +30,7 @@ const ProductAction = () => {
         })
     }
 
-     const handleDeleteProduct = id =>{
-      fetch(`https://99-pro-server.vercel.app/allProducts/${id}`, {
-        method: 'DELETE', 
-        
-      })
-      .then(res => res.json())
-      .then(data => {
-        if(data.deletedCount > 0){
-          refetch()
-          toast.success('deleted successfully')
-        }
-        
-      })
-    }
-
-    const handleDelete = item => {
+      const handleDelete = id => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -60,19 +42,24 @@ const ProductAction = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosSecure.delete(`/allProducts/${item._id}`)
-                    .then(res => {
-                        console.log('deleted res', res.data);
-                        if (res.data.deletedCount > 0) {
-                            refetch();
-                            toast.success('deleted successfully')
-                        }
-                    })
+            fetch(`https://99-pro-server.vercel.app/allProducts/${id}`, {
+        method: 'DELETE', 
+        
+      })
+                 .then(res => res.json())
+                 
+      .then(data => {
+         console.log('deleted res', data);
+        if(data.deletedCount > 0){
+          refetch()
+          toast.success('deleted successfully')
+        }
+        
+      })
 
             }
         })
     }
-
     return (
         <div>
             <h2 className="text-3xl text-center font-sans">All Products</h2>

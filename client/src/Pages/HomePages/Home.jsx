@@ -31,11 +31,11 @@ const Home = () => {
           <ul className="flex  mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
            <Link to='/allProducts'> <li
               className=
-                "cursor-pointer    mx-6 my-3 font-semibold  uppercase hover:text-[#EA0F62]  text-start flex justify-start gap-4 items-center " 
+                "cursor-pointer  hover:text-blue-400/80  mx-6 my-3 font-semibold text-sm uppercase text-[#EA0F62]  text-start flex justify-start gap-4 items-center " 
               
             >
               <h2>All product  </h2>
-              <IoIosArrowForward></IoIosArrowForward>
+              <IoIosArrowForward className=""></IoIosArrowForward>
             </li> 
           </Link>
             
