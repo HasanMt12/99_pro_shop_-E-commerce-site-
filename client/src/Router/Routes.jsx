@@ -15,6 +15,7 @@ import AllUsers from "../components/adminDashboard/AllUsers";
 import ProductAction from "../components/adminDashboard/ProductAction";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import AddProducts from "../components/adminDashboard/addProducts/AddProducts";
+import Checkout from "../Pages/orderCheckout/Checkout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-                path: '/categories/:categoryId',
-                element: <ProductsSection></ProductsSection>,
-                loader:({params})=> fetch(`https://99-pro-server.vercel.app/categories/${params.categoryId}`)
-            },
-            {
+        path: '/categories/:categoryId',
+        element: <ProductsSection></ProductsSection>,
+        loader:({params})=> fetch(`https://99-pro-server.vercel.app/categories/${params.categoryId}`)
+     },
+     {
         path: "/allProducts",
         element: <AllProducts></AllProducts>
       },
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <PrivateRoute><AddTocart></AddTocart></PrivateRoute> 
+      },
+      {
+        path: "/cart/order/:id",
+        element: <PrivateRoute><Checkout></Checkout></PrivateRoute> ,
+        loader:({params})=> fetch(`https://99-pro-server.vercel.app/order/${params._id}`)
       },
     ],
   },

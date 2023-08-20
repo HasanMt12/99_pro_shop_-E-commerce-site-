@@ -1,23 +1,37 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext,  useState } from "react";
 import { AuthContext } from "../../Authentication/AuthProvider";
 
 import { FaShopify} from "react-icons/fa";
 import { toast } from "react-hot-toast";
-import Loader from "../../components/Shared/Loader";
+// import Loader from "../../components/Shared/Loader";
+import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const AddTocart = () => {
       const [openTab, setOpenTab] = useState(1);
       const [modalStatus, setModalStatus] = useState(false);
+      const [cart, setCart] = useState([])
       const { user } = useContext(AuthContext);
-      const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setIsLoading(true)
-    fetch(`https://99-pro-server.vercel.app/cart?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-     setIsLoading(false)
-  }, [user?.email]);
+      // const [data, setData] = useState([]);
+    // const [isLoading, setIsLoading] = useState(true);
+
+      const {data: data = [] , refetch } = useQuery({
+        queryKey: ['data'],
+        queryFn: async() =>{
+            const res = await fetch(`https://99-pro-server.vercel.app/cart?email=${user?.email}`);
+            const data = await res.json();
+
+            return data;
+            
+        }
+    });
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   fetch(`https://99-pro-server.vercel.app/cart?email=${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data));
+  //    setIsLoading(false)
+  // }, [user?.email]);
 
    const handleBooking = (event) => {
     event.preventDefault();
@@ -54,10 +68,30 @@ const AddTocart = () => {
         }
       });
   };
+
+  const handleDelete = id => {
+        const proceed = window.confirm('Are you sure, you want to cancel this order');
+        if (proceed) {
+            fetch(`https://99-pro-server.vercel.app/cart/${id}`, {
+                method: 'DELETE',
+               
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        
+                         const remaining = cart.filter(odr => odr._id !== id);
+                         setCart(remaining);
+                         refetch()
+          toast.success('deleted successfully')
+                    }
+                })
+        }
+    }
     return (
 
         <>
-        {isLoading? ( <Loader></Loader>):(
+       
             <div className="w-11/12 mx-auto h-screen">
          <h2 className="text-center lg:text-4xl text-xl font-bold my-3">Featured Product</h2>
       <p className="w-2/3 mx-auto  mb-2 font-light text-slate-500 lg:mb-2 md:text-lg lg:text-xl text-slate-400 text-center">
@@ -89,25 +123,28 @@ const AddTocart = () => {
         </div>
 
         <div
-         onClick={() => setModalStatus(true)}
+        
         className="flex flex-1 items-center justify-end gap-2">
-         <FaShopify className="text-xl text-blue-500/90"></FaShopify>
+         <FaShopify  onClick={() => setModalStatus(true)} className="text-xl text-blue-500/90"></FaShopify>
          
 
-          <button className="text-red-500 text-xl transition hover:text-red-600">
+          <button 
+          onClick={() => handleDelete(product._id)}
+          className="text-red-500 text-xl transition hover:text-red-600">
             <span className="sr-only">Remove item</span>
 
             <svg
+              // eslint-disable-next-line react/no-unknown-property
               xmlnsName="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="h-4 w-4"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
               />
             </svg>
@@ -271,7 +308,7 @@ const AddTocart = () => {
    
 
       <div className="rounded-lg ">
-        <form onSubmit= {handleBooking }
+        <form 
         className = "space-y-4" >
           <div>
          
@@ -334,12 +371,10 @@ const AddTocart = () => {
               />
             </div>
           </div>
-<input className="bg-pink-500/80 rounded p-2 text-white text-semibold w-full" type="submit" value="Submit" />
-        
-
-      
-
-        
+       <Link to={`cart/${product._id}`}>  <button className="bg-pink-500/80 rounded p-2 text-white text-semibold w-full">
+            submit
+          </button>
+ </Link> 
         </form>
       </div>
 
@@ -362,7 +397,7 @@ const AddTocart = () => {
       </div>
        
         </div> 
-        )}
+   
        
         </>
     );

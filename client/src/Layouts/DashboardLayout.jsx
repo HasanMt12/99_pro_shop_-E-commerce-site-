@@ -39,7 +39,7 @@ const DashboardLayout = () => {
   <div id = "application-sidebar"
   className = "hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64  border-r  pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0  scrollbar-y bg-[#81abbc]  border-[#3f667d]" >
     <div className="px-6">
-      <a className="flex-none text-xl font-semibold  text-white" href="#" aria-label="Brand">Brand</a>
+      <a className="flex-none text-xl font-semibold  text-white" href="#" aria-label="Brand">99 pro shop BD</a>
     </div>
 
         <DashboardSidebar></DashboardSidebar>
