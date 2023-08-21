@@ -1,5 +1,6 @@
 const express = require("express");
 const { cartCollections } = require("../collections/collections");
+const { ObjectId } = require("mongodb");
 const router = express.Router();
 
 
@@ -16,6 +17,19 @@ try {
   });
 }
 
+
+router.delete("/:id", async (req, res) => {
+  try {
+     const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await cartCollections.deleteOne(query);
+            res.send(result);
+  } catch (error) {
+    res.send({
+      error: error.message,
+    });
+  }
+});
 router.post("/", async (req, res) => {
   try {
    const cart = req.body;
