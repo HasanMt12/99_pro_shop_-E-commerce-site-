@@ -11,7 +11,7 @@ const ProductsSection = () => {
 
   
      console.log(allProduct);
-      // const [allProducts, setAllProducts] = useState([]);
+  
     // const [limit] = useState(12)
     // useEffect(() => {
     //     // Data fetching code goes here
@@ -34,7 +34,7 @@ const ProductsSection = () => {
     Aos.init({duration:1200})
   },[])
     return (
-         <div>
+         <div className="px-20">
             <div className="flex justify-center items-center gap-2 text-[#df3b6c]">
                  <h2  data-aos="zoom-in" className="font-bold  text-center  lg:text-xl text-lg my-4 "> All Products</h2>
                 < MdOutlineShoppingCart></ MdOutlineShoppingCart>

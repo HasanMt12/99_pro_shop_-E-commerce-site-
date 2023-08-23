@@ -49,15 +49,15 @@ const AllProducts = () => {
                     }
         </div>
            <br></br>
-            <div className="text-center py-6">
+            <div className="text-center pb-2">
         {" "}
          <div className="flex justify-center items-center">
        
           <button 
           onClick={() => setLimit(limit + 8)}
           style={{boxShadow:"0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)"}}
-            className='flex text-[#EEF2F5] justify-center transition duration-200 ease-in-out transform px-6 py-2 w-30 border-b-4 border-[#df81a5]  bg-gradient-to-t from-[#cc5a86]  via-[#EA0F62] to-[#e2a1ba] rounded-2xl hover:translate-y-px '>
-            See More
+            className='flex text-[#EEF2F5] justify-center items-center transition duration-200 ease-in-out transform lg:w-[6rem] lg:h-[2.4rem] w-[4rem] h-[1.5rem] border-b-4 border-[#df81a5]  bg-gradient-to-t from-[#cc5a86]  via-[#EA0F62] to-[#e2a1ba] rounded-2xl lg:text-[14px] text-[8px] hover:translate-y-px '>
+          See More
           </button>
      
         </div> 

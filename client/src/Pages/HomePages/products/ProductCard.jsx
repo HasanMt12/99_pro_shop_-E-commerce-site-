@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react";
 
@@ -61,13 +62,14 @@ const ProductCard = ({ product }) => {
             .then(data => {
                 if(data.insertedId){
                     refetch(); // refetch cart to update the number of items in the cart
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: `${name} on the cart.`,
-                        showConfirmButton: false,
-                        timer: 2500
-                      })
+                    toast.success(`product on the cart`, {
+            style: {
+              border: '1px solid #713200',
+              padding: '10px',
+              color: '#713200',
+            },
+           
+          });
                 }
             })
         }
@@ -90,38 +92,41 @@ const ProductCard = ({ product }) => {
    
 
   useEffect(() => {
-    Aos.init({ duration: 3000 });
+    Aos.init({ duration: 1500 });
   }, []);
 
   return (
     <>
-      <div className=" my-2 mx-2  bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] relative block overflow-hidden">
+      <div className=" my-2 mx-2 p-2  bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] relative block overflow-hidden">
         <img
-          data-aos="fade-down"
+          data-aosName="fade-down"
           src={photo}
           alt=""
           className="h-[50%] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[50%]"
         />
 
-        <div className=" lg:px-6 px-2 pt-2">
-          <div className="flex justify-between items-start">
+        <div className="px-1 pt-2">
+         
+          <div className="flex justify-between items-start md:text-[0.8rem] text-[0.7rem] lg:text-[1rem]">
             <h3
-              // data-aos="fade-right"
-              className="  lg:text-lg text-[12px]  font-medium text-[#c73f8a]"
+              // data-aosName="fade-right"
+              className="   font-semibold text-[#c73f8a]"
             >
               {name}
             </h3>
             <button
               onClick={() => handleWishList(product)}
-              className={"w-8 text-center mr-2 "}
+
+          
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill={fill.color ? fill.color : "none"}
+                xmlnsName="http://www.w3.org/2000/svg"
+                fill={fill.color ? fill.color : "pink"}
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
+                stroke="white"
+                
+                className="lg:w-6 lg:h-6 md:h-4 md:w-4 h-3 w-3 "
               >
                 <path
                   strokeLinecap="round"
@@ -131,25 +136,29 @@ const ProductCard = ({ product }) => {
               </svg>
             </button>
           </div>
-
-          <p
-            // data-aos="fade-right"
-            className="lg:mt-1 absolute lg:bottom-20 sm:bottom-8  lg:text-sm   text-[10px] text-gray-700"
+<div className="flex justify-between items-center absolute lg:bottom-20 sm:bottom-8">
+ <p
+            // data-aosName="fade-right"
+            className="lg:mt-1   lg:text-sm mr-4  text-[10px] text-gray-700"
           >
-            <span className="text-blue-500 font-bold">৳ {price}</span> 
+            <span className="text-green-500 font-bold">৳ {price}</span> 
 
           </p>
-          {verification && <h2>sold Out</h2>}
+         <p>{verification && <h2 className="text-red-300/100 line-through">stock out</h2>}</p> 
+
+</div>
+         
 
           <button
             onClick={() => handleAddToCart(product)}
-            className=" w-[90%] inset-x-0 absolute lg:bottom-5 bottom-2 mx-auto text-white rounded bg-[#ee7da8] lg:p-2 p-[4px] lg:text-sm text-xs  font-medium transition hover:scale-105"
+            className=" w-[92%] inset-x-0 absolute lg:bottom-4 bottom-1 mx-auto text-white rounded bg-[#ee7da8] lg:p-2 p-[4px] lg:text-sm text-xs  font-medium transition hover:scale-105"
           >
             Add to Cart
           </button>
         </div>
       </div>
-    </>
+
+     </>
   );
 };
 

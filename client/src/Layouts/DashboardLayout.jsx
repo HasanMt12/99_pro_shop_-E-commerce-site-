@@ -9,15 +9,16 @@ const DashboardLayout = () => {
     return (
         <>
         <div className = "" >
-  
-  <header  className = "sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-[#ee7da8] bg-opacity-60 border-b text-sm py-2.5 sm:py-4 lg:pl-64   border-gray-700" >
+          
+ 
+  <header  className="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-[#ee7da8] bg-opacity-60 border-b text-sm py-2.5 sm:py-4 lg:pl-64 " >
        
-        {/* dashboard navbar */}
+         {/* dashboard navbar */}
         <DashboardNavbar></DashboardNavbar>
         
   </header>
  
-  <div className="sticky top-0 inset-x-0 z-20  border-y px-4 sm:px-6 md:px-8 lg:hidden bg-[#91bbcc]  border-gray-700">
+  <div className="sticky top-0 inset-x-0 z-20  border-y px-4 sm:px-6 md:px-8 lg:hidden bg-[#91bbcc]">
     <div className="flex items-center py-4">
       
       <button type="button" className="text-white0 hover:text-white" data-hs-overlay="#application-sidebar" aria-controls="application-sidebar" aria-label="Toggle navigation">

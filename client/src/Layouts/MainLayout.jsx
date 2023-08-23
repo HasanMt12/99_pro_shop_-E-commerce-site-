@@ -11,7 +11,7 @@ const MainLayout = () => {
                 pageId="110262175394268"
                 appId="248777968070010"
 
-            />,
+            />
             <Footer></Footer>
         </>
     );

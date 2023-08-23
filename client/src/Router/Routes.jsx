@@ -16,6 +16,9 @@ import ProductAction from "../components/adminDashboard/ProductAction";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import AddProducts from "../components/adminDashboard/addProducts/AddProducts";
 import Checkout from "../Pages/orderCheckout/Checkout";
+import Login from "../components/Shared/login/login/Login";
+import DashboardHome from "../components/adminDashboard/DashboardHom/DashboardHome";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +42,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Registration></Registration>
       },
+        {
+        path: "/login",
+        element: <Login></Login>
+      },
       {
         path: "/wishlist",
         element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute> 
@@ -59,6 +66,10 @@ const router = createBrowserRouter([
       path: '/dashboard',
       element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>, 
       children: [
+        {
+        path: "/dashboard",
+        element: <DashboardHome></DashboardHome>
+        },
         {
           path: '/dashboard/users',
           element: <AdminRoute><AllUsers></AllUsers></AdminRoute>

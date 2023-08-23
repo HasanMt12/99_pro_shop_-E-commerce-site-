@@ -35,6 +35,7 @@ const ProductAction = () => {
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
+          
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -54,7 +55,7 @@ const ProductAction = () => {
           refetch()
           toast.success('deleted successfully')
         }
-        
+          refetch();
       })
 
             }
@@ -90,7 +91,7 @@ const ProductAction = () => {
     <button onClick={() => handleDelete(product._id)}  className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-red-600 px-3 py-1.5 text-white">Delete</button>
     {product?.verification !== "stockOut" ? (
                        <strong onClick={() => handleMakeStockout(product._id)}
-      className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-pink-600 px-3 py-1.5 text-white"
+      className="-mb-[2px] -me-[2px] cursor-pointer inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-pink-600 px-3 py-1.5 text-white"
     >
 
 
@@ -98,7 +99,7 @@ const ProductAction = () => {
     </strong>
                     ) : (
                        <strong
-      className="-mb-[2px] -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-green-600 px-3 py-1.5 text-white"
+      className="-mb-[2px] -me-[2px] cursor-not-allowed  inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-green-600 px-3 py-1.5 text-white"
     >
        <svg
         // eslint-disable-next-line react/no-unknown-property
@@ -116,7 +117,7 @@ const ProductAction = () => {
         />
       </svg> 
 
-      <span className="text-[10px] font-medium sm:text-xs">StockOut</span>
+      <span className="text-[10px]  font-medium sm:text-xs">StockOut</span>
     </strong>
     
                     )}

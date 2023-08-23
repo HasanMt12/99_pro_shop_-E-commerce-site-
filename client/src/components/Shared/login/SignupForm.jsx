@@ -5,18 +5,15 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 
 import { FcGoogle } from 'react-icons/fc';
-import useToken from '../../../hooks/useToken';
 import { AuthContext } from '../../../Authentication/AuthProvider.jsx';
 const SignupForm = () => {
-      const {register, handleSubmit , formState: {errors} , getValues } = useForm();
+      const {register, handleSubmit , formState: {errors} , getValues , reset } = useForm();
      const { signUp ,updateUser, signInWithGoogle}= useContext(AuthContext);
-     const [registerError, setRegisterError] = useState('')
+    const [registrationError, setRegisterError] = useState()
+     const form = location.state?.form?.pathname || "/";
      const [createdUserEmail, setCreatedUserEmail] = useState('')
      const navigate = useNavigate()
-       const [token] = useToken(createdUserEmail);
-     if(token){
-            navigate('/')
-        }
+      
         const from = location.state?.from?.pathname || "/";
      const handleSignUp = data =>{
    setRegisterError('')
@@ -28,7 +25,6 @@ const SignupForm = () => {
     .then(result =>{
         const  user = result.user;
         console.log(user);
-        toast.success('user register successfully')
             navigate('/')
           const userInfo = {
                 displayName: data.name
@@ -43,6 +39,18 @@ const SignupForm = () => {
     .catch(error=> {
         console.log(error)
        setRegisterError(error.message)
+          toast.error('user already register or user id invalid', {
+            style: {
+              border: '1px solid #df81a5',
+              padding: '10px',
+              color: 'blue',
+            },
+            iconTheme: {
+              primary: '#df81a5',
+              secondary: '#FFFAEE',
+            },
+          });
+          reset();
     });
     
  }
@@ -58,30 +66,75 @@ const SignupForm = () => {
             .then(data =>{
                 console.log('test',data);
                 setCreatedUserEmail(email)  
+   toast.success('user register successfully', {
+            style: {
+              border: '1px solid #713200',
+              padding: '10px',
+              color: '#713200',
+            },
+            iconTheme: {
+              primary: '#df81a5',
+              secondary: '#FFFAEE',
+            },
+          });
+           reset();
+            navigate(form, { replace: true });
+      navigate("/");
             })
+               .catch((error) => {
+
+        console.log(error.message);
+       setRegisterError(error.message);
+     
+      });
         }
-        
-//       const handleGoogleSignin = async () => {
-//   const toastId = toast.loading("Loading...");
-//    try {
-//         signInWithGoogle().then(result => {
-//       console.log(result.user)
-//      toast.dismiss(toastId);
-//         toast.success("User signed in successfully");
-//     //   navigate(from, { replace: true })
-//     })
-//     } catch (error) {
-//       toast.dismiss(toastId);
-//       toast.error(error.message || "User not signed in");
-//     }
-//   };
-     const handleGoogleSignin = () => {
-    signInWithGoogle().then(result => {
-      console.log(result.user)
-    
-    navigate(from, { replace: true })
-    })
-  }
+ 
+
+   const handleGoogleSignin = () => {
+    signInWithGoogle()
+      .then((result) => {
+        if (result.user.uid) {
+          toast.success("Login Successful");
+          const userInfo = {
+            displayName: result.user.displayName,
+            photoURL: result.user.photoURL,
+            email: result.user.email,
+          };
+
+          fetch("https://99-pro-server.vercel.app/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              // authorization: bearer ${localStorage.getItem('accessToken')}
+            },
+            body: JSON.stringify(userInfo),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              
+             console.log(result)
+            });
+        }
+                  toast.success('google login successful', {
+            style: {
+              border: '1px solid #713200',
+              padding: '10px',
+              color: '#713200',
+            },
+            iconTheme: {
+              primary: '#df81a5',
+              secondary: '#FFFAEE',
+            },
+          });
+           reset();
+            navigate(form, { replace: true });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
  
     return (
         <form onSubmit = {
@@ -91,16 +144,16 @@ const SignupForm = () => {
                   <div className="mb-1 sm:mb-2">
                     <label
                       htmlFor="name"
-                      className="inline-block mb-1 font-medium"
+                      className="inline-block mb-1 text-[#2d90ba] font-medium"
                     >
                       Name
                     </label>
                      <input
                       type="text"
-                      placeholder="name"
+                      placeholder="your name"
                       id="name"
                       name="name"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       {...register("name", { required: true })}
                     />
                     {errors.name && (
@@ -113,16 +166,16 @@ const SignupForm = () => {
                   <div className="mb-1 sm:mb-2">
                     <label
                       htmlFor="email"
-                      className="inline-block mb-1 font-medium"
+                      className="inline-block mb-1 text-[#2d90ba] font-medium"
                     >
                       E-mail
                     </label>
                     <input
                       type="email"
-                      placeholder="email"
+                      placeholder="your email"
                       id="email"
                       name="email"
-                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       autoComplete="email"
                       {...register("email", {
                         required: true,
@@ -138,7 +191,7 @@ const SignupForm = () => {
                  <div className="mb-1 sm:mb-2">
                      <label
                       htmlFor="password"
-                      className="inline-block mb-1 font-medium"
+                      className="inline-block mb-1 text-[#2d90ba] font-medium"
                      >
                             Password
                      </label>
@@ -147,7 +200,7 @@ const SignupForm = () => {
                        placeholder="password"
                        id="password"
                        name="password"
-                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
+                       className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
                        autoComplete="new-password"
                        {...register("password", { required: true, minLength: 6 })}
                      />
@@ -161,7 +214,7 @@ const SignupForm = () => {
                   <div className="mb-1 sm:mb-2">
                      <label
                       htmlFor="confirmPassword"
-                      className="inline-block mb-1 font-medium"
+                      className="inline-block mb-1 text-[#2d90ba] font-medium"
                      >
                             confirm Password
                      </label>
@@ -170,7 +223,7 @@ const SignupForm = () => {
                         placeholder="Confirm Password"
                         id="confirmPassword"
                         name="confirmPassword"
-                        className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
+                        className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
                         autoComplete="new-password"
                         {...register("confirmPassword", {
                           required: true,
@@ -189,31 +242,25 @@ const SignupForm = () => {
 
                    
 
-                  <div className="mt-4 mb-2 sm:mb-4">
-                    <button className = "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                  <div className="my-2">
+                    <button className="inline-flex items-center justify-center w-full h-10 text-[#2d90ba] font-semibold rounded shadow-md bg-[#e9b0c6] hover:bg-[#c68fa4] "
                        type="submit"> Sign Up
                     </button>
                    
                   </div>
-                   <p className="mt-3">
-        Already have an account?{" "}
-        <Link className="text-blue-500 underline ml-1" href="/login">
-          Login
-        </Link>
-      </p>
-      <div className="divider mt-5">OR</div>
-                 <div className="flex justify-center items-center cursor-pointer">
-    <button
-      onClick={handleGoogleSignin}
-      type="button"
-      className=""
-    >
-      <FcGoogle className="text-3xl mr-3" /> 
-    </button>
-    <p>Continue with google</p>
-    </div>
+                   <p className="mt-3 text-center"> Already have an account?{" "}
+                    <Link to="/login" className="text-blue-500 underline ml-1">
+                      Login </Link>
+                  </p>
+                <div  className="text-center text-md my-2 text-red-400 font-semibold">OR</div>
+                <div onClick={handleGoogleSignin} className="flex rounded-lg bg-[#dbe9f6] border-red-400 border-b justify-center items-center py-2 cursor-pointer">
+                <button type="button"className=""  >
+                  <FcGoogle className="text-lg mr-3" /> 
+                </button>
+              <p className='text-sm text-[#207198]'>Continue with google</p>
+              </div>
                
-                </form>
+</form>
     );
 };
 

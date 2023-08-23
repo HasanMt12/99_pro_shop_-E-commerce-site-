@@ -119,7 +119,7 @@ const AddProducts = () => {
                         <label className="label">
                             <span className="label-text font-semibold">Price*</span>
                         </label>
-                        <input type="number" {...register("price", { required: true })} placeholder="Type here" className="py-3 px-4 block w-full border-pink-300 border-2 rounded-md text-sm" />
+                        <input type="number" defaultValue={0} {...register("price", { required: true })} placeholder="Type here" className="py-3 px-4 block w-full border-pink-300 border-2 rounded-md text-sm" />
                     </div>
                 </div>
                 <div className="form-control">

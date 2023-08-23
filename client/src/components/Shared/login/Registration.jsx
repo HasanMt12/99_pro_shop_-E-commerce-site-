@@ -1,73 +1,16 @@
-// import { useContext, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useForm } from 'react-hook-form';
-// import { toast } from 'react-hot-toast';
-// import { AuthContext } from '../../../Authentication/AuthProvider';
-// import { FcGoogle } from 'react-icons/fc';
-// import useToken from '../../../hooks/useToken.js';
+
+import { useEffect } from 'react';
 import SignupForm from './SignupForm';
+import Aos from 'aos';
 const Registration = () => {
-//       const {register, handleSubmit , formState: {errors} } = useForm();
-//      const { signUp ,updateUser, signInWithGoogle}= useContext(AuthContext);
-//      const [registerError, setRegisterError] = useState('')
-//      const [createdUserEmail, setCreatedUserEmail] = useState('')
-//      const navigate = useNavigate()
-//        const [token] = useToken(createdUserEmail);
-//      if(token){
-//             navigate('/')
-//         }
-//      const handleSignUp = data =>{
-//    setRegisterError('')
 
-//     console.log(data);
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, []);
 
-//     signUp(data.email, data.password)
-
-//     .then(result =>{
-//         const  user = result.user;
-//         console.log(user);
-//         toast.success('user register successfully')
-//             navigate('/')
-//           const userInfo = {
-//                 displayName: data.name
-//             }
-
-//         updateUser(userInfo)
-//             .then( () => {
-//                saveUser(data.name, data.email )
-//             } )
-//             .catch(error => console.log(error));
-//     })
-//     .catch(error=> {
-//         console.log(error)
-//        setRegisterError(error.message)
-//     });
-    
-//  }
-//        const saveUser = (name , email ) =>{
-//             const user = {name , email };
-//             fetch('https://99-pro-server.vercel.app/users', {
-//                 method: 'POST' ,
-//                 headers: {
-//                     'content-type' : 'application/json'
-//                 },
-//                 body: JSON.stringify(user)
-//             }).then(res => res.json())
-//             .then(data =>{
-//                 console.log('test',data);
-//                 setCreatedUserEmail(email)  
-//             })
-//         }
-//         const handleGoogleSignin = () => {
-//     signInWithGoogle().then(result => {
-//       console.log(result.user)
-    
-//     //   navigate(from, { replace: true })
-//     })
-//   }
     return (
         <>
-        <div className="overflow-hidden h-screen"
+        <div className="overflow-hidden "
       style={{backgroundImage:`url("/src/assets/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
       <div className="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8">
