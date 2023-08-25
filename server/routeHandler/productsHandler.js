@@ -18,7 +18,8 @@ try {
 
 try {
   router.get("/", async (req, res) => {
-   const query = {};
+   const search = req.query.search;
+   const query = {name: { $regex: search, $options: 'i'}}
    const allProducts = await ProductsCollections.find(query).toArray();
    res.send(allProducts);
   });
