@@ -36,7 +36,7 @@ const ProductsSection = () => {
     return (
          <div className="px-20">
             <div className="flex justify-center items-center gap-2 text-[#df3b6c]">
-                 <h2  data-aos="zoom-in" className="font-bold  text-center  lg:text-xl text-lg my-4 "> All Products</h2>
+                 <h2  data-aos="zoom-in" className="font-bold  text-center  lg:text-xl text-lg my-4 "> {(allProduct.categoryId === "BeautyProducts"&&"b") }</h2>
                 < MdOutlineShoppingCart></ MdOutlineShoppingCart>
             </div> 
               <div className="section">
@@ -51,20 +51,7 @@ const ProductsSection = () => {
                     }
         </div>
            <br></br>
-            {/* <div className="text-center py-6">
-        {" "}
-         <div className="flex justify-center items-center">
-        <Link to='products'>
-          <button 
-          style={{boxShadow:"0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)"}}
-            className='flex text-[#EEF2F5] justify-center transition duration-200 ease-in-out transform px-6 py-2 w-30 border-b-4 border-[#df81a5]  bg-gradient-to-t from-[#cc5a86]  via-[#EA0F62] to-[#e2a1ba] rounded-2xl hover:translate-y-px '>
-            See More
-          </button>
-        </Link>
-        </div> 
-      
-      </div> */}
-      
+          
         </div>
     );
 };

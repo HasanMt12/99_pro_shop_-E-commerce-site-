@@ -55,7 +55,7 @@ const AllUsers = () => {
                        <strong onClick = {
                            () => handleMakeGoldenUsers(user._id)
                        }
-      className="-mb-[2px] cursor-pointer -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-pink-600 px-3 py-1.5 text-white"
+      className="-mb-[2px] cursor-pointer -me-[2px] inline-flex items-center gap-1 rounded-ee-xl rounded-ss-xl bg-pink-600 hover:bg-pink-300 px-3 py-1.5 text-white"
     >
 
 

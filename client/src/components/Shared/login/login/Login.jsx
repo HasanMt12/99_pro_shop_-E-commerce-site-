@@ -11,7 +11,7 @@ const Login = () => {
     return (
         <>
               <div className="overflow-hidden h-screen "
-      style={{backgroundImage:`url("/src/assets/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}   >
+      style={{backgroundImage:`url("https://i.ibb.co/pztsXFL/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}   >
       <div className="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8">
         <div className="flex flex-col items-center justify-between xl:flex-row">
           <div className="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12 my-auto">
