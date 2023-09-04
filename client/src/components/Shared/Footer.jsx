@@ -13,9 +13,9 @@ const Footer = () => {
           Find us on any of these platforms, we respond 1-2 business days.
         </h5>
         <div className="mt-2 lg:mb-0 mb-6 flex gap-2">
-          <button className="flex bg-white lg:w-8 lg:h-8 w-6 h-6 hover:bg-[#d4a5b7] rounded-full p-2 justify-center items-center shadow-lg shadow-[#dbaabd]" >
+          <a href="https://www.facebook.com/99ProShopBD" target="blank" className="flex bg-white lg:w-8 lg:h-8 w-6 h-6 hover:bg-[#d4a5b7] rounded-full p-2 justify-center items-center shadow-lg shadow-[#dbaabd]" >
             <SiFacebook className="flex justify-center  text-[#3b5998]"></SiFacebook>
-            </button > 
+            </a > 
             <button className="flex bg-white hover:bg-[#d4afbd] lg:w-8 lg:h-8 w-6 h-6 rounded-full p-2 justify-center items-center shadow-lg shadow-[#dbaabd]" >
             <AiOutlineTwitter className="flex justify-center text-[#00acee]"></AiOutlineTwitter>
             </button > 

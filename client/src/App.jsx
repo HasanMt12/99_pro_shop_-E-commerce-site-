@@ -19,7 +19,7 @@ function App() {
   }, []);
   return (
     <>
-    <div className=''>
+    <div className='font-Ubuntu'>
       
       {loading ? (
        <div className = "App flex flex-col justify-center bg-[#EEF2F5]" >

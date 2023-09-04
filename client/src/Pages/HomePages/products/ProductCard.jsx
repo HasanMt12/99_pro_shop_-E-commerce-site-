@@ -12,10 +12,9 @@ import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
 const ProductCard = ({ product }) => {
   const { photo, name, price, verification ,  _id } = product;
-  // console.log(product);
  
     const {user} = useContext(AuthContext);
-   const [ , refetch] = useCart();
+    const [ , refetch] = useCart();
     // const [, refetch] = useWishlist();
     const navigate = useNavigate();
     const location = useLocation();
@@ -107,25 +106,20 @@ const ProductCard = ({ product }) => {
 
         <div className="px-1 pt-2">
          
-          <div className="flex justify-between items-start md:text-[0.8rem] text-[0.7rem] lg:text-[1rem]">
+          <div className="flex justify-between items-start md:text-[0.6rem] text-[0.5rem] lg:text-[0.8rem]">
             <h3
               // data-aosName="fade-right"
-              className="   font-semibold text-[#c73f8a]"
+              className=" font-semibold text-[#c73f8a]"
             >
               {name}
             </h3>
-            <button
-              onClick={() => handleWishList(product)}
-
-          
-            >
+            <button onClick={() => handleWishList(product)}  >
               <svg
                 xmlnsName="http://www.w3.org/2000/svg"
                 fill={fill.color ? fill.color : "pink"}
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="white"
-                
                 className="lg:w-6 lg:h-6 md:h-4 md:w-4 h-3 w-3 "
               >
                 <path
@@ -136,9 +130,8 @@ const ProductCard = ({ product }) => {
               </svg>
             </button>
           </div>
-<div className="flex justify-between items-center absolute lg:bottom-20 sm:bottom-8">
- <p
-            // data-aosName="fade-right"
+<div className="flex justify-between items-center absolute lg:bottom-12 md:bottom-12 bottom-8">
+ <p // data-aosName="fade-right"
             className="lg:mt-1   lg:text-sm mr-4  text-[10px] text-gray-700"
           >
             <span className="text-green-500 font-bold">৳ {price}</span> 
@@ -151,7 +144,7 @@ const ProductCard = ({ product }) => {
 
           <button
             onClick={() => handleAddToCart(product)}
-            className=" w-[92%] inset-x-0 absolute lg:bottom-4 bottom-1 mx-auto text-white rounded bg-[#ee7da8] lg:p-2 p-[4px] lg:text-sm text-xs  font-medium transition hover:scale-105"
+            className=" w-[92%] inset-x-0 absolute lg:bottom-[5px] bottom-1 mx-auto text-white rounded bg-[#f396ba] lg:p-1 p-[3px] lg:text-sm text-xs  font-medium transition hover:scale-105"
           >
             Add to Cart
           </button>

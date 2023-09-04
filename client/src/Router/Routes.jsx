@@ -18,8 +18,13 @@ import AddProducts from "../components/adminDashboard/addProducts/AddProducts";
 import Checkout from "../Pages/orderCheckout/Checkout";
 import Login from "../components/Shared/login/login/Login";
 import DashboardHome from "../components/adminDashboard/DashboardHom/DashboardHome";
+import Offer from "../components/Shared/Offer";
 
 const router = createBrowserRouter([
+  {
+    path:'*',
+    element: <MainLayout></MainLayout>,
+  },
   {
     path: "/",
     element: <MainLayout></MainLayout>,
@@ -58,6 +63,10 @@ const router = createBrowserRouter([
         path: "/cart/order/:id",
         element: <PrivateRoute><Checkout></Checkout></PrivateRoute> ,
         loader:({params})=> fetch(`https://99-pro-server.vercel.app/order/${params._id}`)
+      },
+       {
+        path: "/offer",
+        element: <Offer></Offer> 
       },
     ],
   },

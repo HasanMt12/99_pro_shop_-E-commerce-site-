@@ -35,7 +35,7 @@ const AllUsers = () => {
             <h2 className="text-3xl text-center font-sans">All users</h2>
       <div className="overflow-x-auto">
         
-            {users.map((user, i) => (
+            {users.map((user) => (
                 <div key = {user._id}
                 className = "rounded-xl  w-10/12 mx-auto my-4 p-4 border-b-2 border-pink-500  bg-gray-50" >
 
