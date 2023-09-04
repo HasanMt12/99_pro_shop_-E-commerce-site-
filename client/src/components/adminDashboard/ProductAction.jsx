@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
    
 const ProductAction = () => {
+ const [search, setSearch] = useState('');
 
-
-       const {data: products = [] , refetch } = useQuery({
+       const {data: products = [search] , refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async() =>{
-            const res = await fetch('https://99-pro-server.vercel.app/allProducts');
+            const res = await fetch(`https://99-pro-server.vercel.app/allProducts?search=${search}`);
             const data = await res.json();
    
             return data;

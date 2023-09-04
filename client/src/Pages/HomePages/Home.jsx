@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Hero from "./Hero";
 import "aos/dist/aos.css";
 import { IoIosArrowForward } from "react-icons/io";
@@ -8,6 +8,9 @@ import Banner from "./Banner";
 import MobilCategories from "./categories/MobilCategories";
 import AllProducts from "./products/AllProducts/AllProducts";
 import { Link } from "react-router-dom";
+import AdsSlider from "./AdsSlider";
+import { useQuery } from "@tanstack/react-query";
+import CategoriesCard from "./categories/CategoriesCard";
 
 
 const Home = () => {
@@ -16,74 +19,50 @@ const Home = () => {
     Aos.init({ duration: 2000 });
   }, []);
 
- const [categories , setCategories] = useState([]);
-    useEffect(()=>{
-        fetch("https://99-pro-server.vercel.app/categories")
-        .then(res => res.json())
-        .then(data => setCategories(data))
-
-    },[]);
-
+ const {data: categories = []  } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async() =>{
+            const res = await fetch(`https://99-pro-server.vercel.app/categories`);
+            const data = await res.json();
+            return data;    
+        }
+    });
   return (
     <>
-      <div className="flex justify-center items-start ">
-        <div className="lg:w-[15%] hidden lg:block h-full">
-          <ul className="flex  mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
-           <Link to='/allProducts'> <li
-              className=
-                "cursor-pointer  hover:text-blue-400/80  mx-6 my-3 font-semibold text-sm uppercase text-[#EA0F62]  text-start flex justify-start gap-4 items-center " 
-              
-            >
-              <h2>All product  </h2>
-              <IoIosArrowForward className=""></IoIosArrowForward>
-            </li> 
-          </Link>
-            
-            {
-               categories.map(category=> <Categories
-                    key={category._id}
-                    category={category}
-                    >    
-                    </Categories>)
-            }
-            
-          </ul>
-        </div>
-        <div className="lg:w-[85%] w-[98%] shadow-md">
-          <div className=" lg:hidden block">
-            <ul className="flex md:gap-2 ml-2 mb-0 list-none flex-wrap pt-2 flex-row">
-              <li
-                
-                className= "cursor-pointer hover:text-blue-400/80  text-[#EA0F62] md:mx-4 sm:mx-2 text-xs   font-semibold  uppercase hover:text-[#EA0F62]  text-start flex justify-start  items-center "               >
-                <h2>Home</h2>
-                <IoIosArrowForward></IoIosArrowForward>
-              </li>
+      {/* Only large device visible */}
+      <div className=" hidden lg:block">
+        <div className="flex justify-between mx-[8rem] items-start mt-4  h-[25rem]">
+          <div className="w-[25%] bg-[#f3f6f8] h-[25rem]  rounded-md shadow-sm shadow-[#b4cbda] ">
+              <ul className="flex  mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
+              <h2 className="font-bold mt-2 mx-[4.5rem] text-md text-sky-500"> Categories</h2>
+              <Link to='/allProducts'> <li className= "cursor-pointer  hover:text-sky-400 hover:bg-sky-100 hover:opacity-80 pl-[4.5rem] pr-[3rem] py-2  text-[0.9rem]  text-[#EA0F62]  text-start flex justify-between start gap-4 items-center ">
+                  <h2>All product  </h2>
+                  <IoIosArrowForward className=""></IoIosArrowForward>
+                </li> 
+              </Link>       
               {
-               categories.map(category=> <MobilCategories
-                    key={category._id}
-                    category={category}
-                    >    
-                    </MobilCategories>)
-
-            }
-             
+                categories.map(category=> <Categories
+                      key={category._id}
+                      category={category}
+                ></Categories>)
+              }
             </ul>
           </div>
-          <div className="relative flex flex-col min-w-0 break-words  w-full mb-6 ">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
-                <div >
-                  <>
-                    <Hero></Hero>
-                    <AllProducts></AllProducts> 
-                    <Banner></Banner>
-                  </>
-                </div>
+          <div className="w-[70%]">
+            <Hero></Hero>
 
-              </div>
-            </div>
           </div>
         </div>
+      <div>
+            <AllProducts ></AllProducts> 
+            <Banner className="lg:mx-[8rem"></Banner></div>
+      </div>
+
+      <div className="lg:hidden block">
+          <Hero></Hero>
+          <CategoriesCard></CategoriesCard>
+          <AllProducts></AllProducts> 
+          <Banner ></Banner>
       </div>
     </>
   );

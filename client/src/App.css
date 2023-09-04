@@ -4,6 +4,8 @@
   /* padding: 2rem; */
 
 }
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Work+Sans&display=swap');
 /* scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

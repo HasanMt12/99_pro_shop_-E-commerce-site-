@@ -6,51 +6,27 @@ import ProductCard from "./ProductCard";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useLoaderData } from "react-router-dom";
+import CategoriesCard from "../categories/CategoriesCard";
+
 const ProductsSection = () => {
      const allProduct = useLoaderData()
-
-  
      console.log(allProduct);
-  
-    // const [limit] = useState(12)
-    // useEffect(() => {
-    //     // Data fetching code goes here
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch('https://99-pro-server.vercel.app/allProducts');
-    //             const data = await response.json();
-    //             setAllProducts(data)
-               
-    //             // Update state or do something with the fetched data
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
 
-    //     fetchData();
-    // }, []);
-
-      useEffect(()=>{
+    useEffect(()=>{
     Aos.init({duration:1200})
   },[])
     return (
-         <div className="px-20">
-            <div className="flex justify-center items-center gap-2 text-[#df3b6c]">
-                 <h2  data-aos="zoom-in" className="font-bold  text-center  lg:text-xl text-lg my-4 "> {(allProduct.categoryId === "BeautyProducts"&&"b") }</h2>
-                < MdOutlineShoppingCart></ MdOutlineShoppingCart>
-            </div> 
-              <div className="section">
-            {allProduct && 
+         <div className="lg:px-20 px-3  lg:mx-[6rem]">
+            {/* fetching categories  */}
+            <CategoriesCard></CategoriesCard>
+              <div className="productsDiv ">
+                  {allProduct && 
                     allProduct.map((product, key) => (
-                       <ProductCard key={key} product={product}>
-
-                       </ProductCard>
-                         
-                        
-                    ))
-                    }
-        </div>
-           <br></br>
+                      <ProductCard key={key} product={product}>
+                      </ProductCard>                       
+                  ))}
+            </div>
+           <br> </br>
           
         </div>
     );

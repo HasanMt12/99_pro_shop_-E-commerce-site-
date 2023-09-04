@@ -7,11 +7,12 @@ export default {
   ],
   theme: {
     extend: {},
+     fontFamily: {
+      Ubuntu: ['Ubuntu', 'sans-serif'],
+     
+    },
   },
-  // plugins: [require('daisyui')],
-  // daisyui: {
-  //   themes: [],
-  // },
+
    plugins: [
      require('preline/plugin'),
    ],

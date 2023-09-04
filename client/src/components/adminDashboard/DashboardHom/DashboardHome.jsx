@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unknown-property */
 
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const DashboardHome = () => {
+   const [search, setSearch] = useState('');
      const {data: users = [] ,  } = useQuery({
         queryKey: ['users'],
         queryFn: async() =>{
@@ -14,10 +16,10 @@ const DashboardHome = () => {
         }
     });
 
-     const {data: products = [] , refetch } = useQuery({
+     const {data: products = [search]} = useQuery({
         queryKey: ['products'],
         queryFn: async() =>{
-            const res = await fetch('https://99-pro-server.vercel.app/allProducts');
+            const res = await fetch(`https://99-pro-server.vercel.app/allProducts?search=${search}`);
             const data = await res.json();
    
             return data;
