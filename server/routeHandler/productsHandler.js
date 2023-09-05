@@ -1,94 +1,19 @@
 const express = require("express");
-const { ObjectId } = require("mongodb");
-const { ProductsCollections } = require("../collections/collections");
 const router = express.Router();
 
-try {
-  router.get("/:categoryId", async (req, res) => {
-    const categoryId = req.params.categoryId;
-    const query = { categoryId: categoryId};
-    const products = await ProductsCollections.find(query).toArray();
-    res.send(products);
-  });
-  } catch (error) {
-    res.status(404).send({
-      error: error.message
-    });
-}
-
-try {
-  router.get("/", async (req, res) => {
-   const search = req.query.search;
-   const query = {name: { $regex: search, $options: 'i'}}
-   const allProducts = await ProductsCollections.find(query).toArray();
-   res.send(allProducts);
-  });
-  } catch (error) {
-    res.status(404).send({
-      error: error.message
-    });
-}
+const { getAllProducts , getCategoryById , adminActions , postProduct ,productStockOut,  deletePRoduct} = require('../controller/productController')
 
 
+  router.get("/:categoryId", getCategoryById)
 
-try {
-  router.get("/admin/:id", async (req, res) => {
-   const id = req.params.id;
-            const query = { _id }
-            const user = await ProductsCollections.findOne(query);
-            res.send({ isAdmin: user?.role === 'admin'});
-  });
-  } catch (error) {
-    res.status(404).send({
-      error: error.message
-    });
-}
+  router.get("/", getAllProducts)
 
-router.post("/", async (req, res) => {
-  try {
-    const product = req.body;
-    const result = await ProductsCollections.insertOne(product);
-    res.send(result);
-  } catch (error) {
-    res.send({
-      error: error.message,
-    });
-  }
-});
+  router.get("/admin/:id", adminActions)
 
-router.put("/verify/:id", async (req, res) => {
-  try {
-   const id = req.params.id;
-      const filter = { _id: new ObjectId(id) };
-      const options = { upsert: true };
-      const updatedDoc = {
-        $set: {
-          verification: "stockOut",
-        },
-      };
-      const result = await ProductsCollections.updateOne(
-        filter,
-        updatedDoc,
-        options
-      );
-      res.send(result);
-  } catch (error) {
-    res.send({
-      error: error.message,
-    });
-  }
-});
+  router.post("/", postProduct)
 
-router.delete("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const filter = {
-      _id: new ObjectId(id),
-    };
-    const result = ProductsCollections.deleteOne(filter);
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(404).send({ error: error.message });
-  }
-});
+  router.put("/verify/:id", productStockOut);
+
+  router.delete("/:id", deletePRoduct);
+
 module.exports = router;
