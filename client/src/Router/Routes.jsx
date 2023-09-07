@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/HomePages/Home";
 import MainLayout from "../Layouts/MainLayout"
-import Registration from "../components/Shared/login/Registration";
-
+import Registration from "../Auth/Registration/Registration";
 // import Dashboard from "../components/adminDashboard/Dashboard";
 import PrivateRoute from "../Router/PrivateRoute/PrivateRoute.jsx";
 // import AdminRoute from "../Router/AdminRoute/AdminRoute";
@@ -13,12 +12,16 @@ import ProductsSection from "../Pages/HomePages/products/ProductsSection";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import AllUsers from "../components/adminDashboard/AllUsers";
 import ProductAction from "../components/adminDashboard/ProductAction";
-import AdminRoute from "./AdminRoute/AdminRoute";
+
 import AddProducts from "../components/adminDashboard/addProducts/AddProducts";
 import Checkout from "../Pages/orderCheckout/Checkout";
-import Login from "../components/Shared/login/login/Login";
+import Login from "../Auth/login/Login";
 import DashboardHome from "../components/adminDashboard/DashboardHom/DashboardHome";
 import Offer from "../components/Shared/Offer";
+import WaitingEmailVerification from "../Auth/WaitingEmailVerification";
+import ResetPassword from "../Auth/ResetPassword";
+import SecureRoute from "./SecureRoute";
+
 
 const router = createBrowserRouter([
   {
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: '/categories/:categoryId',
         element: <ProductsSection></ProductsSection>,
-        loader:({params})=> fetch(`https://99-pro-server.vercel.app/categories/${params.categoryId}`)
+        loader:({params})=> fetch(`https://99-pro-shop-server.vercel.app/categories/${params.categoryId}`)
      },
      {
         path: "/allProducts",
@@ -45,11 +48,19 @@ const router = createBrowserRouter([
       },
        {
         path: "/register",
-        element: <Registration></Registration>
+        element: <SecureRoute><Registration></Registration></SecureRoute>
       },
-        {
+      {
         path: "/login",
-        element: <Login></Login>
+        element: <SecureRoute><Login></Login></SecureRoute>
+      },
+      {
+        path: "/waitingVerification",
+        element: <WaitingEmailVerification></WaitingEmailVerification>
+      },
+      {
+        path: "/resetPass",
+        element: <ResetPassword></ResetPassword>
       },
       {
         path: "/wishlist",
@@ -62,7 +73,7 @@ const router = createBrowserRouter([
       {
         path: "/cart/order/:id",
         element: <PrivateRoute><Checkout></Checkout></PrivateRoute> ,
-        loader:({params})=> fetch(`https://99-pro-server.vercel.app/order/${params._id}`)
+        loader:({params})=> fetch(`https://99-pro-shop-server.vercel.app/order/${params._id}`)
       },
        {
         path: "/offer",
@@ -81,15 +92,15 @@ const router = createBrowserRouter([
         },
         {
           path: '/dashboard/users',
-          element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+          element: <AllUsers></AllUsers>
         },
          {
           path: '/dashboard/addProducts',
-          element: <AdminRoute><AddProducts></AddProducts></AdminRoute>
+          element:<AddProducts></AddProducts>,
         },
          {
           path: '/dashboard/products',
-          element: <PrivateRoute><ProductAction></ProductAction></PrivateRoute>
+          element: <ProductAction></ProductAction>
         },
        
         

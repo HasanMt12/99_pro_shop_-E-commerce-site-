@@ -48,7 +48,7 @@ const Login = () => {
                   height="24"
                 />
               </svg>
-              <div data-aos="fade-left" className="relative bg-white bg-opacity-75 rounded shadow-2xl p-7 sm:p-10">
+              <div data-aos="fade-left" className="relative bg-white bg-opacity-75 rounded shadow-2xl lg:p-7  p-10 lg:mt-[7rem] mt-[2rem]">
                <LoginForm></LoginForm>
               </div>
             </div>

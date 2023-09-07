@@ -1,64 +1,41 @@
 import { Fragment, useContext, useEffect, useState } from "react";
 import logo from "../../assets/y.jpg"
-import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import loginPhoto from "../../assets/login.png";
-import "./navbar.css";
-import { AuthContext } from "../../Authentication/AuthProvider";
-import { useForm } from "react-hook-form";
-import useAdmin from "../../hooks/useAdminSecurity";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
-import logo99 from "../../assets/logo99.png";
 import useCart from "../../hooks/useCart";
-import { toast } from "react-hot-toast";
-import Aos from "aos";
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [modalStatus, setModalStatus] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  const [isAdmin] = useAdmin(user?.email);
-   const [cart] = useCart();
+  const [cart] = useCart();
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm();
-  const { signIn, signInWithGoogle } = useContext(AuthContext);
-  const [signInError, setSignInError] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [signInUserEmail, setSignInUserEmail] = useState("");
-  const form = location.state?.form?.pathname || "/";
 
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
-  const navigate = useNavigate();
+
 
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch(
-      `https://99-pro-server.vercel.app/wishlist?email=${user?.email}&&limit=3`
+      `https://99-pro-shop-server.vercel.app/wishlist?email=${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setData(data));
-     
   }, [user?.email]);
 
+  // Navbar menus is here
   const menuItems = (
     <Fragment>
       <Link to="/">
         <li className="cursor-Pointer text-white font-semibold hover:text-[#f44689]">Home</li>
       </Link>
-      {isAdmin && (
-        <Link to="/dashboard">
-          <li className="cursor-Pointer text-white font-semibold hover:text-[#f44689]">Dashboard</li>
-        </Link>
-      )}
+    
+       
       <span className="relative inline-block ml-8">
         <Link to="/cart">
           {" "}
@@ -120,14 +97,14 @@ const Navbar = () => {
               </div>
             </div>
           </div>):(
-             <Link to="/">
+             <Link to="/login">
           <button
             style={{
               boxShadow:
                 "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
             }}
             className="flex text-[#EEF2F5] justify-center transition duration-200 ease-in-out transform px-5 py-1 w-30 border-b-4 border-[#df81a5] hover:border-b-2 bg-gradient-to-t from-[#cc5a86]  via-[#EA0F62] to-[#e2a1ba] rounded-2xl hover:translate-y-px "
-            onClick={() => setModalStatus(true)}
+
           >
             Login
           </button>
@@ -138,71 +115,7 @@ const Navbar = () => {
     </Fragment>
   );
 
-  const handleLogin = (data) => {
-    console.log(data);
-    setSignInError("");
-    signIn(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        setSignInUserEmail(data.email);
-        toast.success('login successful', {
-            style: {
-              border: '1px solid #713200',
-              padding: '10px',
-              color: '#713200',
-            },
-            iconTheme: {
-              primary: '#df81a5',
-              secondary: '#FFFAEE',
-            },
-          });
-           reset();
-        setModalStatus(false);
-      })
-      .catch((error) => {
 
-        console.log(error.message);
-        setSignInError(error.message);
-        toast.error('user not register or user id invalid', {
-            style: {
-              border: '1px solid #df81a5',
-              padding: '10px',
-              color: 'blue',
-            },
-            iconTheme: {
-              primary: '#df81a5',
-              secondary: '#FFFAEE',
-            },
-          });
-          reset();
-      });
-  };
-
-  const handleGoogleSignin = (data) => {
-    signInWithGoogle().then((result) => {
-      console.log(result.user);
-    setSignInUserEmail(data.email);
-       toast.success('login successful', {
-            style: {
-              border: '1px solid #713200',
-              padding: '10px',
-              color: '#713200',
-            },
-            iconTheme: {
-              primary: '#df81a5',
-              secondary: '#FFFAEE',
-            },
-          });
-          setModalStatus(false);
-      navigate(form, { replace: true });
-      navigate("/");
-    });
-  };
-
-   useEffect(() => {
-    Aos.init({ duration: 5000 });
-  }, []);
   return (
     <>
       <div className="sticky top-0 z-10 ">
@@ -298,7 +211,7 @@ const Navbar = () => {
                 "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
             }}
             className="flex text-[#EEF2F5] justify-center transition duration-200 ease-in-out transform px-5 py-1 w-30 border-b-4 border-[#df81a5] hover:border-b-2 bg-gradient-to-t from-[#cc5a86]  via-[#EA0F62] to-[#e2a1ba] rounded-2xl hover:translate-y-px "
-            onClick={() => setModalStatus(true)}
+            // onClick={() => setModalStatus(true)}
           >
             Login
           </button>
@@ -337,104 +250,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div>
-        {modalStatus && (
-          <div className="relative z-10 mx-auto "   >
-            <div  className=" md:mx-5  fixed inset-0 z-10 overflow-y-auto ">
-              <div className="flex min-h-full  items-end justify-center  text-center sm:items-center sm:p-0">
-                <div data-aosName="zoom-in" onClick={() => setModalStatus(false)} className="relative border-b cursor-pointer border-[#2d90ba] transform overflow-hidden rounded-lg bg-white text-left shadow-full transition-all mx-auto sm:my-6 sm:w-[90%] sm:max-w-4xl lg:mr-[20%] bg-opacity-95">
-                  <button
-                    className="p-1 m-1 absolute z-2 bg-pink-300  right-1 transition duration-200 rounded-full hover:bg-pink-400 "  >
-                    <svg className="w-4 text-sky-400" viewBox="0 0 24 24">
-                      <path
-                        fill="currentColor"
-                        d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                      />
-                    </svg>
-                  </button>
-                  <div className=" grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 py-2 mt-2 mx-auto ">
-                    <div className="flex justify-center items-center">
-                      <img className=" w-[70%]" src={loginPhoto}></img>
-                    </div>
-                    <div className=" z-1 relative mx-auto border-x border-pink-100/100 py-4 my-2 lg:px-12 md:px-8 px-12">
-           
-          <form onSubmit={handleSubmit(handleLogin)} >
-                  <div className="mb-1 sm:mb-2">
-                    <label htmlFor="email"   className="inline-block mb-1 text-[#2d90ba] font-medium"
-                    > E-mail</label>
-                    <input
-                      type="email"
-                      placeholder="your email"
-                      id="email"
-                      name="email"
-                      className="flex-grow w-full h-10 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                      autoComplete="email"
-                      {...register("email", {
-                        required: true,
-                        pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/,
-                      })}
-                    />
-                    {errors.email && (
-                      <span className="text-red-500 text-base mt-1">
-                        Please enter a valid email address.
-                      </span>
-                    )}
-                  </div>
-                 <div className="mb-1 sm:mb-2">
-                     <label htmlFor="password"
-                      className="inline-block mb-1 text-[#2d90ba] font-medium"
-                     > Password</label>
-                     <input
-                       type="password"  placeholder="password"
-                       id="password" name="password"
-                       className="flex-grow w-full h-10 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
-                       autoComplete="new-password"
-                       {...register("password", { required: true, minLength: 6 })}
-                     />
-                      {errors.password && (
-                        <span className="text-red-500 text-base mt-1">
-                          Please enter a password.
-                        </span>
-                      )}
-                  </div>
-
-               
-
-                  <div className="mt-4 mb-2 sm:mb-4">
-                    <button onClick = {() => setModalStatus(false)  }
-                     className="inline-flex items-center justify-center w-full h-10 px-6   text-[#2d90ba] font-semibold rounded shadow-md bg-[#e9b0c6] hover:bg-[#c68fa4] "
-                       type="submit"> login
-                    </button>
-                   
-                  </div>
-                   <p  
-                   className="mt-3 text-center">
-                   You Dont have an account ?{" "}
-                    <Link to="/register"
-                    className="text-blue-500 no-underline ml-1">
-                       <span
-                            onClick={() => setModalStatus(false)}
-                            className="text-pink-500 font-semibold"
-                          >
-                            Register
-                          </span></Link> </p>
-                   <div className="text-center text-md my-2 text-pink-500 font-semibold">OR</div>
-                      <div onClick={handleGoogleSignin} className="flex rounded-lg bg-[#dbe9f6] border-red-400 border-b justify-center items-center py-2 cursor-pointer">
-                        <button type="button"className=""  >
-                          <FcGoogle className="text-lg mr-3" /> 
-                        </button>
-                        <p className='text-sm text-[#207198]'>Continue with google</p>
-                      </div>
-                        
-               </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+    
     </>
   );
 };

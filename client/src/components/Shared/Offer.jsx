@@ -28,7 +28,7 @@ const Offer = () => {
            <br></br>  Irresistible Deals Await!
           </h2>
           <h2 className= "mb-5 font-sans text-lg font-semibold tracking-tight text-sky-700 sm:text-2xl sm:leading-none" >
-            Don`'`t Miss Out on Upcoming Discounts
+            Do not Miss Out on Upcoming Discounts
           </h2>
 
            <button 

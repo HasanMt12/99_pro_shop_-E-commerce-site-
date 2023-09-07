@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react';
-import SignupForm from './SignupForm';
 import Aos from 'aos';
+import RegisterForm from "./RegisterForm";
 const Registration = () => {
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const Registration = () => {
 
     return (
         <>
-        <div className="overflow-hidden "
+        <div className="overflow-hidden h-screen"
       style={{backgroundImage:`url("https://i.ibb.co/pztsXFL/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
       <div className="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8">
@@ -50,7 +50,7 @@ const Registration = () => {
                 />
               </svg>
               <div data-aos="fade-left" className="relative bg-white bg-opacity-75 rounded shadow-2xl p-7 sm:p-10">
-               <SignupForm/>
+               <RegisterForm></RegisterForm>
               </div>
             </div>
           </div>

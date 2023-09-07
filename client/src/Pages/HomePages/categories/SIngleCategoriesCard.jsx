@@ -6,7 +6,7 @@ const SIngleCategoriesCard = ({category}) => {
     const {imageUrl , categoryId} = category
 
   const navigate = useNavigate()
-   const from = location.state?.from?.pathname || `/categories/${categoryId}`
+  const from = location.state?.from?.pathname || `/categories/${categoryId}`
   const handleRedirectClick = () => {
     // Redirect to the desired route when the <div> is clicked
      navigate(from, { replace: true });  navigate(`/categories/${categoryId}`);

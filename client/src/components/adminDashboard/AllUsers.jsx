@@ -1,23 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 
 const AllUsers = () => {
-      const {data: users = [] , refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async() =>{
-            const res = await fetch('https://99-pro-server.vercel.app/users');
-            const data = await res.json();
-           
-            return data;
-            
-        }
-    });
-
+         const [axiosSecure] = useAxiosSecure();
+    const { data: users = [], refetch, } = useQuery(['users'], async () => {
+        const res = await axiosSecure.get('/users')
+        return res.data;
+    })
+       
        // make buyer goldenUser
     const handleMakeGoldenUsers = id => {
-        fetch(`https://99-pro-server.vercel.app/users/admin/${id}`, {
+        fetch(`https://99-pro-shop-server.vercel.app/users/admin/${id}`, {
             method: 'PUT'
         })
         .then(res => res.json())
@@ -33,9 +29,9 @@ const AllUsers = () => {
     return (
                <div>
             <h2 className="text-3xl text-center font-sans">All users</h2>
-      <div className="overflow-x-auto">
-        
-            {users.map((user) => (
+           <div className="overflow-x-auto">
+          
+            { users && users.map((user) => (
                 <div key = {user._id}
                 className = "rounded-xl  w-10/12 mx-auto my-4 p-4 border-b-2 border-pink-500  bg-gray-50" >
 

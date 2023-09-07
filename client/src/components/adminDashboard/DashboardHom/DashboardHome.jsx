@@ -8,7 +8,7 @@ const DashboardHome = () => {
      const {data: users = [] ,  } = useQuery({
         queryKey: ['users'],
         queryFn: async() =>{
-            const res = await fetch('https://99-pro-server.vercel.app/users');
+            const res = await fetch('https://99-pro-shop-server.vercel.app/users');
             const data = await res.json();
            
             return data;
@@ -19,7 +19,7 @@ const DashboardHome = () => {
      const {data: products = [search]} = useQuery({
         queryKey: ['products'],
         queryFn: async() =>{
-            const res = await fetch(`https://99-pro-server.vercel.app/allProducts?search=${search}`);
+            const res = await fetch(`https://99-pro-shop-server.vercel.app/allProducts?search=${search}`);
             const data = await res.json();
    
             return data;
