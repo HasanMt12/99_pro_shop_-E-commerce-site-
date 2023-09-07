@@ -2,8 +2,9 @@ const express = require("express");
 const morgan = require('morgan');
 const cors = require("cors");
 const createError = require('http-errors')     //http error handling 
-const bodyParser = require('body-parser')     //express error handling
+// const bodyParser = require('body-parser')     //express error handling
 const rateLimit = require('express-rate-limit')
+const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
 const app = express();
@@ -17,9 +18,9 @@ const limiter = rateLimit({
 //middleware
 app.use(cors())
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev')); // for logging data
-app.use(limiter)
+// app.use(limiter)..
 
 
       const categoryHandler = require("../routeHandler/categoryHandler");
@@ -27,7 +28,7 @@ app.use(limiter)
       const userHandler = require("../routeHandler/userHandler");
       const cartHandler = require("../routeHandler/cartHandler");
       const wishlistHandler = require("../routeHandler/wishlistHandler");
-
+      const jwtHandler = require("../routeHandler/jwtHandler");
 
       app.use("/categories", categoryHandler);
       app.use("/categories", productsHandler);
@@ -35,6 +36,7 @@ app.use(limiter)
       app.use("/users", userHandler);
       app.use("/cart", cartHandler);
       app.use("/wishlist", wishlistHandler);
+      app.use("/jwt", jwtHandler);
 
 
       app.get('/', async (req, res) => {

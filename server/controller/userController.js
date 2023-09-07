@@ -1,10 +1,13 @@
 const { ObjectId } = require("mongodb");
 const {  usersCollections } = require("../collections/collections");
 
+
+
+// Get user
 const getUsers = async (req, res) => {
    try {const query = {};
-   const users = await usersCollections.find(query).toArray();
-   res.send(users);
+     const result = await usersCollections.find().toArray();
+      res.send(result);
    } catch (error) {
     res.send({
       error: error.message,
@@ -25,11 +28,16 @@ const getUserByEmail = async (req, res) => {
   }
 }
 
+
 const adminUserAction = async (req, res) => {
   try {  const email = req.params.email;
-         const query = { email }
-         const user = await usersCollections.findOne(query);
-         res.send({ isAdmin: user?.role === 'admin'});
+      if (req.decoded.email !== email) {
+        res.send({ admin: false })
+      }
+      const query = { email: email }
+      const user = await usersCollections.findOne(query);
+      const result = { admin: user?.role === 'admin' }
+      res.send(result);
     } catch (error) {
          res.send({
          error: error.message,
@@ -40,8 +48,15 @@ const adminUserAction = async (req, res) => {
 const postUserForLogin = async (req, res) => {
   try {
     const user = req.body;
-    const result = await usersCollections.insertOne(user);
-    res.status(200).send(result);
+      const query = { email: user.email }
+      const existingUser = await usersCollections.findOne(query);
+
+      if (existingUser) {
+        return res.send({ message: 'user already exists' })
+      }
+
+      const result = await usersCollections.insertOne(user);
+      res.send(result);
   } catch (error) {
     res.send({
       error: error.message,
