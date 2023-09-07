@@ -1,14 +1,12 @@
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react";
 
-import { AuthContext } from "../../../Authentication/AuthProvider";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Context/AuthProvider";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useLocation, useNavigate } from "react-router-dom";
  import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
-// import useWishlist from "../../../hooks/useWishlist";
+
 import { toast } from "react-hot-toast";
 const ProductCard = ({ product }) => {
   const { photo, name, price, verification ,  _id } = product;
@@ -28,7 +26,7 @@ const ProductCard = ({ product }) => {
     dbWishlist.color = "red";
     delete dbWishlist._id;
 
-    fetch("https://99-pro-server.vercel.app/wishlist", {
+    fetch("https://99-pro-shop-server.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,11 +44,11 @@ const ProductCard = ({ product }) => {
   };
 
 
-    const handleAddToCart = (product) => {
+    const handleAddToCart = () => {
         // console.log(product);
         if(user && user.email){
             const product = {productId: _id, name, photo, price, email: user.email, verification}
-            fetch('https://99-pro-server.vercel.app/cart', {
+            fetch('https://99-pro-shop-server.vercel.app/cart', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -115,7 +113,8 @@ const ProductCard = ({ product }) => {
             </h3>
             <button onClick={() => handleWishList(product)}  >
               <svg
-                xmlnsName="http://www.w3.org/2000/svg"
+              
+                xmlns="http://www.w3.org/2000/svg"
                 fill={fill.color ? fill.color : "pink"}
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"

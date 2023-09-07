@@ -5,7 +5,7 @@ const PaymentInvoice = () => {
      const {data: payments = [] , refetch } = useQuery({
         queryKey: ['payments'],
         queryFn: async() =>{
-            const res = await fetch('https://99-pro-server.vercel.app/payment');
+            const res = await fetch('https://99-pro-shop-server.vercel.app/payment');
             const data = await res.json();
             console.log(data);
             return data;

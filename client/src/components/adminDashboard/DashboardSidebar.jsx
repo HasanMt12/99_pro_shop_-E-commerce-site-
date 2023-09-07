@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import useAdmin from "../../hooks/useAdminSecurity";
+import useAdmin from "../../hooks/useAdmin";
 import { useContext } from "react";
-import { AuthContext } from "../../Authentication/AuthProvider";
-
-
+import { AuthContext } from "../../Context/AuthProvider";
 
 const DashboardSidebar = () => {
   const {user}= useContext(AuthContext);

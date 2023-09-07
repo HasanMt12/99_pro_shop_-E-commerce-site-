@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Authentication/AuthProvider";
+import { AuthContext } from "../../Context/AuthProvider";
 import ProductCard from "../HomePages/products/ProductCard";
 import Loader from "../../components/Shared/Loader";
 
@@ -10,7 +10,7 @@ const Wishlist = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
    setIsLoading(true)
-    fetch(`https://99-pro-server.vercel.app/wishlist?email=${user?.email}`)
+    fetch(`https://99-pro-shop-server.vercel.app/wishlist?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setData(data));
        setIsLoading(false)

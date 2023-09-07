@@ -1,43 +1,34 @@
-
-import { useEffect, useRef, useState } from "react";
-
+import { useRef, useState } from "react";
 import ProductCard from "../ProductCard";
- import {  MdOutlineShoppingCart } from "react-icons/md";
-import Aos from "aos";
-import "aos/dist/aos.css";
+import {  MdOutlineShoppingCart } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 
 
 const AllProducts = () => {
-      const searchRef = useRef(null);
+    const searchRef = useRef(null);
     const [search, setSearch] = useState('');
-     const [limit, setLimit] = useState(10)
-    //  const [allProduct, setAllProduct] = useState([]);
+    const [limit, setLimit] = useState(10)
 
      const {data: allProduct = [search],refetch  } = useQuery({
         queryKey: ['allProduct'],
         queryFn: async() =>{
-            const res = await fetch(`https://99-pro-server.vercel.app/allProducts?search=${search}`);
+            const res = await fetch(`https://99-pro-shop-server.vercel.app/allProducts?search=${search}`);
             const data = await res.json();
             return data; 
         }
      });
 
-console.log(allProduct)
+
       const handleSearch = (event) => {
         if (event.key === 'Enter') {
      setSearch(searchRef.current.value);
     }
-        console.log(searchRef.current.value);
+        // console.log(searchRef.current.value);
         setSearch(searchRef.current.value);
         refetch()
       }
 
     
-    
-    useEffect(()=>{
-    Aos.init({duration:1200})
-  },[])
     return (
         <div className="mt-10 lg:mx-[8rem] rounded-md shadow-sm shadow-[#b4cbda] bg-[#f3f6f8]">
             <div className="flex justify-between items-center px-2 lg:mx-0 mx-2 lg:text-lg md:text-md text-sm">

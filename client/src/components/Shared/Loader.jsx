@@ -8,7 +8,7 @@ const Loader = () => {
                     <img className='relative z-2 w-[12%]' src={loginPhoto}></img>
                     <Lottie className=" w-[25%] flex absolute  justify-center items-center" animationData={spinner} loop={true} 
                     ></Lottie>
-                  </div>
+            </div>
         </>
     );
 };

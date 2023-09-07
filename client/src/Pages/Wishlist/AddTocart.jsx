@@ -1,6 +1,5 @@
 import { useContext,  useState } from "react";
-import { AuthContext } from "../../Authentication/AuthProvider";
-
+import { AuthContext } from "../../Context/AuthProvider";
 import { FaShopify} from "react-icons/fa";
 import { toast } from "react-hot-toast";
 // import Loader from "../../components/Shared/Loader";
@@ -18,7 +17,7 @@ const AddTocart = () => {
       const {data: data = [] , refetch } = useQuery({
         queryKey: ['data'],
         queryFn: async() =>{
-            const res = await fetch(`https://99-pro-server.vercel.app/cart?email=${user?.email}`);
+            const res = await fetch(`https://99-pro-shop-server.vercel.app/cart?email=${user?.email}`);
             const data = await res.json();
 
             return data;
@@ -27,7 +26,7 @@ const AddTocart = () => {
     });
   // useEffect(() => {
   //   setIsLoading(true)
-  //   fetch(`https://99-pro-server.vercel.app/cart?email=${user?.email}`)
+  //   fetch(`https://99-pro-shop-server.vercel.app/cart?email=${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => setData(data));
   //    setIsLoading(false)
@@ -51,7 +50,7 @@ const AddTocart = () => {
       TransId
     };
     // console.log(booking);
-    fetch("https://99-pro-server.vercel.app/payment", {
+    fetch("https://99-pro-shop-server.vercel.app/payment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -72,7 +71,7 @@ const AddTocart = () => {
   const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to cancel this order');
         if (proceed) {
-            fetch(`https://99-pro-server.vercel.app/cart/${id}`, {
+            fetch(`https://99-pro-shop-server.vercel.app/cart/${id}`, {
                 method: 'DELETE',
                
             })

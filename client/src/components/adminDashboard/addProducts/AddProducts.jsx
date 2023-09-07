@@ -3,56 +3,13 @@ import { toast } from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 import SectionTitle from "./SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAdmin from "../../../hooks/useAdmin";
 // import { useNavigate } from "react-router-dom";
   const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 //  const imgHostKey = "7fc170eeeed4d0d447f69385bf859c8c";
 const AddProducts = () => {
+    const [isAdmin] = useAdmin();
    
-    // const {register, handleSubmit  } = useForm();
-
-
-	
-	// const navigate = useNavigate()
-    //  const onSubmit = data => {
-    //         console.log(data);
-	// 		const image = data.img[0];
-	// 		const formData = new FormData();
-	// 		formData.append('image', image);
-	// 		const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`
-	// 		fetch(url, {
-	// 			method: 'POST',
-	// 			body: formData
-	// 		})
-	// 		.then(res =>res.json())
-	// 		.then(imgData => {
-	// 			if(imgData.success){
-	// 				console.log(imgData.data.url); 
-	// 				const products = {
-	// 					price : data.price,
-	// 					name: data.name,
-	// 					productDetails: data.productDetails,
-	// 					image: imgData.data.url,
-	// 					categoryId: data.categoryId,
-	// 				}
-	// 				// post product to the database
-
-	// 				fetch('https://used-product-sell-server.vercel.app/allProduct', {
-	// 					method: 'POST',
-	// 					headers: {
-	// 						'content-type': 'application/json'
-	// 					},
-	// 					body: JSON.stringify(products)
-	// 				})
-	// 				.then(res => res.json())
-	// 				.then(result =>{
-	// 					console.log(result);
-	// 					toast.success('product added successfully')
-	// 					navigate('/dashboard')
-	// 				})
-	// 			}
-	// 		})
-
-    // }
      const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
@@ -85,7 +42,9 @@ const AddProducts = () => {
 
     };
     return (
-          <div className="w-full px-10">
+        <>
+        {isAdmin &&(
+            <div className="w-full px-10">
             <SectionTitle subHeading="What's new" heading="Add an item" ></SectionTitle>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" w-full mb-4">
@@ -151,6 +110,8 @@ const AddProducts = () => {
                   type="submit" value="Add Item" />
             </form>
         </div>
+        )}
+        </>  
     );
 };
 

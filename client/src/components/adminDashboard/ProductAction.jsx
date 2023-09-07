@@ -9,7 +9,7 @@ const ProductAction = () => {
        const {data: products = [search] , refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async() =>{
-            const res = await fetch(`https://99-pro-server.vercel.app/allProducts?search=${search}`);
+            const res = await fetch(`https://99-pro-shop-server.vercel.app/allProducts?search=${search}`);
             const data = await res.json();
    
             return data;
@@ -18,7 +18,7 @@ const ProductAction = () => {
     });
 
      const handleMakeStockout = id => {
-        fetch(`https://99-pro-server.vercel.app/allProducts/verify/${id}`, {
+        fetch(`https://99-pro-shop-server.vercel.app/allProducts/verify/${id}`, {
             method: 'PUT'
         })
         .then(res => res.json())
@@ -44,7 +44,7 @@ const ProductAction = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-            fetch(`https://99-pro-server.vercel.app/allProducts/${id}`, {
+            fetch(`https://99-pro-shop-server.vercel.app/allProducts/${id}`, {
         method: 'DELETE', 
         
       })
