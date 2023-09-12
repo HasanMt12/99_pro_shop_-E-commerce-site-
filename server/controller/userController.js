@@ -3,7 +3,7 @@ const {  usersCollections } = require("../collections/collections");
 
 
 
-// Get user
+// Get all user
 const getUsers = async (req, res) => {
    try {const query = {};
      const result = await usersCollections.find().toArray();
@@ -15,6 +15,7 @@ const getUsers = async (req, res) => {
   }
 }
 
+//get single user by email
 const getUserByEmail = async (req, res) => {
    try {
    const email = req.params.email;
@@ -28,7 +29,7 @@ const getUserByEmail = async (req, res) => {
   }
 }
 
-
+// users action secure 
 const adminUserAction = async (req, res) => {
   try {  const email = req.params.email;
       if (req.decoded.email !== email) {
@@ -45,6 +46,7 @@ const adminUserAction = async (req, res) => {
   }
   }
 
+//user create for login
 const postUserForLogin = async (req, res) => {
   try {
     const user = req.body;
@@ -63,7 +65,8 @@ const postUserForLogin = async (req, res) => {
     });
   }
 }
-  
+
+//make a golden user
 const makeGoldenUser = async (req, res) => {
   try {
       const id = req.params.id;

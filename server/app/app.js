@@ -28,6 +28,7 @@ app.use(morgan('dev')); // for logging data
       const userHandler = require("../routeHandler/userHandler");
       const cartHandler = require("../routeHandler/cartHandler");
       const wishlistHandler = require("../routeHandler/wishlistHandler");
+      const reviewHandler = require("../routeHandler/reviewHandler");
       const jwtHandler = require("../routeHandler/jwtHandler");
 
       app.use("/categories", categoryHandler);
@@ -36,6 +37,7 @@ app.use(morgan('dev')); // for logging data
       app.use("/users", userHandler);
       app.use("/cart", cartHandler);
       app.use("/wishlist", wishlistHandler);
+       app.use("/review", reviewHandler);
       app.use("/jwt", jwtHandler);
 
 
