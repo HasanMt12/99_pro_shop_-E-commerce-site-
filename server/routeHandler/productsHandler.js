@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllProducts , getCategoryById , adminActions , postProduct ,productStockOut,  deletePRoduct} = require('../controller/productController')
+const { getAllProducts , getCategoryById , adminActions , postProduct ,productStockOut,  deletePRoduct, getProductDetails} = require('../controller/productController')
 
 
   router.get("/:categoryId", getCategoryById)
 
-  router.get("/", getAllProducts)
+  router.get("/:id", getAllProducts);
+
+  router.get("/product/:id", getProductDetails);
 
   router.get("/admin/:id", adminActions)
 

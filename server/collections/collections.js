@@ -16,7 +16,8 @@ const client = new MongoClient(uri, {
  const cartCollections = client.db('99proBusinessSite').collection('cart')
  const wishlistCollections = client.db('99proBusinessSite').collection('wishlist')     
  const orderCollections = client.db('99proBusinessSite').collection('orders')     
-
+ const reviewCollections = client.db('99proBusinessSite').collection('review')     
+ 
  const collection = {
   categoryCollections,
   ProductsCollections,
@@ -24,7 +25,8 @@ const client = new MongoClient(uri, {
   usersCollections,
   cartCollections,
   wishlistCollections,
-  orderCollections
+  orderCollections,
+  reviewCollections
 
 };
 module.exports = collection;

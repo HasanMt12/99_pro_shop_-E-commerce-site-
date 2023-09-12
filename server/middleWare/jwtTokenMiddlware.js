@@ -1,4 +1,4 @@
-export const verifyJWT = (req, res, next) => {
+ const verifyJWT = (req, res, next) => {
   const authorization = req.headers.authorization;
   if (!authorization) {
     return res.status(401).send({ error: true, message: 'unauthorized access' });
@@ -14,3 +14,4 @@ export const verifyJWT = (req, res, next) => {
     next();
   })
 }
+module.exports = verifyJWT;
