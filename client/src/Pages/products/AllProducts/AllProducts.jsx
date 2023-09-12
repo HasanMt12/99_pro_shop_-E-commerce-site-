@@ -21,8 +21,8 @@ const AllProducts = () => {
 
       const handleSearch = (event) => {
         if (event.key === 'Enter') {
-     setSearch(searchRef.current.value);
-    }
+            setSearch(searchRef.current.value); 
+        }
         // console.log(searchRef.current.value);
         setSearch(searchRef.current.value);
         refetch()
@@ -31,17 +31,17 @@ const AllProducts = () => {
     
     return (
         <div className="mt-10 lg:mx-[8rem] rounded-md shadow-sm shadow-[#b4cbda] bg-[#f3f6f8]">
-            <div className="flex justify-between items-center px-2 lg:mx-0 mx-2 lg:text-lg md:text-md text-sm">
-                <div className="text-sky-500 flex justify-center gap-1 items-center  ">
-                  <h2  data-aos="zoom-in" className="font-bold my-4 ">Just For You</h2>
+            <div className="flex justify-between items-center  px-2 lg:mx-0 mx-2 lg:text-lg md:text-md text-sm">
+                <div className="text-pink-500 flex px-2 justify-center gap-1 items-center bg-sky-100 rounded-2xl  ">
+                  <h2  data-aos="fade-right" className="font-medium my-2 text-md mr-2">Just For You</h2>
                   < MdOutlineShoppingCart></ MdOutlineShoppingCart>
-                  </div> 
+                </div> 
 
              {/* search input */}
-              <div className="relative  lg:w-[20rem] md:w-[15rem] w-[12rem]  my-1">
+              <div className="relative  lg:w-[20rem] md:w-[15rem] w-[12rem]   my-1">
                 <input 
                   ref={searchRef}   onKeyDown={handleSearch} placeholder="Search for products"
-                className=" lg:p-[0.7rem] md:p-[0.5rem] p-[0.3rem] lg:pl-[2.5rem] pl-[2rem] block w-full placeholder-pink-300 outline-pink-300 rounded-lg text-sm border-sky-300 border-2"
+                className=" lg:p-[0.7rem] md:p-[0.5rem] p-[0.3rem] bg-sky-50 lg:pl-[2.5rem] pl-[2rem] block w-full placeholder-pink-300 outline-pink-300 rounded-lg text-sm border-sky-500 border-2"
                   />
                 <div onClick={handleSearch} 
                 className="absolute inset-y-0  left-0 flex items-center pointer-events-none pl-4">

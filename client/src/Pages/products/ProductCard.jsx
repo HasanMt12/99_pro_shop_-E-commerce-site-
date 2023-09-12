@@ -1,10 +1,10 @@
 
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../Context/AuthProvider";
+import { AuthContext } from "../../Context/AuthProvider";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useLocation, useNavigate } from "react-router-dom";
- import useCart from "../../../hooks/useCart";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+ import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 
 import { toast } from "react-hot-toast";
@@ -94,7 +94,8 @@ const ProductCard = ({ product }) => {
 
   return (
     <>
-      <div className=" my-2 mx-2 p-2  bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] relative block overflow-hidden">
+     <Link to={`categories/product/${_id}`} 
+     className=" my-2 mx-2 p-2  bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] relative block overflow-hidden"> 
         <img
           data-aosName="fade-down"
           src={photo}
@@ -148,8 +149,7 @@ const ProductCard = ({ product }) => {
             Add to Cart
           </button>
         </div>
-      </div>
-
+</Link>
      </>
   );
 };

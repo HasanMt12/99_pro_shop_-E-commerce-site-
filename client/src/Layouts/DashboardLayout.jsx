@@ -1,12 +1,18 @@
-import { Outlet } from "react-router-dom";
-import DashboardNavbar from "../components/adminDashboard/DashboardNavbar";
-import DashboardSidebar from "../components/adminDashboard/DashboardSidebar";
+import { Outlet, useNavigate } from "react-router-dom";
+import DashboardNavbar from "../Pages/adminDashboard/DashboardNavbar";
+import DashboardSidebar from "../Pages/adminDashboard/DashboardSidebar";
 import useTitle from "../hooks/useTitle";
 import useAdmin from "../hooks/useAdmin";
 
 
 const DashboardLayout = () => {
   useTitle('Dashboard')
+   const navigate = useNavigate()
+   const from = location.state?.from?.pathname || '/'
+   const handleRedirectClick = () => {
+    // Redirect to the desired route when the <div> is clicked
+     navigate(from, { replace: true });  navigate('/');
+  }
       const [isAdmin] = useAdmin();
     return (
         <>
@@ -14,9 +20,8 @@ const DashboardLayout = () => {
     (
         <div className = "" >
             <header  className="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-[#ee7da8] bg-opacity-60 border-b text-sm py-2.5 sm:py-4 lg:pl-64 " >
-                  {/* dashboard navbar */}
+          {/* dashboard navbar */}
                   <DashboardNavbar></DashboardNavbar>
-                  
             </header>
  
         <div className="sticky top-0 inset-x-0 z-20  border-y px-4 sm:px-6 md:px-8 lg:hidden bg-[#91bbcc]">
@@ -47,14 +52,25 @@ const DashboardLayout = () => {
                 <DashboardSidebar></DashboardSidebar>
           </div>
   
-          <div className="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
+          <div className="w-full pt-4 px-4 sm:px-6 md:px-8 lg:pl-72">
               <Outlet></Outlet>
           </div>
   
         </div>
-    )
+    ) }
+    
+    { !isAdmin &&  (
+      <div className="flex justify-center items-center">
+        <div>
+          <h2>Opps sorry Only Admin can handle this dashboard Routes</h2>
+          <button   onClick={handleRedirectClick}>
+            Back to home page
+          </button>
+        </div>
+      </div>
+    )}
         
-        }
+       
 
             
         </>

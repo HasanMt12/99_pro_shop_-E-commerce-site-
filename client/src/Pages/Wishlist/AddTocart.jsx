@@ -11,26 +11,16 @@ const AddTocart = () => {
       const [modalStatus, setModalStatus] = useState(false);
       const [cart, setCart] = useState([])
       const { user } = useContext(AuthContext);
-      // const [data, setData] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
 
       const {data: data = [] , refetch } = useQuery({
         queryKey: ['data'],
         queryFn: async() =>{
             const res = await fetch(`https://99-pro-shop-server.vercel.app/cart?email=${user?.email}`);
             const data = await res.json();
-
             return data;
             
         }
     });
-  // useEffect(() => {
-  //   setIsLoading(true)
-  //   fetch(`https://99-pro-shop-server.vercel.app/cart?email=${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  //    setIsLoading(false)
-  // }, [user?.email]);
 
    const handleBooking = (event) => {
     event.preventDefault();

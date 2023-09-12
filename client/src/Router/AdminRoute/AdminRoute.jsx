@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAdmin from "../../hooks/useAdmin";
+import Loader from "../../components/Shared/Loader";
 
 
 const AdminRoute = ({ children }) => {
@@ -9,13 +10,14 @@ const AdminRoute = ({ children }) => {
     const location = useLocation();
 
     if(loading || isAdminLoading){
-        return <progress className="progress w-56"></progress>
+        return <Loader></Loader>
     }
-
     if (user && isAdmin) {
-        return children;
+       return  children;
     }
-    return <Navigate to="/" state={{from: location}} replace></Navigate>
+       return  <Navigate to="/" state={{from: location}} replace></Navigate>
+
+
 };
 
 export default AdminRoute;

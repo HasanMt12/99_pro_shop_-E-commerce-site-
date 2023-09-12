@@ -4,19 +4,19 @@ import "aos/dist/aos.css";
 import { IoIosArrowForward } from "react-icons/io";
 import Aos from "aos";
 import Banner from "./Banner";
- import Categories from "./categories/Categories";
-import MobilCategories from "./categories/MobilCategories";
-import AllProducts from "./products/AllProducts/AllProducts";
+import Categories from "../categories/Categories";
+// import MobilCategories from "./categories/MobilCategories";
+import AllProducts from "../products/AllProducts/AllProducts";
 import { Link } from "react-router-dom";
-import AdsSlider from "./AdsSlider";
+// import AdsSlider from "./AdsSlider";
 import { useQuery } from "@tanstack/react-query";
-import CategoriesCard from "./categories/CategoriesCard";
+import CategoriesCard from "../categories/CategoriesCard";
 
 
 const Home = () => {
 
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 3000 });
   }, []);
 
  const {data: categories = []  } = useQuery({
@@ -50,7 +50,6 @@ const Home = () => {
           </div>
           <div className="w-[70%]">
             <Hero></Hero>
-
           </div>
         </div>
       <div>

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import ProductCard from "../HomePages/products/ProductCard";
+import ProductCard from "../products/ProductCard";
 import Loader from "../../components/Shared/Loader";
 
 

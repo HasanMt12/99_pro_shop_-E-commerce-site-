@@ -9,7 +9,7 @@ const MainLayout = () => {
     const noHeader = location.pathname.includes('waitingVerification') || location.pathname.includes('resetPass');
     return (
         <>
-           {noHeader ||  <Navbar></Navbar>}
+           {noHeader || <Navbar></Navbar>}
             <Outlet></Outlet>
             <MessengerCustomerChat
                 pageId="110262175394268"
