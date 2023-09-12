@@ -7,20 +7,21 @@ import PrivateRoute from "../Router/PrivateRoute/PrivateRoute.jsx";
 // import AdminRoute from "../Router/AdminRoute/AdminRoute";
 import Wishlist from "../Pages/Wishlist/Wishlist";
 import AddTocart from "../Pages/Wishlist/AddTocart";
-import AllProducts from "../Pages/HomePages/products/AllProducts/AllProducts";
-import ProductsSection from "../Pages/HomePages/products/ProductsSection";
+import AllProducts from "../Pages/products/AllProducts/AllProducts";
+import ProductsSection from "../Pages/products/ProductsSection";
 import DashboardLayout from "../Layouts/DashboardLayout";
-import AllUsers from "../components/adminDashboard/AllUsers";
-import ProductAction from "../components/adminDashboard/ProductAction";
-
-import AddProducts from "../components/adminDashboard/addProducts/AddProducts";
+import AllUsers from "../Pages/adminDashboard/AllUsers";
+import ProductAction from "../Pages/adminDashboard/ProductAction";
+import AddProducts from "../Pages/adminDashboard/addProducts/AddProducts";
 import Checkout from "../Pages/orderCheckout/Checkout";
 import Login from "../Auth/login/Login";
-import DashboardHome from "../components/adminDashboard/DashboardHom/DashboardHome";
+import DashboardHome from "../Pages/adminDashboard/DashboardHom/DashboardHome";
 import Offer from "../components/Shared/Offer";
 import WaitingEmailVerification from "../Auth/WaitingEmailVerification";
 import ResetPassword from "../Auth/ResetPassword";
 import SecureRoute from "./SecureRoute";
+import MyAccount from "../Pages/My account/MyAccount";
+import ProductDetails from "../Pages/products/productDetails/ProductDetails";
 
 
 const router = createBrowserRouter([
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         path: "/allProducts",
         element: <AllProducts></AllProducts>
       },
+      {
+        path: '/categories/product/:id',
+        element: <ProductDetails></ProductDetails>,
+        loader:({params})=> fetch(`http://localhost:5000/categories/product/${params.id}`)
+      },
        {
         path: "/register",
         element: <SecureRoute><Registration></Registration></SecureRoute>
@@ -53,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <SecureRoute><Login></Login></SecureRoute>
+      },
+      {
+        path: "/myAccount",
+        element: <MyAccount></MyAccount>
       },
       {
         path: "/waitingVerification",

@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
-import SectionTitle from "./SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAdmin from "../../../hooks/useAdmin";
 // import { useNavigate } from "react-router-dom";
@@ -9,15 +8,14 @@ import useAdmin from "../../../hooks/useAdmin";
 //  const imgHostKey = "7fc170eeeed4d0d447f69385bf859c8c";
 const AddProducts = () => {
     const [isAdmin] = useAdmin();
-   
-     const [axiosSecure] = useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
+
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
     const onSubmit = data => {
         const formData = new FormData();
         formData.append('image', data.image[0])
-
         fetch(img_hosting_url, {
             method: 'POST',
             body: formData
@@ -43,9 +41,10 @@ const AddProducts = () => {
     };
     return (
         <>
+        
         {isAdmin &&(
             <div className="w-full px-10">
-            <SectionTitle subHeading="What's new" heading="Add an item" ></SectionTitle>
+   
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" w-full mb-4">
                     <label className="label">

@@ -16,15 +16,14 @@ const RegisterForm = () => {
           toast.wait('wait')
         }
         const from = location.state?.from?.pathname || "/";
-  const onSubmit = data => {
-        toast.loading('Please Wait!',{
-            style: {
-              color: '#00cbfe',
-            },})
+
+    // submit method start here
+       const onSubmit = data => {
+        toast.loading('Please Wait!',{   style: { color: '#00cbfe',  },})
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                 
                     .then(() => {
@@ -51,45 +50,32 @@ const RegisterForm = () => {
                                        setLoading(false)
                                       navigate('/');
                                        
-                                        toast.success('Please Verify your email', {
-                                            style: {
-                                              color: '#00cbfe',
-                                            },
-                                            iconTheme: {
-                                              primary: '#df81a5',
-                                              secondary: '#FFFAEE',
-                                            },
+                                        toast.success('Please Verify your email', {style: { color: '#00cbfe', },
+                                            iconTheme: { primary: '#df81a5',secondary: '#FFFAEE',},
                                           });
                                         }
-                                  } 
-                            })
-                    })
-                    .catch(error => console.log(error))
-            })
-    }; 
+                                    }
+                                 })
+                              }).catch(error => console.log(error))
+                           })
+                        }; 
    
    
    const handleGoogleSignin = () => {
-     toast.loading('Please Wait!',{
-            style: {
-              color: '#00cbfe',
-            },})
-    signInWithGoogle()
-      .then((result) => {
-        if (result.user.uid) {
-          const userInfo = {
-            displayName: result.user.displayName,
-            photoURL: result.user.photoURL,
-            email: result.user.email,
-            role: "visitor"
+     toast.loading('Please Wait!',{style: {color: '#00cbfe', },})
+        signInWithGoogle()
+          .then((result) => {
+            if (result.user.uid) {
+              const userInfo = {
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL,
+                email: result.user.email,
+                role: "visitor"
           };
-
           fetch("https://99-pro-shop-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
-              // authorization: bearer ${localStorage.getItem('accessToken')}
-            
             },
             body: JSON.stringify(userInfo),
           })
@@ -109,15 +95,11 @@ const RegisterForm = () => {
             }
 
             });
-        }
+                         }
             toast.dismiss()
             toast.success('User Register successful', { style: { color: '#00cbfe',},
-            iconTheme: {
-              primary: '#df81a5',
-              secondary: '#FFFAEE',
-            },
-          },
-          {duration:3000});
+            iconTheme: { primary: '#df81a5', secondary: '#FFFAEE', },
+          },{duration:3000});
            reset();
             navigate(from, { replace: true });
           })
@@ -128,20 +110,15 @@ const RegisterForm = () => {
 
  
     return (
+        
         <form onSubmit={handleSubmit(onSubmit)} >
-                  
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="name"
-                      className="inline-block mb-1 text-[#2d90ba] font-medium"
-                    >
+               <div className="mb-1 sm:mb-2">
+                    <label htmlFor="name" className="inline-block mb-1 text-[#2d90ba] font-medium">
                       Name
                     </label>
-                     <input
-                      type="text"
-                      placeholder="your name"
-                      id="name"
-                      name="name"
+                 <input
+                      type="text" placeholder="your name"
+                      id="name" name="name"
                       className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       {...register("name", { required: true })}
                     />
@@ -149,21 +126,15 @@ const RegisterForm = () => {
                       <span className="text-red-500 text-base mt-1">
                         Please enter your name.
                       </span>
-                    )}
-                  
-                  </div>
-                  <div className="mb-1 sm:mb-2">
-                    <label
-                      htmlFor="email"
-                      className="inline-block mb-1 text-[#2d90ba] font-medium"
-                    >
+                 )}
+               </div>
+                <div className="mb-1 sm:mb-2">
+                    <label htmlFor="email" className="inline-block mb-1 text-[#2d90ba] font-medium" >
                       E-mail
                     </label>
-                    <input
-                      type="email"
-                      placeholder="your email"
-                      id="email"
-                      name="email"
+                 <input
+                      type="email" placeholder="your email"
+                      id="email" name="email"
                       className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       autoComplete="email"
                       {...register("email", {
@@ -175,18 +146,15 @@ const RegisterForm = () => {
                       <span className="text-red-500 text-base mt-1">
                         Please enter a valid email address.
                       </span>
-                    )}
-                  </div>
-                 <div className="mb-1 sm:mb-2">
-                     <label htmlFor="password"
-                      className="inline-block mb-1 text-[#2d90ba] font-medium"
+                )}
+               </div>
+               <div className="mb-1 sm:mb-2">
+                     <label htmlFor="password"className="inline-block mb-1 text-[#2d90ba] font-medium"
                      > Password
                      </label>
-                     <input
-                       type="password"
-                       placeholder="password"
-                       id="password"
-                       name="password"
+                <input
+                       type="password" placeholder="password"
+                       id="password" name="password"
                        className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
                        autoComplete="new-password"
                        {...register("password",  {
@@ -199,18 +167,15 @@ const RegisterForm = () => {
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
-                  </div>
+                </div>
 
                   <div className="mb-1 sm:mb-2">
-                     <label
-                      htmlFor="confirmPassword"
+                     <label htmlFor="confirmPassword"
                       className="inline-block mb-1 text-[#2d90ba] font-medium"
                      > confirm Password</label>
                        <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        id="confirmPassword"
-                        name="confirmPassword"
+                        type="password" placeholder="Confirm Password"
+                        id="confirmPassword" name="confirmPassword"
                         className="flex-grow w-full h-10  px-4  mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-purple-400 focus:outline-none focus:shadow-outline"
                         autoComplete="new-password"
                         {...register("confirmPassword", {
@@ -245,8 +210,7 @@ const RegisterForm = () => {
                 </button>
               <p className='text-sm text-[#207198]'>Continue with google</p>
               </div>
-               
-</form>
+        </form>
     );
 };
 

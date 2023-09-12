@@ -1,15 +1,13 @@
 import ProductCard from "./ProductCard";
 import { useLoaderData } from "react-router-dom";
-import CategoriesCard from "../categories/CategoriesCard";
+import CategoriesCard from "../../Pages/categories/CategoriesCard";
 
 const ProductsSection = () => {
      const allProduct = useLoaderData()
-     console.log(allProduct);
-
-
+    
     return (
          <div className="lg:px-20 px-3  lg:mx-[6rem]">
-            {/* fetching categories  */}
+      {/* fetching categories  */}
             <CategoriesCard></CategoriesCard>
               <div className="productsDiv ">
                   {allProduct && 
