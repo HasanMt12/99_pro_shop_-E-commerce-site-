@@ -4,7 +4,7 @@ import { AiOutlineTwitter} from "react-icons/ai";
 const Footer = () => {
     return (
         <>
-        <div className= "relative bg-[#82c1da] pt-8 pb-6" >
+        <div className= " bg-[#82c1da] pt-8 pb-6 " >
   <div className="container mx-auto px-4">
     <div className="flex flex-wrap text-left lg:text-left">
       <div className="w-full lg:w-6/12 px-4">

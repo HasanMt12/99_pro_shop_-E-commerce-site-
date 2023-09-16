@@ -6,7 +6,7 @@ const ProductsSection = () => {
      const allProduct = useLoaderData()
     
     return (
-         <div className="lg:px-20 px-3  lg:mx-[6rem]">
+         <div className="lg:px-20 px-3  lg:mx-[6rem] min-h-screen">
       {/* fetching categories  */}
             <CategoriesCard></CategoriesCard>
               <div className="productsDiv ">

@@ -1,9 +1,9 @@
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import Aos from "aos";
+
 import "aos/dist/aos.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
  import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 
@@ -16,7 +16,12 @@ const ProductCard = ({ product }) => {
     // const [, refetch] = useWishlist();
     const navigate = useNavigate();
     const location = useLocation();
-
+     const from = `categories/product/${_id}}`
+    
+     const handleRedirectClick = () => {
+        // Redirect to the desired route when the <div> is clicked
+        navigate(from, { replace: true });  navigate(`categories/product/${_id}`);
+      }
 
  const [fill, setFill] = useState(false);
 
@@ -36,7 +41,6 @@ const ProductCard = ({ product }) => {
       .then((res) => res.json())
       .then((result) => {
         setFill(true);
-        
         console.log(result);
         toast.success("added successfully");
       })
@@ -47,8 +51,8 @@ const ProductCard = ({ product }) => {
     const handleAddToCart = () => {
         // console.log(product);
         if(user && user.email){
-            const product = {productId: _id, name, photo, price, email: user.email, verification}
-            fetch('https://99-pro-shop-server.vercel.app/cart', {
+            const product = {productId: _id, name, photo, price, email: user.email, verification , quantity: 1}
+            fetch('http://localhost:5000/cart', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -60,13 +64,8 @@ const ProductCard = ({ product }) => {
                 if(data.insertedId){
                     refetch(); // refetch cart to update the number of items in the cart
                     toast.success(`product on the cart`, {
-            style: {
-              border: '1px solid #713200',
-              padding: '10px',
-              color: '#713200',
-            },
-           
-          });
+                    style: { border: '1px solid #713200', padding: '10px', color: '#713200',},
+                  });
                 }
             })
         }
@@ -85,17 +84,12 @@ const ProductCard = ({ product }) => {
               })
         }
     }
-      
-   
-
-  useEffect(() => {
-    Aos.init({ duration: 1500 });
-  }, []);
 
   return (
     <>
-     <Link to={`categories/product/${_id}`} 
-     className=" my-2 mx-2 p-2  bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] relative block overflow-hidden"> 
+    {/* onClick={handleRedirectClick}  */}
+     <div 
+     className=" my-2 mx-2 p-2 cursor-pointer bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] relative block overflow-hidden"> 
         <img
           data-aosName="fade-down"
           src={photo}
@@ -130,26 +124,33 @@ const ProductCard = ({ product }) => {
               </svg>
             </button>
           </div>
-<div className="flex justify-between items-center absolute lg:bottom-12 md:bottom-12 bottom-8">
- <p // data-aosName="fade-right"
-            className="lg:mt-1   lg:text-sm mr-4  text-[10px] text-gray-700"
-          >
+          <div className="flex justify-between items-center absolute lg:bottom-12 md:bottom-12 bottom-8">
+          <p // data-aosName="fade-right"
+            className="lg:mt-1   lg:text-sm mr-4  text-[10px] text-gray-700" >
             <span className="text-green-500 font-bold">৳ {price}</span> 
 
           </p>
          <p>{verification && <h2 className="text-red-300/100 line-through">stock out</h2>}</p> 
+  </div>  
 
-</div>
-         
-
-          <button
-            onClick={() => handleAddToCart(product)}
-            className=" w-[92%] inset-x-0 absolute lg:bottom-[5px] bottom-1 mx-auto text-white rounded bg-[#f396ba] lg:p-1 p-[3px] lg:text-sm text-xs  font-medium transition hover:scale-105"
+  <div className="flex justify-between items-center w-[95%] gap-1 inset-x-0 absolute lg:bottom-[5px] bottom-1 mx-auto">
+     <button
+            onClick={handleRedirectClick}
+            className=" w-[50%]  text-white rounded bg-[#82C1DA] lg:p-1 p-[3px] lg:text-sm text-xs  font-medium transition hover:scale-105"
+          >
+            View details
+          </button>
+            <button
+            onClick={() => handleAddToCart  (product)     }
+            className=" w-[50%]  text-white rounded bg-[#f396ba] lg:p-1 p-[3px] lg:text-sm text-xs  font-medium transition hover:scale-105"
           >
             Add to Cart
           </button>
+    
+    </div>     
+         
         </div>
-</Link>
+    </div>
      </>
   );
 };

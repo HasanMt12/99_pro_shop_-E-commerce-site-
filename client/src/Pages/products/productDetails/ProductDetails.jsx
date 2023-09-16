@@ -11,7 +11,7 @@ const ProductDetails = () => {
     const {user} = useContext(AuthContext)
     const {name, price ,_id, categoryId ,photo } = productDetails;
     const [count, setCount] = useState(0);
-const url = `http://localhost:5000/review/${_id}`;
+const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
   const {data: data = [] , refetch} = useQuery({
     queryKey: ['product'],
     queryFn: async () => {
@@ -72,7 +72,7 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
                 const {message } = data;
                 const newItem = {message, id: productDetails._id,   photo:imgURL ,  email: user.email, customerName: user.displayName, postTime: time , postDate: postDate}
                 console.log(newItem)
-                  fetch('http://localhost:5000/review', {
+                  fetch('https://99-pro-shop-server.vercel.app/review', {
 						method: 'POST',
 						headers: {
 							'content-type': 'application/json'
@@ -120,7 +120,7 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
                                 <span onClick={minusCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1">
                                     -
                                 </span>
-                                <input id="counter" aria-label="input" className="border border-gray-300 h-full text-center w-14 pb-1" type="text" value={count} onChange={(e) => e.target.value} />
+ <input id="counter" aria-label="input" className="border border-gray-300 h-full text-center w-14 pb-1" type="tex                               t" value={count} onChange={(e) => e.target.value} />
                                 <span onClick={addCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1 ">
                                     +
                                 </span>
