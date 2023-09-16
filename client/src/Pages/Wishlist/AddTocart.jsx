@@ -377,4 +377,15 @@ const AddTocart = () => {
     );
 };
 
+// feat: Implement interactive shopping cart with real-time updates
+
+// - Added a new shopping cart display using a table layout.
+// - Implemented functionality to handle cart item quantity adjustments with plus and minus buttons.
+// - Ensured that cart item quantity does not go below 1.
+// - Updated cart item prices in real-time based on user actions.
+
+// [Include additional context or details about the changes if necessary]
+
+// Resolves: #issue_number
+
 export default AddTocart;
