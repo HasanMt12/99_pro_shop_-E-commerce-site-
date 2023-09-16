@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: '/categories/product/:id',
         element: <ProductDetails></ProductDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/categories/product/${params.id}`)
+        loader:({params})=> fetch(`https://99-pro-shop-server.vercel.app/categories/product/${params.id}`)
       },
        {
         path: "/register",
