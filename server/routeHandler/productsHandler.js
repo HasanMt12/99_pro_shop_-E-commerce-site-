@@ -6,7 +6,7 @@ const { getAllProducts , getCategoryById , adminActions , postProduct ,productSt
 
   router.get("/:categoryId", getCategoryById)
 
-  router.get("/:id", getAllProducts);
+  router.get("/", getAllProducts);
 
   router.get("/product/:id", getProductDetails);
 
