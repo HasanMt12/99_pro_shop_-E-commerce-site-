@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 // import AdsSlider from "./AdsSlider";
 import { useQuery } from "@tanstack/react-query";
 import CategoriesCard from "../categories/CategoriesCard";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Home = () => {
@@ -27,10 +28,14 @@ const Home = () => {
             return data;    
         }
     });
+    const [isAdmin] = useAdmin();
   return (
     <>
       {/* Only large device visible */}
       <div className=" hidden lg:block">
+        {isAdmin && <Link to="dashboard"  className="flex justify-end mx-32"><button type="button" className="py-[.388rem] px-2 inline-flex justify-center items-center gap-2 rounded-md border-2 border-sky-200/60 font-semibold text-blue-500 hover:text-white hover:bg-sky-500 hover:border-sky-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm mt-1 ">
+                      Dashboard
+                      </button></Link>}
         <div className="flex justify-between mx-[8rem] items-start mt-4  h-[25rem]">
           <div className="w-[25%] bg-[#f3f6f8] h-[25rem]  rounded-md shadow-sm shadow-[#b4cbda] ">
               <ul className="flex  mb-0 list-none flex-wrap pt-3 pb-4 flex-col">

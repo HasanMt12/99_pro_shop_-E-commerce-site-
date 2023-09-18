@@ -199,8 +199,8 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
     {/* review post form */}
                         <div className="mt-5 p-4 relative z-1 bg-sky-50 border rounded-xl sm:mt-10 md:p-10 ">
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            {/* <div>
-                            {[1, 2, 3, 4, 5].map((star) => (
+                            <div>
+                            {/* {[1, 2, 3, 4, 5].map((star) => (
                                 <span
                                 key={star}
                                 className={star <= rating ? 'star filled' : 'star'}
@@ -209,8 +209,8 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
                             &#9733;
                                 </span>
                                 
-                            ))}
-                            </div> */}
+                            ))} */}
+                            </div>
                             <div>
                             <label htmlFor="hs-feedback-post-comment-textarea-1" className="block mb-2 text-sm font-medium text-sky-600/80 ">Please Share your review </label>
                             <div className="mt-1">

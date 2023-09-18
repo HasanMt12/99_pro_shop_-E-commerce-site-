@@ -2,6 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Shared/Navbar";
 import Footer from "../components/Shared/Footer";
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+const pageId = import.meta.env.VITE_IpageId;
+const appId = import.meta.env.VITE_appId;
 const MainLayout = () => {
      const location = useLocation();
     
@@ -12,8 +14,8 @@ const MainLayout = () => {
            {noHeader || <Navbar></Navbar>}
             <Outlet></Outlet>
             <MessengerCustomerChat
-                pageId="110262175394268"
-                appId="248777968070010" />
+                pageId={pageId}
+                appId={appId} />
                
            {noFooter || <Footer></Footer>}
         </>

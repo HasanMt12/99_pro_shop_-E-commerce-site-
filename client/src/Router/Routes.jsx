@@ -22,6 +22,8 @@ import ResetPassword from "../Auth/ResetPassword";
 import SecureRoute from "./SecureRoute";
 import MyAccount from "../Pages/My account/MyAccount";
 import ProductDetails from "../Pages/products/productDetails/ProductDetails";
+import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
+import PaymentFail from "../Pages/Payment/PaymentFail";
 
 
 const router = createBrowserRouter([
@@ -88,6 +90,14 @@ const router = createBrowserRouter([
        {
         path: "/offer",
         element: <Offer></Offer> 
+      },
+       {
+        path: "/payment/success",
+        element: <PaymentSuccess></PaymentSuccess>
+      },
+       {
+        path: "/payment/fail",
+        element: <PaymentFail></PaymentFail>
       },
     ],
   },
