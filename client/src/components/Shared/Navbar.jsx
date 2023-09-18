@@ -106,7 +106,7 @@ const Navbar = () => {
   return (
     <>
  {/* large device navbar is here*/}
-      <div className="sticky top-0 z-10 lg:block hidden">
+      <div className="sticky top-0 z-10 lg:block hidden print:hidden">
         <div className = "bg-[#f58cb9f9] bg-opacity-60" >
           <div className=" py-2 mx-auto px-[8rem] ">
             <div className="relative flex items-center  justify-between ">
@@ -124,7 +124,7 @@ const Navbar = () => {
       </div>
 
 {/* tab and mobil device navbar is here */}
-    <div className="lg:hidden block fixed bottom-0 left-0 z-50 w-full h-14 bg-[#529ebb]  border-t border-gray-200 ">
+    <div className="lg:hidden block fixed bottom-0 left-0 z-50 w-full h-14 bg-[#529ebb]  border-t border-gray-200 print:hidden">
       <div className="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
           <div className="inline-flex flex-col items-center justify-center px-5 hover:bg-[#61a7c3]  group">
             <BiHome className="cursor-Pointer text-white font-semibold text-[1.2rem] "></BiHome>

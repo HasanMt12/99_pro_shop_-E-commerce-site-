@@ -19,7 +19,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #5A5D66;
+  background-color: #c2c8d9;
   border-radius: 15px;
 }
 
@@ -42,4 +42,64 @@
 .filled {
   color: rgb(222, 105, 125);
   /* or any other color you prefer */
+}
+
+.watermark {
+  position: absolute;
+  opacity: 0.4;
+  font-size: 18px;
+  color: #a4cff9;
+  pointer-events: none;
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Adjust the rotation origin as needed */
+}
+
+.watermark1 {
+  top: 10%;
+  left: 10%;
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Adjust the rotation origin as needed */
+}
+
+.watermark2 {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Adjust the rotation origin as needed */
+}
+
+.watermark3 {
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Adjust the rotation origin as needed */
+}
+
+.watermark4 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Adjust the rotation origin as needed */
+}
+
+.watermark5 {
+  bottom: 10%;
+  left: 10%;
+  transform: rotate(-45deg);
+  /* Adjust the angle as needed */
+  transform-origin: center;
+  /* Adjust the rotation origin as needed */
 }

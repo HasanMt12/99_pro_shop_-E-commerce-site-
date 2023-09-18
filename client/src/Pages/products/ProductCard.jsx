@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
         // console.log(product);
         if(user && user.email){
             const product = {productId: _id, name, photo, price, email: user.email, verification , quantity: 1}
-            fetch('http://localhost:5000/cart', {
+            fetch('https://99-pro-shop-server.vercel.app/cart', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -141,7 +141,7 @@ const ProductCard = ({ product }) => {
             View details
           </button>
             <button
-            onClick={() => handleAddToCart  (product)     }
+            onClick={() => handleAddToCart(product)}
             className=" w-[50%]  text-white rounded bg-[#f396ba] lg:p-1 p-[3px] lg:text-sm text-xs  font-medium transition hover:scale-105"
           >
             Add to Cart
