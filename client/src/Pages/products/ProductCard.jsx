@@ -71,11 +71,14 @@ const ProductCard = ({ product }) => {
         }
         else{
             Swal.fire({
-                title: 'Please login to order the food',
+                title: 'Please login First',
                 icon: 'warning',
+                iconColor:"#00E0FF",
+                width:"25%",
+                color:"#87CEEB",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#00E0FF',
+                cancelButtonColor: '#FFC0CB',
                 confirmButtonText: 'Login now!'
               }).then((result) => {
                 if (result.isConfirmed) {

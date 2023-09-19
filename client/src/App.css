@@ -10,28 +10,28 @@
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
   background-color: #F5F5F5;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #c2c8d9;
+  background-color: #c2d1d9;
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #bf74a3;
-  background: -webkit-linear-gradient(to bottom, #84b4d6, #bf74ab);
-  background: linear-gradient(to bottom, #81abc9, #bf74b1);
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  border-radius: 8px;
+  background: #74a1bf;
+  background: -webkit-linear-gradient(to bottom, #84b4d6, #749bbf);
+  background: linear-gradient(to bottom, #81abc9, #74a5bf);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
 }
 
 .star {
