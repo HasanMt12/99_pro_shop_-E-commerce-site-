@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 
-const { getUsers , getUserByEmail , adminUserAction , postUserForLogin , makeGoldenUser} = require('../controller/userController');
+const { getUsers , getUserByEmail , adminUserAction , postUserForLogin , makeGoldenUser ,visitorUserAction} = require('../controller/userController');
 const { usersCollections } = require("../collections/collections");
 
   
@@ -41,6 +41,8 @@ const { usersCollections } = require("../collections/collections");
  
   router.get("/admin/:email",verifyJWT, adminUserAction); //all user find and protect admin route
 
+  router.get("/visitor/:email", visitorUserAction ); //all user find and protect admin route
+  
   router.post("/", postUserForLogin);
 
   router.put("/admin/:id", makeGoldenUser);
