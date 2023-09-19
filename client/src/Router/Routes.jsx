@@ -24,6 +24,7 @@ import MyAccount from "../Pages/My account/MyAccount";
 import ProductDetails from "../Pages/products/productDetails/ProductDetails";
 import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
 import PaymentFail from "../Pages/Payment/PaymentFail";
+import AdminRoute from "./AdminRoute/AdminRoute";
 
 
 const router = createBrowserRouter([
@@ -104,7 +105,7 @@ const router = createBrowserRouter([
 
    {
       path: '/dashboard',
-      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>, 
+      element: <PrivateRoute><AdminRoute><DashboardLayout></DashboardLayout></AdminRoute></PrivateRoute>, 
       children: [
         {
         path: "/dashboard",
@@ -125,7 +126,18 @@ const router = createBrowserRouter([
        
         
       ]
-    }
+    },
+    // {
+    //   path: '/userProfile',
+    //   element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>, 
+    //   children: [
+    //       {
+    //         path: "/dashboard",
+    //         element: <DashboardHome></DashboardHome>
+    //       },
+    //   ]
+    // } 
+    
  
   
 ]);

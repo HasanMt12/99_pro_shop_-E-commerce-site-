@@ -7,12 +7,15 @@ import { BiHome } from "react-icons/bi";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoIosHeartEmpty } from "react-icons/io";
 import useCart from "../../hooks/useCart";
+import useVisitor from "../../hooks/useVIsitor";
+
+
 
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
-
+   const [isVisitor] = useVisitor(user?.email)
 
   const handleLogOut = () => {
     logOut()
@@ -34,6 +37,7 @@ const Navbar = () => {
       <Link to="/">
         <li className="cursor-Pointer text-white  font-medium  hover:text-sky-400">Shopping</li>
       </Link> 
+
       <span className="relative inline-block ml-6">
         <Link to="/cart">
           {" "}
@@ -65,19 +69,23 @@ const Navbar = () => {
                 <p className="text-sm font-medium  text-[#529ebb]">{user.email}</p>
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
-                <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm   text-white  hover:bg-[#61b2d2] " href="#">
+               {
+        isVisitor ?  <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm   text-white  hover:bg-[#61b2d2] " href="#">
                   <svg className="flex-none" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
                   </svg>
-                  Newsletter
-                </a>
-                <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm  text-white  hover:bg-[#61b2d2] " href="#">
+                  My account
+                </a>: <Link to='/dashboard'  className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm  text-white  hover:bg-[#61b2d2] ">
                   <svg className="flex-none" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
                     <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                   </svg>
-                  Purchases
-                </a>
+                 Dashboard
+                </Link>
+       }
+               
+                
+              
                   <button  onClick={handleLogOut}
                   style={{ boxShadow: "0px 10px 13px -7px #AEB1B0, 5px 5px 15px 5px rgba(0,0,0,0)", }}
                     className="flex items-center gap-x-2 my-2 ml-3 transition duration-200 ease-in-out transform px-3 py-[2px] text-[#EEF2F5] w-30 border-b-4 border-[#df81a5] hover:border-b-2 bg-gradient-to-t from-[#d16c93]  via-[#fa669f] to-[#e2a1ba]  rounded-lg hover:translate-y-px sm:border-l s "

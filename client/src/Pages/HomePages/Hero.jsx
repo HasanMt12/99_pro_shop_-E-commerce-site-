@@ -8,7 +8,6 @@ import 'swiper/css/scrollbar';
 // Import Swiper React components
 import "swiper/css/effect-coverflow";
 import 'swiper/css/navigation';
-import logo1 from '../../assets/1.png'
 import logo3 from '../../assets/3.png'
 import logo4 from '../../assets/4.png'
 import './HomePage.css'
@@ -30,9 +29,6 @@ const Hero = () => {
               loop={true}
               autoplay={{ delay: 5000,}} >
           
-            <SwiperSlide  className=''> 
-                    <img src={logo1} className="w-full object-cover lg:h-[25rem] md:h-[18rem] h-[14rem]" />
-              </SwiperSlide>
             <SwiperSlide  className=''> 
                     <img src='https://i.ibb.co/bgqQCjY/i.jpg' className="w-full object-cover lg:h-[25rem] md:h-[18rem] h-[14rem] " />
               </SwiperSlide>

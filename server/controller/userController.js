@@ -46,6 +46,20 @@ const adminUserAction = async (req, res) => {
   }
   }
 
+  const visitorUserAction = async (req, res) => {
+  try {  const email = req.params.email;
+            const query = { email }
+            const user = await usersCollections.findOne(query);
+            res.send({ isVisitor: user?.role === 'visitor'});
+    } catch (error) {
+         res.send({
+         error: error.message,
+    });
+  }
+  }
+
+  
+
 //user create for login
 const postUserForLogin = async (req, res) => {
   try {
@@ -87,4 +101,4 @@ const makeGoldenUser = async (req, res) => {
 }
 
 module.exports = {getUsers , getUserByEmail , adminUserAction ,
-                postUserForLogin , makeGoldenUser}
+                postUserForLogin , makeGoldenUser , visitorUserAction}

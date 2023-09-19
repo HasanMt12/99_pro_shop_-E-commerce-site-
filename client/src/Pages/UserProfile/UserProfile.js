@@ -1,10 +1,10 @@
-import React from 'react';
+
 import userPhoto from '../../assets/userPhoto.png'
 import brand1 from '../../assets/hotels.png'
 import brand2 from '../../assets/Nike.png'
-import brandLogo from '../../assets/hotels.png'
+// import brandLogo from '../../assets/hotels.png'
 const UserProfile = () => {
-    const items = [...Array(8)];
+    // const items = [...Array(8)];
 
     return (
         <div className='my-8'>
@@ -58,7 +58,7 @@ const UserProfile = () => {
           <div className='px-36'>
           <h2 className='text-black font-bold text-2xl my-4 '>Recommended stores</h2>
           <div className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4 mt-6 mb-36'>
-               {items.map((item, index) => (
+               {/* {items.map((item, index) => (
            <div className='drop-shadow-[3px_6px_28px_rgba(51,79,93,0.23)] rounded-xl bg-white'>
                <div className='lg:p-6 md:p-3 p-1'>
                  <img className='w-[70%] mx-auto ' src={brandLogo} alt=''></img>
@@ -67,7 +67,7 @@ const UserProfile = () => {
 
            </div>
              
-          ))}
+          ))} */}
           </div>
           </div>
         </div>

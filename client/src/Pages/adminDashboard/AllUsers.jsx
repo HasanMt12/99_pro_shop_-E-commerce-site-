@@ -5,10 +5,28 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 const AllUsers = () => {
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: users = [], refetch, } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users')
+    const { data: users = [], refetch , isLoading, isError} = useQuery(['users'], async () => {
+    
+      const res = await axiosSecure.get('/users')
         return res.data;
-    })
+    },
+      {
+    onError: (error) => {
+      console.error('Error loading users:', error);
+    },
+  }
+    )
+    console.log('isLoading:', isLoading);
+console.log('isError:', isError);
+console.log('users:', users);
+
+if (isLoading) {
+  return <p>Loading users...</p>;
+}
+
+if (isError) {
+  return <p>Error loading users</p>;
+}
        
        // make buyer goldenUser
     const handleMakeGoldenUsers = id => {
