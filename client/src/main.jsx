@@ -1,5 +1,6 @@
 import React from 'react'
 import('preline')
+import '@smastrom/react-rating/style.css'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'

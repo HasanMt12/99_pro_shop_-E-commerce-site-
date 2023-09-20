@@ -32,7 +32,7 @@ const AllProducts = () => {
     return (
         <div className="mt-10 lg:mx-[8rem] rounded-md shadow-sm shadow-[#b4cbda] bg-[#f3f6f8]">
             <div className="flex justify-between items-center  px-2 lg:mx-0 mx-2 lg:text-lg md:text-md text-sm">
-                <div className="text-pink-500 flex px-2 justify-center gap-1 items-center bg-sky-100 rounded-2xl  ">
+                <div className="text-pink-500 flex px-8 justify-center gap-1 items-center bg-sky-100 rounded-xl  ">
                   <h2  data-aos="fade-right" className="font-medium my-2 text-md mr-2">Just For You</h2>
                   < MdOutlineShoppingCart></ MdOutlineShoppingCart>
                 </div> 

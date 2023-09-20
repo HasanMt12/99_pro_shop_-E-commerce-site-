@@ -103,3 +103,43 @@
   transform-origin: center;
   /* Adjust the rotation origin as needed */
 }
+
+
+/* YourCarousel.css */
+
+/* Style the container for the carousel */
+.carousel-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Style the carousel */
+.carousel {
+  flex: 1;
+}
+
+/* Style the thumbnail container (on the left) */
+.carousel .thumbs-wrapper {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 20px;
+  /* Adjust the spacing between carousel and thumbnails */
+}
+
+/* Style individual thumbnail images */
+.carousel .thumb {
+  width: 80px;
+  /* Adjust the width of each thumbnail */
+  height: 60px;
+  /* Adjust the height of each thumbnail */
+  margin-bottom: 10px;
+  /* Adjust the spacing between thumbnails */
+}
+
+/* Style the active thumbnail */
+.carousel .thumb.selected {
+  border: 2px solid #0074d9;
+  /* Add a border to the active thumbnail */
+}

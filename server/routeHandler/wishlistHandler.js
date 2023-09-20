@@ -21,6 +21,10 @@ try {
 router.post("/", async (req, res) => {
   try {
     const wishlist = req.body;
+    const existingWishlist = await wishlistCollections.findOne(wishlist);
+      if (existingWishlist) {
+        return res.send({ message: 'wishlist already exists' })
+      }
     const result = await wishlistCollections.insertOne(wishlist);
     res.status(200).send(result);
   } catch (error) {
@@ -30,4 +34,16 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+     const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await wishlistCollections.deleteOne(query);
+            res.send(result);
+  } catch (error) {
+    res.send({
+      error: error.message,
+    });
+  }
+});
 module.exports = router;

@@ -6,12 +6,16 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import ScrollToTop from "../../../hooks/ScrollToTop";
+import { Rating } from "@smastrom/react-rating";
+import ProductDescription from "./ProductDescription";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const ProductDetails = () => {
     const productDetails = useLoaderData()
     const {user} = useContext(AuthContext)
-    const {name, price ,_id, categoryId ,photo } = productDetails;
-    const [count, setCount] = useState(0);
+    const { _id ,photo } = productDetails;
+    
 const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
   const {data: data = [] , refetch} = useQuery({
     queryKey: ['product'],
@@ -21,16 +25,8 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
       return data
     }
   })
-    const addCount = () => {
-        setCount((prev) => prev + 1);
-    };
-
-    const minusCount = () => {
-        if (count > 0) {
-            setCount((prev) => prev - 1);
-        }
-    };
-
+    
+  const [rating, setRating] = useState(0);
  const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -86,6 +82,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
             customerName: user.displayName,
             postTime: time,
             postDate: postDate,
+            rating: rating
           };
 
           // Send the review data to your server
@@ -131,56 +128,24 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                <div className="2xl:container mb-2 2xl:mx-auto lg:py-8 lg:px-16 md:py-6 md:px-4 py-5 px-2 ">
             <div className=" flex justify-center items-start lg:flex-row  flex-col gap-8">
                 {/* <!-- Description Div --> */}
-
-                <div className="lg:h-[30rem] bg-sky-50 p-4 shadow-sm rounded-lg shadow-sky-300 w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-6/12 items-center">
-                    <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">Home <span className="text-pink-500"> / </span> {categoryId} <span className="text-pink-500">/</span> {name}</p>
-                    <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-pink-500 mt-4">{name}</h2>
-
-                    <div className=" flex flex-row justify-between  mt-5">
-                        {/*TO DO: I will show review average each product  */}
-                        {/* <div className=" flex flex-row space-x-3">
-                            
-                        </div> */}
-                        <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-pink-500 duration-100 cursor-pointer">22 reviews</p>
-                    </div>
-
-                    <p className=" font-normal text-base leading-6 text-gray-600 mt-7">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using. Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                    <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">$ {price}</p>
-
-                    <div className="lg:mt-11 mt-10">
-                        <div className="flex flex-row justify-between">
-                            <p className=" font-medium text-base leading-4 text-gray-600">Select quantity</p>
-                            <div className="flex">
-                                <span onClick={minusCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1">
-                                    -
-                                </span>
-                                    <input id="counter" aria-label="input" className="border border-gray-300 h-full text-center w-14 pb-1" type="tex                               t" value={count} onChange={(e) => e.target.value} />
-                                <span onClick={addCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1 ">
-                                    +
-                                </span>
-                            </div>
-                        </div>
-                        <hr className=" bg-gray-200 w-full my-2" />
-                   
-                    </div>
-
-                    <button className="focus:outline-none focus:ring-2 hover:bg-sky-300/90 focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-sky-800/80 bg-sky-300/30 w-full py-5 lg:mt-12 mt-6">Add to shopping bag</button>
-                </div>
+                <ProductDescription 
+                   productDetails={productDetails}
+                > </ProductDescription>
 
     {/* <!-- Preview Images Div For larger Screen--> */}
 
                 <div className="w-full lg:h-[30rem] sm:w-96 md:w-11/12 md:mx-auto bg-sky-50 p-4 shadow-sm rounded-lg shadow-sky-300 lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
-                    <div className=" w-full lg:w-8/12 px-2 bg-sky-100 flex justify-center items-center">
-                        <img src={photo} alt={name} />
-                    </div>
-                    <div className=" w-full lg:w-4/12 grid lg:grid-cols-1 sm:grid-cols-4 grid-cols-2 gap-6">
-                        <div className="bg-gray-100 flex justify-center items-center py-1">
-                            <img src={photo} className="object-cover  w-[80%]"/>
+                   
+                    <div className=" w-full mx-auto lg:w-6/12 carousel-container">
+                        <Carousel  showArrows={true}  axis="horizontal" showThumbs={true}>
+                        <div>
+                            <img src={photo} />
                         </div>
-                        <div className="bg-gray-100 flex justify-center items-center py-1">
-                            <img src={photo} className="object-cover  w-[80%]" />
+                        <div>
+                            <img src={photo} />
+                            
                         </div>
-                       
+                      </Carousel>
                     </div>
                 </div>
             </div>
@@ -188,8 +153,8 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
              <div className="flex justify-center items-star  lg:flex-row flex-col gap-8">
     {/* <!-- user Review show Div --> */}
                
-                <div className="mt-20 h-[30rem] bg-sky-100/50  px-4 overflow-y-scroll w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-8/12 items-center">
-                 <div className="text-sky-600/70 text-md font-semibold p-4 sticky top-0 bg-sky-100 mb-4">Users review in this product</div>
+                <div className="mt-20 h-[30rem] overflow-y-scroll bg-sky-100/50  px-4  w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-8/12 items-center">
+                 <div className="text-sky-500/80 text-md font-semibold p-4 sticky top-0 bg-sky-100 mb-4">Users review in this product</div>
                  { data?.map((userData) =>(
 
                     <div  key={userData._id} 
@@ -213,11 +178,23 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                        
                     </div>
                     <p className=" font-normal  leading-6 text-md text-gray-600 mt-2 bg-sky-50"><span className="text-sky-500/70 text-xs">Review: </span>{userData.message}</p>
-                    <dev className="h-[6rem] ">
+                    <div className="h-[8rem] flex justify-between items-start">
                         <img src={userData.photo} className="w-[6rem] h-[8rem] object-contain"></img>
-                    </dev>
+                    <Rating
+                              style={{ maxWidth: 80 }}
+                              value={userData.rating}
+                            />
                     </div>
-                ))}    
+                     
+                    </div>
+                ))} 
+                {data.length === 0 && <div className="flex justify-center items-center text-sky-500/80">
+                    <div>
+                      <h2>No review In this product</h2>
+                      <h2 >Your Feedback Matters – <span className="text-pink-400/80">Share Your Opinions or Inquiries</span></h2>
+                    </div>
+                    </div> }
+                  
                 </div>
 
               
@@ -232,9 +209,15 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                         </div>
     {/* review post form */}
                         <div className="mt-1 p-2 relative z-1 bg-sky-50 border rounded-xl sm:mt-10 md:p-10 ">
+                        
                         <form onSubmit={handleSubmit(onSubmit)}>
+                            <Rating
+                              style={{ maxWidth: 100 }}
+                              value={rating}
+                              onChange={setRating}
+                            />
                             <div>
-                            <label htmlFor="hs-feedback-post-comment-textarea-1" className="block mb-2 text-sm font-medium text-sky-600/80 ">Please Share your review </label>
+                            <label htmlFor="hs-feedback-post-comment-textarea-1" className="block my-2 text-sm font-medium text-sky-600/80 ">Please Share your review </label>
                             <div className="mt-1">
                                 <textarea    {...register("message", { required: true })}
                               className="py-3 px-4 block w-full b bg-sky-100 order-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 sm:p-4  " placeholder="Leave your comment here..."></textarea>
@@ -257,16 +240,16 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                             </label>
                             </div>
                             {selectedImage && (
-                                <div className="mb-4 relative">
+                                <div className="mb-4 relative bg-sky-100">
                                 <img
                                     src={URL.createObjectURL(selectedImage)}
                                     alt="Selected"
-                                    className="max-w-full h-auto object-contain mx-auto "
+                                    className="w-[8rem]  h-[8rem] object-cover mx-auto "
                                 />
                                 <button
                                     type="button"
                                     title="change image"
-                                    className="h-[2.375rem]  w-[2.375rem] rounded-full  font-semibold bg-blue-500 text-white hover:bg-blue-600 shadow-sm  shadow-sky-200  absolute top-1 right-2"
+                                    className="h-[1.2rem]  w-[1.2rem] text-sm rounded-sm  font-semibold bg-sky-800/70 text-white hover:bg-blue-800 shadow-sm  shadow-sky-200  absolute top-2 right-24"
                                     onClick={handleImageDelete}
                                 >
                                   X

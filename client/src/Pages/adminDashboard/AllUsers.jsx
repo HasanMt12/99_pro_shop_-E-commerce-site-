@@ -2,14 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
+
 const AllUsers = () => {
     const [axiosSecure] = useAxiosSecure();
 
+
     const { data: users = [], refetch , isLoading, isError} = useQuery(['users'], async () => {
-    
       const res = await axiosSecure.get('/users')
-        return res.data;
+      return  res.data;
+        
     },
+    
       {
     onError: (error) => {
       console.error('Error loading users:', error);
@@ -17,16 +20,16 @@ const AllUsers = () => {
   }
     )
     console.log('isLoading:', isLoading);
-console.log('isError:', isError);
-console.log('users:', users);
+    console.log('isError:', isError);
+    console.log('users:', users);
 
-if (isLoading) {
-  return <p>Loading users...</p>;
-}
+    if (isLoading) {
+      return <p>Loading users...</p>;
+    }
 
-if (isError) {
-  return <p>Error loading users</p>;
-}
+    if (isError) {
+      return <p>Error loading users</p>;
+    }
        
        // make buyer goldenUser
     const handleMakeGoldenUsers = id => {
@@ -127,7 +130,7 @@ if (isError) {
                       <th scope="col" className="px-6 py-3 text-right"></th>
                     </tr>
                   </thead>
-              {users && users.map((user) => (
+              {users.length > 0  && users?.map((user) => (
               <tbody key = {user._id} className="divide-y divide-gray-200 dark:divide-gray-700">
                   
                     <tr className=" ">
