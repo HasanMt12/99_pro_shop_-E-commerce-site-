@@ -42,20 +42,20 @@ const Navbar = () => {
         <Link to="/cart">
           {" "}
           <AiOutlineShoppingCart className="cursor-Pointer   text-white font-semibold text-3xl  "></AiOutlineShoppingCart>
-        </Link>
-        <span className="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 animate-bounce font-bold text-[#82C1DA] -translate-y-1/1  rounded-full">
-         +{cart?.length || 0}
-        </span>
+       
+        <span className="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 animate-bounce font-bold text-[#333333] -translate-y-1/1  rounded-full">
+         +{cart?.length || "0"}
+        </span> </Link>
       </span>
 
       <span className="relative inline-block ml-6">
         <Link to="/wishlist">
           {" "}
           <AiOutlineHeart className="cursor-Pointer  font-semibold text-white text-3xl rounded-lg  "></AiOutlineHeart>
-        </Link>
-        <span className="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 animate-bounce font-bold text-[#82C1DA] -translate-y-1/1  rounded-full">
+       
+        <span className="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 animate-bounce font-bold text-[#333333]  -translate-y-1/1  rounded-full">
           {data.length}
-        </span>
+        </span> </Link>
       </span>
 
       {user?.uid? (<div className="hs-dropdown lg:block hidden relative inline-flex [--placement:bottom-right]">
@@ -70,7 +70,7 @@ const Navbar = () => {
               </div>
               <div className="mt-2 py-2 first:pt-0 last:pb-0">
                {
-        isVisitor ?  <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm   text-white  hover:bg-[#61b2d2] " href="#">
+               isVisitor ?  <a className="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm   text-white  hover:bg-[#61b2d2] " href="#">
                   <svg className="flex-none" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
                   </svg>
@@ -83,10 +83,7 @@ const Navbar = () => {
                  Dashboard
                 </Link>
        }
-               
-                
-              
-                  <button  onClick={handleLogOut}
+ <button  onClick={handleLogOut}
                   style={{ boxShadow: "0px 10px 13px -7px #AEB1B0, 5px 5px 15px 5px rgba(0,0,0,0)", }}
                     className="flex items-center gap-x-2 my-2 ml-3 transition duration-200 ease-in-out transform px-3 py-[2px] text-[#EEF2F5] w-30 border-b-4 border-[#df81a5] hover:border-b-2 bg-gradient-to-t from-[#d16c93]  via-[#fa669f] to-[#e2a1ba]  rounded-lg hover:translate-y-px sm:border-l s "
                   >  log out
@@ -115,7 +112,7 @@ const Navbar = () => {
     <>
  {/* large device navbar is here*/}
       <div className="sticky top-0 z-10 lg:block hidden print:hidden">
-        <div className = "bg-[#f58cb9f9] bg-opacity-60" >
+        <div className = "bg-[#87ceeb]  bg-opacity-60" >
           <div className=" py-2 mx-auto px-[8rem] ">
             <div className="relative flex items-center  justify-between ">
               <a href="/"  className="inline-flex items-center"  >
@@ -123,7 +120,7 @@ const Navbar = () => {
                   <img src={logo} />
                 </div>
               </a>
-              <ul className="text-black cursor-pointer text-lg items-center hidden space-x-8 lg:flex">
+              <ul className=" cursor-pointer text-lg items-center hidden space-x-8 lg:flex">
                 {menuItems}
               </ul>
             </div>

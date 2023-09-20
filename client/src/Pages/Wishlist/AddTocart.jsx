@@ -7,21 +7,21 @@ import PaymentModal from "../Payment/PaymentModal";
 
 
 const AddTocart = () => {
+  // State variables
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalStatus, setModalStatus] = useState(false);
+  const [cart, setCart] = useState([]);
+  const { user } = useContext(AuthContext);
 
-      // const [openTab, setOpenTab] = useState(1);
-      const [modalStatus, setModalStatus] = useState(false);
-      const [cart, setCart] = useState([])
-      const { user } = useContext(AuthContext);
-
-      const {data: data = [] , refetch } = useQuery({
-        queryKey: ['data'],
-        queryFn: async() =>{
-            const res = await fetch(`https://99-pro-shop-server.vercel.app/cart?email=${user?.email}`);
-            const data = await res.json();
-            return data;
-        }
-      });
+  // Fetch cart data
+  const { data: data = [], refetch } = useQuery({
+    queryKey: ['cartData'],
+    queryFn: async () => {
+      const res = await fetch(`https://99-pro-shop-server.vercel.app/cart?email=${user?.email}`);
+      const data = await res.json();
+      return data;
+    }
+  });
 
 
   //cart delete
@@ -75,70 +75,142 @@ const AddTocart = () => {
 
     return (
 
-    <div className="min-h-screen px-4">
-     <div className="flex justify-evenly items-start gap-2"> 
-      <div className="flex flex-col w-[65%]">
-        <div className="-m-1.5 overflow-x-auto">
-            <div className="p-1.5 min-w-full inline-block align-middle">
-              <div className="overflow-hidden">
-                <table className="min-w-full divide-y divide-gray-200 ">
-                  <thead>
-                    <tr>
-                      <th scope="col" className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase">product</th>
-                      <th scope="col" className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase">Product Name</th>
-                      <th scope="col" className="px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase">Price</th>
-                      <th scope="col" className="px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase">Cart Update</th>
-                       <th scope="col" className="px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase">Buy </th>
-                      <th scope="col" className="px-2 py-3 text-center text-xs font-medium text-gray-500 uppercase">Delete</th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                      {data.map((product) => (
-                    <>
-                      <tr key={product._id} className="odd:bg-sky-100/60 even:bg-sky-200/40 ">
-                        <td className="px-2 py-1 whitespace-nowrap text-sm font-medium text-gray-800 ">
-                          <img src={product.photo} className="w-[5rem]"></img>
-                        </td>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">{product.name}</td>
-                        <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-800 ">{product.price}</td>
-                        <td className="flex justify-center items-center px-2 py-6 whitespace-nowrap text-sm font-medium text-gray-800">
-                          <button className="px-2 py-1 bg-sky-300/60 hover:bg-sky-400/60"
-                           onClick={()=>handleMakePlusCart(product._id)}>+</button>
-                          <p className="mx-2">{product.quantity}</p>
-                          <button className='px-2 py-1 bg-sky-300/60 hover:bg-sky-400/60'
-                           onClick={()=>handleMakeMinusCart(product._id)}>-</button>
-                        </td>
-                        <td
-                          onClick={() => {
-                            setSelectedProduct(product);
-                            setModalStatus(true);
-                          }}
-                          className="px-2 py-4 cursor-pointer whitespace-nowrap text-right text-2xl  font-medium"
-                        >
-                          buy now
-                        </td>
-                        <td onClick={() => handleDelete(product._id)} className="px-2 py-4 cursor-pointer whitespace-nowrap text-right text-2xl text-pink-600 hover:text-pink-500 hover:text-3xl font-medium"><MdDeleteForever></MdDeleteForever>
-                        </td>
-                        </tr>
-        {/* payment Modal */}
-              {modalStatus && (
-                  <PaymentModal
-                      product={selectedProduct}
-                      modalStatus={setModalStatus}
-                 ></PaymentModal>
-              )}
+   <div className="relative bg-fixed bg-cover bg-center overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url("https://i.ibb.co/pztsXFL/bg.jpg")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: "rgba(208, 208, 208, 0.6)",
+        backdropFilter: 'blur(100px)',
+        backgroundBlendMode: "multiply"
+      }}
+    >
+      <h2 className="text-center under my-3 lg:text-3xl md:text-2xl text-xl text-[#f6f6f6]">
+        Your Cart: {data.length ? data.length : "0"}
+      </h2>
+        <div className="mx-auto mt-3 absolute inset-0 overflow-y-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+          <div className="mx-auto max-w-3xl">
 
-                  </>
-                  ))}
-                    </tbody>
-                </table>
+            {data.map((product) => ( <>
+             <ul key={product._id} className="space-y-4 mx-auto odd:bg-sky-100/90 even:bg-sky-200/80 hover:bg-sky-50 rounded-lg cursor-pinter my-1">
+                <li className="flex items-center gap-4 px-1">
+                  <img
+                    src={product.photo}
+                    alt=""
+                    className="h-16 w-16 rounded object-cover"
+                  />
+
+                  <div>
+                    <h3 className="lg:text-sm md:text-xs text-[10px]  text-gray-900">{product.name}</h3>
+
+                    <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                      <div>
+                        <dt className="inline lg:text-xs md:text-[10px] text-[8px] ">Delivery Time:</dt>
+                        <dd className="inline lg:text-xs md:text-[10px] text-[8px] ">2 Days</dd>
+                      </div>
+                    </dl>
+                    <dl className="mt-0.5 space-y-px text-[10px] text-sky-600">
+                      <div>
+                        <dt className="inline lg:text-xs md:text-[10px] text-[8px] ">Price: </dt>
+                        <dd className="inline lg:text-xs md:text-[10px] text-[8px] "> {product.price}</dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <div className="flex flex-1 items-center justify-end gap-2">
+                    <div className="flex items-center justify-center border-2 rounded-sm border-sky-200 text-sm">
+                    <button className="px-2  bg-sky-300/60 hover:bg-sky-400/60"
+                                onClick={()=>handleMakePlusCart(product._id)}>+</button>
+                                <p className="mx-1">{product.quantity}</p>
+                                <button className='px-2  bg-sky-300/60 hover:bg-sky-400/60'
+                                onClick={()=>handleMakeMinusCart(product._id)}>
+                                  -</button></div>
+
+                              <button onClick={() => {setSelectedProduct(product); }}
+                              className=" text-white lg:mx-8 md:mx-2 mx-0 rounded bg-[#82C1DA] lg:p-1 p-[1px] lg:text-sm text-xs  font-medium transition hover:scale-105 px-2">
+                              pay</button>
+
+                  <button onClick={() => handleDelete(product._id)} className="text-gray-600 transition hover:text-red-600">
+                      <span className="sr-only">Remove item</span>
+                      <MdDeleteForever className="text-xl text-sky-600 hover:text-pink-600"></MdDeleteForever>
+                    </button>
+                  </div>
+                </li>
+      </ul>
+        {/* payment Modal */}
+                    {modalStatus && (
+                        <PaymentModal
+                            product={selectedProduct}
+                            modalStatus={setModalStatus}
+                      ></PaymentModal>
+                    )}
+
+                        </>
+                        ))}
+              <div className="mt-8 flex justify-end border-x-2 p-4 bg-sky-100/90 rounded-md  border-[#333333] pt-8">
+            {selectedProduct && <>   
+            <div className="w-screen max-w-lg space-y-4 ">
+                  <dl className="space-y-0.5 text-sm text-gray-700">
+                    <div className="flex justify-between">
+                      <dt>Product Price</dt>
+                      <dd>৳ {selectedProduct.price}</dd>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <dt>Delivery charge</dt>
+                      <dd>৳ 50</dd>
+                    </div>    
+                    <div className="flex justify-between !text-base font-medium">
+                      <dt>Total</dt>
+                      <dd>৳ {selectedProduct.price + 50}</dd>
+                    </div>
+                  </dl>
+
+                
+                  <div className="flex justify-end">
+                    <button  onClick={() => {selectedProduct 
+                            setModalStatus(true);}} 
+                      className="block rounded hover:bg-[#FFD4D8] px-5 py-3 text-sm text-gray-600 transition bg-[#AEDFF7]"
+                    >
+                      Checkout
+                    </button>
+                  </div>
+                </div>
+                </>
+            } 
+            {!selectedProduct &&
+              <div className="w-screen max-w-lg space-y-4">
+                  <dl className="space-y-0.5 text-sm text-gray-700">
+                    <div className="flex justify-between">
+                      <dt>Product Price</dt>
+                      <dd>৳ 0</dd>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <dt>Delivery charge</dt>
+                      <dd>৳ 0</dd>
+                    </div>    
+                    <div className="flex justify-between !text-base font-medium">
+                      <dt>Total</dt>
+                      <dd>৳ 0</dd>
+                    </div>
+                  </dl>
+
+
+                  <div className="flex justify-end">
+                    <button  
+                      className="block rounded hover:bg-[#FFD4D8] px-5 py-3 text-sm text-gray-600 transition bg-[#AEDFF7]"
+                    >
+                      Checkout
+                    </button>
+                  </div>
+                </div>
+      }
               </div>
             </div>
         </div>
+
       </div>
-      <div> Order summery</div>
-     </div>   
-    </div>
     );
 };
 
