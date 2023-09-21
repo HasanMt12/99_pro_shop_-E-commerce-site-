@@ -3,7 +3,7 @@
 
 ## Business Website Project
 Welcome to the Business Website Project repository! This project is a full-stack web application built using React, Firebase, Node.js, MongoDB, and other technologies. 
-It offers a wide range of features, including authentication, product management, user reviews, payment processing, and more.
+It offers a wide range of features, including authentication, product management, user reviews, payment processing, and more. 
 
 ## Table of Contents
 - Demo
