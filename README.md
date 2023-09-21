@@ -50,7 +50,7 @@ To get started  you can simply clone this `ecommerce-demo` repository and instal
 Clone the `99_pro_shop_-E-commerce-site-demo` repository using git:
 
 ```bash
-git clone https://github.com/HasanMt12/99_pro_shop_-E-commerce-site-
+git clone https://github.com/HasanMt12/99_pro_shop_-E-commerce-site-.git
 ```
 ## for client 
 * cd client and
