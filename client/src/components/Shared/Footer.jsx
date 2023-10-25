@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <>
         <div className= " bg-[#82c1da] pt-8 pb-6 print:hidden" >
-  <div className="container mx-auto px-4">
+  <div className="container mx-auto px-4"> 
     <div className="flex flex-wrap text-left lg:text-left">
       <div className="w-full lg:w-6/12 px-4">
         <h4 className="lg:text-2xl md:text-lg text-md font-semibold text-[#EA0F62]">Lets keep in touch!</h4>
@@ -28,13 +28,13 @@ const Footer = () => {
             <span className="block uppercase text-blueGray-500 lg:text-sm text-[8px] md:text-[10px] text-[#EA0F62] font-semibold mb-2">Useful Links</span>
             <ul className = "list-unstyled text-start " >
               <li>
-                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-semibold block pb-2 lg:text-sm md:text-[10px] text-[8px]" href="">About Us</a>
+                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-medium block pb-1 lg:text-sm md:text-[10px] text-[8px]" href="">About Us</a>
               </li>
               <li>
-                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-semibold block pb-2 lg:text-sm md:text-[10px] text-[8px]" href="">Blog</a>
+                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-medium block pb-1 lg:text-sm md:text-[10px] text-[8px]" href="">Blog</a>
               </li>
               <li>
-                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-semibold block pb-2 lg:text-sm md:text-[10px] text-[8px]" href="">Free Products</a>
+                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-medium block pb-1 lg:text-sm md:text-[10px] text-[8px]" href="">Free Products</a>
               </li>
             </ul>
           </div>
@@ -42,13 +42,13 @@ const Footer = () => {
             <span className="block uppercase text-blueGray-500 lg:text-sm text-[8px] md:text-[10px] text-[#EA0F62] font-semibold mb-2">Other Resources</span>
             <ul className = "list-unstyled text-start " >
               <li>
-                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-semibold block pb-2 lg:text-sm md:text-[10px] text-[8px]" href="">Terms &amp; Conditions</a>
+                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-medium block pb-1 lg:text-sm md:text-[10px] text-[8px]" href="">Terms &amp; Conditions</a>
               </li>
               <li>
-                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-semibold block pb-2 lg:text-sm md:text-[10px] text-[8px]" href="">Privacy policy</a>
+                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-medium block pb-1 lg:text-sm md:text-[10px] text-[8px]" href="">Privacy policy</a>
               </li>
               <li>
-                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-semibold block pb-2 lg:text-sm md:text-[10px] text-[8px]" href="">Contact Us</a>
+                <a className="text-[#fcfdfd] hover:text-blueGray-800 font-medium block pb-1 lg:text-sm md:text-[10px] text-[8px]" href="">Contact Us</a>
               </li>
             </ul>
           </div>

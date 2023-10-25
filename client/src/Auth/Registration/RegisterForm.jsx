@@ -193,13 +193,13 @@ const RegisterForm = () => {
                      
                   </div>
               {/*submit <button*/}
-                  <div className="my-2">
-                    <button className="inline-flex items-center justify-center w-full h-10 text-[#2d90ba] font-semibold rounded shadow-md bg-[#e9b0c6] hover:bg-[#c68fa4] "
+                  <div className="mt-2 text-xs">
+                    <button className="w-full  text-pink-500 mb-2  tracking-wide font-[Montserrat] bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
                        type="submit"> Sign Up
                     </button>
                    
                   </div>
-                   <p className="mt-3 text-center text-sky-500"> Already have an account?{" "}
+                   <p className="mt-1 text-center text-xs text-sky-500"> Already have an account?{" "}
                     <Link to="/login" className="text-blue-500 underline ml-1">
                       Login </Link>
                   </p>

@@ -1,111 +1,3 @@
-// import { useContext, useEffect, useState } from "react";
-// import toast from "react-hot-toast";
-// import Swal from "sweetalert2";
-// import { AuthContext } from "../../../Context/AuthProvider";
-// import useCart from "../../../hooks/useCart";
-// import { useLocation, useNavigate } from "react-router";
-
-
-// const ProductDescription = ({productDetails}) => {
-//     const { name, price,categoryId, _id, photo  } = productDetails;
-//     const {user} = useContext(AuthContext);
-//      const navigate = useNavigate();
-//     const location = useLocation();
-//     const [ , refetch] = useCart();
-//     const [count, setCount] = useState(1);
-//     const [priceProduct, setPriceProduct] = useState(price);
-//     const addCount = () => {
-//         setCount((prev) => prev + 1);
-//     };
-
-//     const minusCount = () => {
-//         if (count > 1) {
-//             setCount((prev) => prev - 1);
-//         }
-//     };
-//     // Calculate the priceProduct based on the count and price
-//     useEffect(() => {
-//     setPriceProduct(count * price);
-//     }, [count, price]);
-
-//     const handleAddToCart = () => {
-//         // console.log(product);
-//         if(user && user.email){
-//             const product = {productId: _id, name, photo, price: priceProduct, email: user.email, quantity: count}
-//             fetch('https://99-pro-shop-server.vercel.app/cart', {
-//                 method: 'POST',
-//                 headers: {
-//                     'content-type': 'application/json'
-//                 },
-//                 body: JSON.stringify(product)
-//             })
-//             .then(res => res.json())
-//             .then(data => {
-//                 if(data.insertedId){
-//                     refetch(); // refetch cart to update the number of items in the cart
-//                     toast.success(`product on the cart`, {
-//                     style: { border: '1px solid #713200', padding: '10px', color: '#713200',},
-//                   });
-//                 }
-//             })
-//         }
-//         else{
-//             Swal.fire({
-//                 title: 'Please login First',
-//                 icon: 'warning',
-//                 iconColor:"#00E0FF",
-//                 width:"25%",
-//                 color:"#87CEEB",
-//                 showCancelButton: true,
-//                 confirmButtonColor: '#00E0FF',
-//                 cancelButtonColor: '#FFC0CB',
-//                 confirmButtonText: 'Login now!'
-//               }).then((result) => {
-//                 if (result.isConfirmed) {
-//                   navigate('/login', {state: {from: location}})
-//                 }
-//               })
-//         }
-//     }
-//     return (
-//         <div className="lg:h-[30rem] bg-sky-50 p-4 shadow-sm rounded-lg shadow-sky-300 w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-6/12 items-center">
-//                     <p className=" focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">Home <span className="text-pink-500"> / </span> {categoryId} <span className="text-pink-500">/</span> {name}</p>
-//                     <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-pink-500 mt-4">{name}</h2>
-
-//                     <div className=" flex flex-row justify-between  mt-5">
-//                         {/*TO DO: I will show review average each product  */}
-//                         {/* <div className=" flex flex-row space-x-3">
-                            
-//                         </div> */}
-//                         <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-pink-500 duration-100 cursor-pointer">22 reviews</p>
-//                     </div>
-
-//                     <p className=" font-normal text-base leading-6 text-gray-600 mt-7">{categoryId}</p>
-//                     <p className=" font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 ">$ {price}</p>
-
-//                     <div className="lg:mt-11 mt-10">
-//                         <div className="flex flex-row justify-between">
-//                             <p className=" font-medium text-base leading-4 text-gray-600">Select quantity</p>
-//                             <div className="flex">
-//                                 <span onClick={minusCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1">
-//                                     -
-//                                 </span>
-//                                     <input id="counter" aria-label="input" className="border border-gray-300 h-full text-center w-14 pb-1" type="tex                               t" value={count} onChange={(e) => e.target.value} />
-//                                 <span onClick={addCount} className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1 ">
-//                                     +
-//                                 </span>
-//                             </div>
-//                         </div>
-//                         <hr className=" bg-gray-200 w-full my-2" />
-                   
-//                     </div>
-//                     <button  onClick={() => handleAddToCart(productDetails)} className="hover:bg-sky-300/90 focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-sky-800/80 bg-sky-300/30 w-full py-5 my-2">Add to shopping bag</button>
-//                 </div>
-//     );
-// };
-
-// export default ProductDescription;
-
 import  { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -202,7 +94,7 @@ const ProductDescription = ({ productDetails }) => {
   };
 
   return (
-    <div className="lg:h-[30rem] bg-sky-50 p-4 shadow-sm rounded-lg shadow-sky-300 w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-6/12 items-center">
+    <div className="lg:h-[30rem] bg-sky-100/60 p-4 shadow-sm rounded-lg shadow-sky-300 w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-6/12 items-center">
       {/* Breadcrumb */}
       <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
         Home <span className="text-pink-500"> / </span> {categoryId}{" "}
@@ -210,7 +102,7 @@ const ProductDescription = ({ productDetails }) => {
       </p>
 
       {/* Product Name */}
-      <h2 className="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-pink-500 mt-4">
+      <h2 className="font-semibold tracking-wide font-[Montserrat] lg:text-4xl text-3xl lg:leading-9 leading-7 text-pink-500 mt-4">
         {name}
       </h2>
 
@@ -222,7 +114,7 @@ const ProductDescription = ({ productDetails }) => {
       </div>
 
       {/* Category */}
-      <div className="font-normal lg:h-[6rem] text-base text-sky-500 leading-6  mt-7">
+      <div className="font-normal  lg:h-[6rem] text-base text-sky-500 leading-6  mt-7">
       Product Category:  {categoryId}
       </div>
 

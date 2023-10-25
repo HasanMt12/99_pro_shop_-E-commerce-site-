@@ -92,7 +92,7 @@ const LoginForm = () => {
           },{duration:3000});
            navigate(from, { replace: true });
         })
-          .catch((error) => {console.log(error.message);  });
+          .catch((error) => {toast.dismiss();  navigate(from, { replace: true }); console.log(error.message);   });
      };
     return (
             <form onSubmit={handleSubmit(handleLogin)}  >
@@ -139,7 +139,7 @@ const LoginForm = () => {
                   </div>
 
                   <div className="mt-4 mb-1 sm:mb-2">
-                    <button className="inline-flex items-center justify-center w-full h-10   px-6   text-[#2d90ba] font-semibold rounded shadow-md bg-[#e9b0c6] hover:bg-[#c68fa4] "
+                    <button className="w-full text-pink-500 mb-2 tracking-wide font-[Montserrat] bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105 "
                        type="submit"> login
                     </button>
                    
@@ -152,7 +152,7 @@ const LoginForm = () => {
                         </Link>
                   </p>
       {/* redirect to register form */}
-                   <p className="mt-4 text-center text-sky-500">
+                   <p className="mt-4 text-center text-sm text-sky-500">
                       Do not have an account? Please, {" "}
                   <Link to="/register" className="text-blue-500 underline ml-1">
                     Register
@@ -160,7 +160,7 @@ const LoginForm = () => {
                  </p>
                <div  className="text-center text-md my-1 text-pink-400 font-semibold">OR</div>
       {/* google login start */}
-              <div onClick={handleGoogleSignin} className="flex rounded-lg bg-[#dbe9f6] border-red-400 border-b justify-center items-center py-2 cursor-pointer">
+              <div onClick={handleGoogleSignin} className="flex rounded-lg transition hover:scale-105  bg-[#dbe9f6] border-red-400 border-b justify-center items-center py-2 cursor-pointer">
                 <button type="button"className=""  >
                   <FcGoogle className="text-lg mr-3" /> 
                 </button>

@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 // import AdsSlider from "./AdsSlider";
 import { useQuery } from "@tanstack/react-query";
 import CategoriesCard from "../categories/CategoriesCard";
-
+import { GiPlainCircle } from 'react-icons/gi';
+import System from "./BusinessSystem";
 const Home = () => {
 
  const {data: categories = []  } = useQuery({
@@ -25,11 +26,16 @@ const Home = () => {
       {/* Only large device visible */}
       <div className=" hidden lg:block">
   
-        <div className="flex justify-between mx-[8rem] items-start mt-4  h-[25rem]">
+        <div className="flex justify-between mx-[8rem] items-start mt-4 gap-10 h-[25rem]">
           <div className="w-[25%] bg-[#f3f6f8] h-[25rem]  rounded-md shadow-sm shadow-[#b4cbda] ">
               <ul className="flex  mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
-              <h2 className="font-bold mt-2 mx-[4.5rem] text-md text-sky-500"> Categories</h2>
-              <Link to='/allProducts'> <li className= "cursor-pointer  hover:text-sky-400 hover:bg-sky-100 hover:opacity-80 pl-[4.5rem] pr-[3rem] py-2  text-[0.9rem]  text-[#EA0F62]  text-start flex justify-between start gap-4 items-center ">
+              
+              <div className="bg-sky-100/60 flex justify-between mx-8 my-3 py-1 rounded-2xl items-center px-8"> 
+                <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                  <h2 className="font-medium tracking-wide  mx-6 text-md text-pink-500  font-[Montserrat]"> Categories</h2>
+                <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+              </div>
+              <Link to='/allProducts'> <li className= "cursor-pointer tracking-wide font-[Montserrat]  hover:text-sky-500 hover:bg-sky-100/60  px-6 py-1  text-[0.9rem]  text-pink-500  text-start flex justify-between start gap-4 items-center">
                   <h2>All product  </h2>
                   <IoIosArrowForward className=""></IoIosArrowForward>
                 </li> 
@@ -42,12 +48,13 @@ const Home = () => {
               }
             </ul>
           </div>
-          <div className="w-[70%]">
+          <div className="w-[75%]">
             <Hero></Hero>
           </div>
         </div>
       <div>
             <AllProducts ></AllProducts> 
+            <System></System>
             <Banner className="lg:mx-[8rem"></Banner></div>
       </div>
 
@@ -55,6 +62,7 @@ const Home = () => {
           <Hero></Hero>
           <CategoriesCard></CategoriesCard>
           <AllProducts></AllProducts> 
+          <System></System>
           <Banner ></Banner>
       </div>
     </>

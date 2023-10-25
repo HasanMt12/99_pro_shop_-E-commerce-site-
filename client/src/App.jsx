@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-    <div className='font-Ubuntu'>
+    <div className='font-Lato'>
         <RouterProvider router={router}></RouterProvider>
         <Toaster position="top-center" reverseOrder={false}></Toaster>
     </div>

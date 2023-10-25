@@ -1,0 +1,63 @@
+.loading-card {
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #e9b0c6;
+    box-shadow: 0px 0px 5px rgba(226, 90, 142, 0.5);
+    border-radius: 10px;
+}
+
+.loading-image {
+    height: 50%;
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 10px;
+    animation: loading-image-animation 1.5s infinite;
+}
+
+.loading-content {
+    padding: 10px;
+}
+
+.loading-text {
+    height: 20px;
+    width: 80%;
+    background-color: #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    animation: loading-text-animation 1.5s infinite;
+}
+
+.loading-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* CSS animations for loading effect */
+@keyframes loading-image-animation {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes loading-text-animation {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}

@@ -168,7 +168,7 @@ const PaymentModal = ({ product, modalStatus }) => {
                     <section className="bg-gray-100">
                       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                         <div className="rounded-lg">
-                          {product.name} {product.price}
+                          {product.name} {parseFloat(product.price) + 50}
 
                           <form onSubmit={handleBooking} className="space-y-4">
                             <div>

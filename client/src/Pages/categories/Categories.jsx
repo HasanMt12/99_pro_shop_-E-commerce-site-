@@ -1,18 +1,13 @@
-/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 
 const Categories = ({category}) => {
-    
     const {name , categoryId } = category
    
     return (
-        <Link to = {
-            `categories/${categoryId}`
-        } >
-        <li className = "cursor-pointer  hover:text-sky-400 hover:bg-sky-100 hover:opacity-80 pl-[4.5rem] pr-[3rem] py-2  text-[0.9rem]  text-[#EA0F62]  text-start flex justify-between start gap-4 items-center" >
-            <h2>{name}</h2>
-
+        <Link to={`/categories/${categoryId}`}>
+        <li className = "cursor-pointer tracking-wide font-[Montserrat] hover:text-sky-500 hover:bg-sky-100/60  px-6 py-1  text-[0.9rem]  text-pink-500  text-start flex justify-between start gap-4 items-center" >
+            {name}
              <IoIosArrowForward></IoIosArrowForward>
         </li>
         </Link>

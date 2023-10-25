@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import { MdDeleteForever } from "react-icons/md";
 import PaymentModal from "../Payment/PaymentModal";
-
+import { GiPlainCircle } from "react-icons/gi";
 
 const AddTocart = () => {
   // State variables
@@ -13,6 +13,7 @@ const AddTocart = () => {
   const [cart, setCart] = useState([]);
   const { user } = useContext(AuthContext);
 
+  
   // Fetch cart data
   const { data: data = [], refetch } = useQuery({
     queryKey: ['cartData'],
@@ -22,7 +23,6 @@ const AddTocart = () => {
       return data;
     }
   });
-
 
   //cart delete
   const handleDelete = id => {
@@ -81,27 +81,29 @@ const AddTocart = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: "rgba(208, 208, 208, 0.6)",
-        backdropFilter: 'blur(100px)',
+        backdropFilter: 'blur(300px)',
         backgroundBlendMode: "multiply"
       }}
     >
-      <h2 className="text-center under my-3 lg:text-3xl md:text-2xl text-xl text-[#f6f6f6]">
-        Your Cart: {data.length ? data.length : "0"}
-      </h2>
-        <div className="mx-auto mt-3 absolute inset-0 overflow-y-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+       <div className="bg-sky-100/60 mx-8 flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                          <h2 className="font-medium tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500"> Your Cart: {data.length ? data.length : "0"}</h2>
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                      </div>
+      <div className="flex justify-center items-start lg:px-8 lg:flex-row flex-col">
           <div className="mx-auto max-w-3xl">
-
+             
             {data.map((product) => ( <>
-             <ul key={product._id} className="space-y-4 mx-auto odd:bg-sky-100/90 even:bg-sky-200/80 hover:bg-sky-50 rounded-lg cursor-pinter my-1">
-                <li className="flex items-center gap-4 px-1">
+             <ul key={product._id} className="space-y-4 mx-auto max-w-3xl odd:bg-sky-50/90 even:bg-sky-100/80 hover:bg-sky-50 rounded-lg cursor-pinter px-8 my-1">
+                <li className="flex items-center gap-4 px-1 lg:h-32">
                   <img
                     src={product.photo}
                     alt=""
-                    className="h-16 w-16 rounded object-cover"
+                    className="h-20 w-20 rounded object-cover"
                   />
 
                   <div>
-                    <h3 className="lg:text-sm md:text-xs text-[10px]  text-gray-900">{product.name}</h3>
+                    <h3 className="lg:text-sm md:text-xs text-[10px]  font-[Montserrat] text-pink-500">{product.name}</h3>
 
                     <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
                       <div>
@@ -127,7 +129,7 @@ const AddTocart = () => {
                                   -</button></div>
 
                               <button onClick={() => {setSelectedProduct(product); }}
-                              className=" text-white lg:mx-8 md:mx-2 mx-0 rounded bg-[#82C1DA] lg:p-1 p-[1px] lg:text-sm text-xs  font-medium transition hover:scale-105 px-2">
+                              className=" bg-white lg:mx-6 tracking-wide font-[Montserrat] md:mx-2 mx-0 rounded  border-sky-500 border-b-2 text-sky-500  lg:text-sm text-xs  font-medium transition hover:scale-105 hover:bg-sky-50 hover:border-pink-500 px-2">
                               pay</button>
 
                   <button onClick={() => handleDelete(product._id)} className="text-gray-600 transition hover:text-red-600">
@@ -147,9 +149,16 @@ const AddTocart = () => {
 
                         </>
                         ))}
-              <div className="mt-8 flex justify-end border-x-2 p-4 bg-sky-100/90 rounded-md  border-[#333333] pt-8">
-            {selectedProduct && <>   
-            <div className="w-screen max-w-lg space-y-4 ">
+            </div>
+                      
+          <div className="mx-auto  border-x-2 lg:px-10 px-10 md:px-10 py-4 bg-sky-50/80 rounded-md  border-sky-500 pt-8">
+          <div className="bg-sky-100/60 flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500"> Order summary </h2>
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                      </div>
+            {selectedProduct  && <>   
+            <div className="lg:w-[400px]  md:w-[380px] w-[98%] space-y-4 ">
                   <dl className="space-y-0.5 text-sm text-gray-700">
                     <div className="flex justify-between">
                       <dt>Product Price</dt>
@@ -162,7 +171,7 @@ const AddTocart = () => {
                     </div>    
                     <div className="flex justify-between !text-base font-medium">
                       <dt>Total</dt>
-                      <dd>৳ {selectedProduct.price + 50}</dd>
+                      <dd>৳ {parseFloat(selectedProduct.price) + 50}</dd>
                     </div>
                   </dl>
 
@@ -199,7 +208,7 @@ const AddTocart = () => {
 
                   <div className="flex justify-end">
                     <button  
-                      className="block rounded hover:bg-[#FFD4D8] px-5 py-3 text-sm text-gray-600 transition bg-[#AEDFF7]"
+                      className="text-sky-500 px-8 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] py-1 lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
                     >
                       Checkout
                     </button>
@@ -207,9 +216,7 @@ const AddTocart = () => {
                 </div>
       }
               </div>
-            </div>
-        </div>
-
+</div>
       </div>
     );
 };

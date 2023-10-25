@@ -8,17 +8,18 @@ const MainLayout = () => {
      const location = useLocation();
     
     const noFooter = location.pathname.includes('login') || location.pathname.includes('register') || location.pathname.includes('waitingVerification') || location.pathname.includes('resetPass');
-    const noHeader = location.pathname.includes('waitingVerification') || location.pathname.includes('resetPass');
+    const noHeader = location.pathname.includes('waitingVerification') || location.pathname.includes('resetPass') || location.pathname.includes('login') || location.pathname.includes('register');
     return (
-        <>
+        <div className="font-Lato">
            {noHeader || <Navbar></Navbar>}
             <Outlet></Outlet>
-            <MessengerCustomerChat
+            <div id="fb-customer-chat" className="fb-customerchat">
+            <MessengerCustomerChat 
                 pageId={pageId}
                 appId={appId} />
-               
+            </div>   
            {noFooter || <Footer></Footer>}
-        </>
+        </div>
     );
 };
 

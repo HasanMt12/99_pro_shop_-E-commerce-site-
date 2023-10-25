@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import RegisterForm from "./RegisterForm";
+import { GiPlainCircle } from 'react-icons/gi';
 
 const Registration = () => {
  
@@ -8,9 +10,9 @@ const Registration = () => {
         style={{backgroundImage:`url("https://i.ibb.co/pztsXFL/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         <div className="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-8">
-          <div className="flex flex-col items-center justify-between xl:flex-row">
-            <div className="w-full max-w-xl mb-12 xl:pr-16 xl:mb-0 xl:w-7/12">
-              <h2 data-aos="fade-up" className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-black sm:text-4xl sm:leading-none">
+          <div className="flex flex-col items-center justify-between lg:flex-row">
+            <div className="w-full max-w-xl mb-12  hidden lg:block xl:pr-16 xl:mb-0 xl:w-7/12">
+              <h2 className="max-w-lg mb-6 px-4 rounded-lg text-pink-400 bg-sky-100/70 my-2 tracking-wide font-[Montserrat] font-sans text-3xl font-bold  sm:text-4xl sm:leading-none">
                 Fast Delivery At Your <br className="hidden md:block" />
                 Door-step!
               </h2>
@@ -42,7 +44,12 @@ const Registration = () => {
                     height="24"
                   />
                 </svg>
-                <div data-aos="fade-left" className="relative bg-white bg-opacity-75 rounded shadow-2xl p-7 sm:p-10">
+                <div  className="relative bg-white bg-opacity-75 rounded shadow-2xl lg:p-7 md:p-4 p-2">
+               <Link to="/"><div className="bg-sky-100/60 flex justify-between lg:mx-8 md:mx-4 mx-2  py-1 rounded-2xl items-center lg:px-8 md:px-4 px-1"> 
+                  <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                    <h2 className="font-medium tracking-wide  mx-6 text-md text-pink-500  font-[Montserrat]"> Back to Home</h2>
+                  <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                </div></Link> 
                   <RegisterForm></RegisterForm>
                 </div>
               </div>

@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat+Alternates&family=Poppins&display=swap');
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -9,6 +11,7 @@
 
 
 }
+
 
 
 
@@ -23,8 +26,52 @@ body {
   grid-gap: 4px;
   grid-template-columns: repeat(5, minmax(0, 1fr));
 
-  @media (max-width:768px) {
+
+  @media (min-width: 600px) and (max-width: 1180px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (max-width:600px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+}
+
+
+.main-slider .image-layer {
+  @apply transition-transform duration-[3500ms] ease-in-out min-h-[200px];
+}
+
+.main-slider .swiper-slide-active .image-layer {
+  @apply scale-150 z-10;
+}
+
+.main-slider .image-layer::before {
+  @apply absolute top-0 left-0 bottom-10 right-0 content-[''] z-0;
+}
+
+
+/* Media query for smaller devices, e.g., mobile phones */
+@media (max-width: 768px) {
+  .main-slider .image-layer {
+    @apply min-h-[150px];
+    /* Adjust the height for smaller devices */
+  }
+
+  .main-slider .swiper-slide-active .image-layer {
+    @apply scale-125;
+    /* Adjust the scale for smaller devices */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-slider .image-layer {
+    @apply min-h-[180px];
+    /* Adjust the height for medium-sized devices */
+  }
+
+  .main-slider .swiper-slide-active .image-layer {
+    @apply scale-125;
+    /* Adjust the scale for medium-sized devices */
+  }
 }

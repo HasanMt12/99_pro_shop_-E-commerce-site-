@@ -5,7 +5,7 @@ const useVisitor = email => {
     const [isVisitorLoading, setIsVisitorLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/visitor/${email}`)
+            fetch(`https://99-pro-shop-server.vercel.app/users/visitor/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

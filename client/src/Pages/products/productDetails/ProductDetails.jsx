@@ -10,7 +10,8 @@ import { Rating } from "@smastrom/react-rating";
 import ProductDescription from "./ProductDescription";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-
+import { BiImageAdd } from 'react-icons/bi';
+import { GiPlainCircle } from 'react-icons/gi';
 const ProductDetails = () => {
     const productDetails = useLoaderData()
     const {user} = useContext(AuthContext)
@@ -126,17 +127,17 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
         <ScrollToTop>
         <div className="bg-sky-50/80">
                <div className="2xl:container mb-2 2xl:mx-auto lg:py-8 lg:px-16 md:py-6 md:px-4 py-5 px-2 ">
-            <div className=" flex justify-center items-start lg:flex-row  flex-col gap-8">
+            <div className=" flex justify-center items-start lg:flex-row  flex-col gap-8 ">
                 {/* <!-- Description Div --> */}
                 <ProductDescription 
                    productDetails={productDetails}
                 > </ProductDescription>
 
     {/* <!-- Preview Images Div For larger Screen--> */}
-
-                <div className="w-full lg:h-[30rem] sm:w-96 md:w-11/12 md:mx-auto bg-sky-50 p-4 shadow-sm rounded-lg shadow-sky-300 lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
+                
+                <div className="w-full bg-sky-100 lg:h-[30rem] sm:w-96 md:w-11/12 md:mx-auto  p-4 shadow-sm rounded-lg shadow-sky-300 lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
                    
-                    <div className=" w-full mx-auto lg:w-6/12 carousel-container">
+                    <div className=" w-full  mx-auto lg:w-6/12 carousel-container">
                         <Carousel  showArrows={true}  axis="horizontal" showThumbs={true}>
                         <div>
                             <img src={photo} />
@@ -150,11 +151,16 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                 </div>
             </div>
 
-             <div className="flex justify-center items-star  lg:flex-row flex-col gap-8">
+             <div className="flex justify-center items-star  lg:flex-row flex-col gap-8 ">
     {/* <!-- user Review show Div --> */}
                
-                <div className="mt-20 h-[30rem] overflow-y-scroll bg-sky-100/50  px-4  w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-8/12 items-center">
-                 <div className="text-sky-500/80 text-md font-semibold p-4 sticky top-0 bg-sky-100 mb-4">Users review in this product</div>
+                <div className="mt-10 h-[30rem] overflow-y-scroll bg-sky-100/50  px-4  w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-8/12 items-center">
+                <div className="bg-sky-100/60 flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500">Users review in this product</h2>
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                      </div>
+
                  { data?.map((userData) =>(
 
                     <div  key={userData._id} 
@@ -191,7 +197,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                 {data.length === 0 && <div className="flex justify-center items-center text-sky-500/80">
                     <div>
                       <h2>No review In this product</h2>
-                      <h2 >Your Feedback Matters – <span className="text-pink-400/80">Share Your Opinions or Inquiries</span></h2>
+                      <h2 >Your Feedback Matters – <span className="text-pink-500">Share Your Opinions or Inquiries</span></h2>
                     </div>
                     </div> }
                   
@@ -200,12 +206,16 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
               
      {/* <!-- post a review --> */}
                 <div className=" w-full sm:w-96 md:w-11/12 md:mx-auto  lg:w-4/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
-                   <div className="w-full px-2 py-8 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                   <div className="w-full px-2 py-8 sm:px-6 lg:px-8 lg:py-8 mx-auto">
                     <div className="mx-auto max-w-2xl">
                         <div className="text-center">
-                        <h2 className="text-xl text-pink-500 font-bold sm:text-3xl ">
-                            Post a Review 
-                        </h2>
+                        
+                        <div className="bg-sky-100/60 flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500">Rate and Review</h2>
+                        <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+                      </div>
+
                         </div>
     {/* review post form */}
                         <div className="mt-1 p-2 relative z-1 bg-sky-50 border rounded-xl sm:mt-10 md:p-10 ">
@@ -227,8 +237,9 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                                <div className="mt-6 grid">
                              <div className="flex items-start justify-center mb-2">
                                 <label htmlFor="dropzone-file"  className="flex flex-col items-center justify-center w-full h-[3rem] border-2 border-sky-200 rounded-lg cursor-pointer hover:bg-sky-100 bg-sky-50">
-                                <div className="flex flex-col items-center justify-center pt-2 pb-2 ">
-                                <h2 className="text-pink-500/80 font-semibold text-sm">Upload a Image</h2>
+                                <div className="flex  items-center justify-center pt-2 pb-2 gap-2 ">
+                                <h2 className="text-pink-500 font-medium text-sm">Upload</h2>
+                                <BiImageAdd className="text-pink-500 "/>
                                 </div>
                                 <input
                                 id="dropzone-file"
@@ -237,6 +248,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                                 onChange={handleImageChange}
                                 className="hidden"
                                 />
+                                
                             </label>
                             </div>
                             {selectedImage && (

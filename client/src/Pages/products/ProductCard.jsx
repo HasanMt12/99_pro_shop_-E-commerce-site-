@@ -6,10 +6,11 @@ import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const ProductCard = ({ product }) => {
   const { photo, name, price, verification, _id } = product;
-
+  console.log(product)
   const [wishlist, setWishlist] = useState([]);
   const { user } = useContext(AuthContext);
   const [cart, refetch] = useCart();
@@ -34,6 +35,8 @@ const ProductCard = ({ product }) => {
     dbWishlist.email = user?.email;
     dbWishlist.color = "pink";
     delete dbWishlist._id;
+    
+
 
     fetch("https://99-pro-shop-server.vercel.app/wishlist", {
       method: "POST",
@@ -134,7 +137,8 @@ const ProductCard = ({ product }) => {
   };
   return (
     <>
-       <div
+      
+      <div
         className="my-2 mx-2 p-2 bg-white border-b shadow-md shadow-[#e9b0c6] rounded-lg border-[#e25a8e] hover:border-[#5ab9e2] hover:border-b relative block overflow-hidden"
       >
         <img
@@ -146,15 +150,13 @@ const ProductCard = ({ product }) => {
 
         <div className="px-1 pt-2">
           <div className="flex justify-between items-start md:text-[0.6rem] text-[0.5rem] lg:text-[0.8rem]">
-            <h3
-              className="font-semibold text-[#c73f8a]"
-            >
+            <h3 className="font-semibold text-pink-500"  >
               {name}
             </h3>
             <button onClick={() => handleWishList(product)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                fill={fill.color ? fill.color : "pink"}
+                fill={fill.color? fill.color :"pink"} // Use the dbWishlist color
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="white"
@@ -168,6 +170,7 @@ const ProductCard = ({ product }) => {
               </svg>
             </button>
           </div>
+          
           <div className="flex justify-between items-center absolute lg:bottom-12 md:bottom-12 bottom-8">
             <p
               className="lg:mt-1   lg:text-sm mr-4  text-[10px] text-gray-700"
@@ -181,23 +184,23 @@ const ProductCard = ({ product }) => {
             {showButton && (
               <button
                 onClick={handleRedirectClick}
-                className="w-[50%] text-white rounded bg-[#82C1DA] lg:p-1 p-[3px] lg:text-sm text-xs font-medium transition hover:scale-105"
+                className="w-[48%] text-sky-500 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
               >
-                View details
+              Details
               </button>
             )}
 
             <button
               onClick={() => handleAddToCart(product)}
-              className="w-[50%] text-white rounded bg-[#f396ba] lg:p-1 p-[3px] lg:text-sm text-xs font-medium transition hover:scale-105"
+              className="w-[48%] text-pink-500  tracking-wide font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
             >
-              Add to Cart
+              <span className="flex justify-center items-center gap-2">put in<AiOutlineShoppingCart className="text-sm"/></span>  
             </button>
             
             {showDeleteButton && (
               <button
                 onClick={() => handleDelete(_id)}
-                className="w-[50%] text-white rounded bg-[#f396ba] lg:p-1 p-[3px] lg:text-sm text-xs font-medium transition hover:scale-105"
+                className="w-[48%] text-sky-500 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
               >
                 Delete
               </button>
@@ -205,6 +208,8 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
+     
+       
     </>
   );
 };
