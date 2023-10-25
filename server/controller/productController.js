@@ -2,18 +2,34 @@ const { ObjectId } = require("mongodb");
 const { ProductsCollections } = require("../collections/collections");
 
 //get all products
+
+
 const getAllProducts = async (req, res) => {
   try {
     const search = req.query.search;
-    const query = {name: { $regex: search, $options: 'i'}}
-    const allProducts = await ProductsCollections.find(query).toArray();
-    res.send(allProducts);
-   } catch (error) {
+    const page = parseInt(req.query.page) || 1; // Get the page number from the request, default to page 1 if not provided
+    const itemsPerPage = 10; // Number of products per page
+    const skip = (page - 1) * itemsPerPage; // Calculate the number of products to skip
+
+    const query = { name: { $regex: search, $options: 'i' } };
+    const totalProducts = await ProductsCollections.find(query).count(); // Get the total number of products
+
+    const allProducts = await ProductsCollections.find(query)
+      .skip(skip)
+      .limit(itemsPerPage)
+      .toArray();
+
+    res.send({
+      products: allProducts,
+      currentPage: page,
+      totalPages: Math.ceil(totalProducts / itemsPerPage),
+    });
+  } catch (error) {
     res.send({
       error: error.message,
     });
   }
-}
+};
 // get categories
 const getCategoryById = async (req, res) => {
   try {
