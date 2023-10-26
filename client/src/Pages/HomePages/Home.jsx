@@ -1,6 +1,5 @@
 import Hero from "./Hero";
 import { IoIosArrowForward } from "react-icons/io";
-import Banner from "./Banner";
 import Categories from "../categories/Categories";
 // import MobilCategories from "./categories/MobilCategories";
 import AllProducts from "../products/AllProducts/AllProducts";
@@ -10,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import CategoriesCard from "../categories/CategoriesCard";
 import { GiPlainCircle } from 'react-icons/gi';
 import System from "./BusinessSystem";
+import OfferSection from "./OfferSection";
 const Home = () => {
 
  const {data: categories = []  } = useQuery({
@@ -30,7 +30,7 @@ const Home = () => {
           <div className="w-[25%] bg-[#f3f6f8] h-[25rem]  rounded-md shadow-sm shadow-[#b4cbda] ">
               <ul className="flex  mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
               
-              <div className="bg-sky-100/60 flex justify-between mx-8 my-3 py-1 rounded-2xl items-center px-8"> 
+              <div className="bg-sky-100/60 shadow-lg flex justify-between mx-8 my-3 py-1 rounded-2xl items-center px-8"> 
                 <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
                   <h2 className="font-medium tracking-wide  mx-6 text-md text-pink-500  font-[Montserrat]"> Categories</h2>
                 <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
@@ -54,16 +54,18 @@ const Home = () => {
         </div>
       <div>
             <AllProducts ></AllProducts> 
+            <OfferSection></OfferSection> 
             <System></System>
-            <Banner className="lg:mx-[8rem"></Banner></div>
+           
+          </div>
       </div>
 
       <div className="lg:hidden block">
           <Hero></Hero>
           <CategoriesCard></CategoriesCard>
-          <AllProducts></AllProducts> 
+          <AllProducts></AllProducts>
+          <OfferSection></OfferSection> 
           <System></System>
-          <Banner ></Banner>
       </div>
     </>
   );

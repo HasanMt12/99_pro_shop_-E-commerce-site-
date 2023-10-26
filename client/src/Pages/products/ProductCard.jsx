@@ -36,7 +36,21 @@ const ProductCard = ({ product }) => {
     dbWishlist.color = "pink";
     delete dbWishlist._id;
     
+   // Check if the product is already in the cart
+    const isProductInWishlist = wishlist.some((item) => item. _id === product. _id);
 
+    if (isProductInWishlist) {
+      // Product is already in the cart, show a toast or alert
+      Swal.fire({
+        text: 'Product is already in your cart. Please check your cart 🛒.',
+        color: "#DC143C",
+        confirmButtonColor: '#4169E1',
+        confirmButtonText: 'My cart'}).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/cart', { state: { from: location } });
+        }
+      });
+    } else{
 
     fetch("https://99-pro-shop-server.vercel.app/wishlist", {
       method: "POST",
@@ -52,7 +66,7 @@ const ProductCard = ({ product }) => {
         toast.success("added successfully");
       })
       .catch((err) => toast.error(err.message));
-  };
+  }};
 
   const handleAddToCart = () => {
     if (user && user.email) {
@@ -71,7 +85,15 @@ const ProductCard = ({ product }) => {
 
     if (isProductInCart) {
       // Product is already in the cart, show a toast or alert
-      toast.error('Product is already in your cart. Please check your cart.');
+      Swal.fire({
+        text: 'Product is already in your cart. Please check your cart 🛒.',
+        color: "#DC143C",
+        confirmButtonColor: '#4169E1',
+        confirmButtonText: 'My cart'}).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/cart', { state: { from: location } });
+        }
+      });
     } else {
 
       fetch('https://99-pro-shop-server.vercel.app/cart', {
@@ -93,14 +115,13 @@ const ProductCard = ({ product }) => {
       }
     } else {
       Swal.fire({
-        title: 'Please login First',
+        text: 'Please login First',
         icon: 'warning',
         iconColor: "#00E0FF",
-        width: "25%",
-        color: "#87CEEB",
+        color: "#DC143C",
         showCancelButton: true,
-        confirmButtonColor: '#00E0FF',
-        cancelButtonColor: '#FFC0CB',
+        confirmButtonColor: '#4169E1',
+        cancelButtonColor: '#DC143C',
         confirmButtonText: 'Login now!'
       }).then((result) => {
         if (result.isConfirmed) {
@@ -184,7 +205,7 @@ const ProductCard = ({ product }) => {
             {showButton && (
               <button
                 onClick={handleRedirectClick}
-                className="w-[48%] text-sky-500 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
+                className="w-[48%] text-[#333333] font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
               >
               Details
               </button>
@@ -192,9 +213,9 @@ const ProductCard = ({ product }) => {
 
             <button
               onClick={() => handleAddToCart(product)}
-              className="w-[48%] text-pink-500  tracking-wide font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
+              className="w-[48%] text-[#333333]   font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
             >
-              <span className="flex justify-center items-center gap-2">put in<AiOutlineShoppingCart className="text-sm"/></span>  
+              <span className="flex justify-center items-center gap-2">putin<AiOutlineShoppingCart className="text-sm"/></span>  
             </button>
             
             {showDeleteButton && (

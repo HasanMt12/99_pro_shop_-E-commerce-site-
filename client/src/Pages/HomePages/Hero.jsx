@@ -34,12 +34,12 @@ const Hero = () => {
           <SwiperSlide className="relative">
                 <Link to="https://www.facebook.com/groups/1320450522017680" target="_blank">
                     <div className="absolute image-layer tracking-wide font-[Montserrat] flex flex-col gap-3 top-[65%] left-[20%] z-10 text-white">
-                    <div className="bg-sky-100/60 flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
-                        <h2 className="font-medium text-sm text-pink-500">buy anything at a cheap rate , follow</h2>
+                    <div className="bg-sky-100/60 shadow-lg flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
+                        <h2 className="font-medium lg:text-sm md:text-xs text-[10px] text-pink-500">buy anything at a cheap rate , follow</h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm" />
                     </div>
-                    <div className="bg-sky-100/60 flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
-                        <h2 className="font-medium text-sm text-pink-500">Our Page <a href="https://www.facebook.com/groups/1320450522017680" target="blank" >99pro</a> and Enjoy the shopping</h2>
+                    <div className="bg-sky-100/60 shadow-lg flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
+                        <h2 className="font-medium lg:text-sm md:text-xs text-[10px] text-pink-500">Our Page <a href="https://www.facebook.com/groups/1320450522017680" target="blank" >99pro</a> and Enjoy the shopping</h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm" />
                     </div>
                     </div>
@@ -52,11 +52,11 @@ const Hero = () => {
               <SwiperSlide className="relative">
                 <Link to="/categories/BeautyProducts">
                     <div className="absolute image-layer tracking-wide font-[Montserrat] flex flex-col gap-3 top-[65%] left-[20%] z-10 text-white">
-                    <button className="bg-sky-50 w-[4rem] text-sm border-sky-500 text-pink-500 border-b-2 rounded-b-md">
+                    <button className="bg-sky-50 shadow-lg w-[3.5rem] text-xs px-2 border-sky-500 text-pink-500 border-b-2 rounded-b-md">
                         Explore
                     </button>
-                    <div className="bg-sky-100/60 flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
-                        <h2 className="font-medium text-md text-pink-500">Our beauty Product Collection</h2>
+                    <div className="bg-sky-100/60 shadow-lg flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
+                        <h2 className="font-medium lg:text-sm md:text-xs text-[10px] text-pink-500">Our beauty Product Collection</h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm" />
                     </div>
                     </div>
@@ -69,11 +69,11 @@ const Hero = () => {
               <SwiperSlide className="relative">
                 <Link to="/categories/BabyProduct">
                     <div className="absolute image-layer tracking-wide font-[Montserrat] flex flex-col gap-3 top-[65%] left-[20%] z-10 text-white">
-                    <button className="bg-sky-50 w-[4rem] text-sm border-sky-500 text-pink-500 border-b-2 rounded-b-md">
+                    <button className="bg-sky-50 shadow-lg  w-[3.5rem] text-xs px-2 border-sky-500 text-pink-500 border-b-2 rounded-b-md">
                         Explore
                     </button>
-                    <div className="bg-sky-100/60 flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
-                        <h2 className="font-medium text-md text-pink-500">Our Baby Product Collection</h2>
+                    <div className="bg-sky-100/60 shadow-lg flex justify-between rounded-2xl gap-2 items-center lg:px-2 md:px-2 px-2">
+                        <h2 className="font-medium lg:text-sm md:text-xs text-[10px] text-pink-500">Our Baby Product Collection</h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm" />
                     </div>
                     </div>

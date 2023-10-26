@@ -21,7 +21,7 @@ const WaitingEmailVerification = () => {
 
     return (
        <div className="overflow-hidden h-screen"
-        style={{backgroundImage:`url("https://i.ibb.co/pztsXFL/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }} >
+        style={{backgroundImage:`url("https://i.ibb.co/JFWNKMn/bg-min-1.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }} >
           <div  className="flex justify-center items-cent rounded p-7 sm:p-3">
             <div className="relative bg-white bg-opacity-75 rounded shadow-2xl lg:px-[6rem] md:px-[4rem] px-[2rem] pt-2 pb-20" >
                 <h2 className="text-pink-600 mb-4 lg:text-lg text-md ">Please verify your Email first </h2> 

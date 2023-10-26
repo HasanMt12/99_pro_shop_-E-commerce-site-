@@ -20,11 +20,15 @@ import Offer from "../components/Shared/Offer";
 import WaitingEmailVerification from "../Auth/WaitingEmailVerification";
 import ResetPassword from "../Auth/ResetPassword";
 import SecureRoute from "./SecureRoute";
-import MyAccount from "../Pages/My account/MyAccount";
+import MyAccount from "../Pages/MyAccount/MyAccount";
 import ProductDetails from "../Pages/products/productDetails/ProductDetails";
 import PaymentSuccess from "../Pages/Payment/PaymentSuccess";
 import PaymentFail from "../Pages/Payment/PaymentFail";
 import AdminRoute from "./AdminRoute/AdminRoute";
+
+import UserLayout from "../Layouts/UserLayout";
+import MyOrder from "../Pages/MyAccount/MyOrder";
+import MyWishlist from "../Pages/MyAccount/MyWishlist";
 
 
 const router = createBrowserRouter([
@@ -64,7 +68,7 @@ const router = createBrowserRouter([
         element: <SecureRoute><Login></Login></SecureRoute>
       },
       {
-        path: "/myAccount",
+        path: "/user-account",
         element: <MyAccount></MyAccount>
       },
       {
@@ -127,16 +131,24 @@ const router = createBrowserRouter([
         
       ]
     },
-    // {
-    //   path: '/userProfile',
-    //   element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>, 
-    //   children: [
-    //       {
-    //         path: "/dashboard",
-    //         element: <DashboardHome></DashboardHome>
-    //       },
-    //   ]
-    // } 
+    {
+      path: '/user-account',
+      element: <PrivateRoute><UserLayout></UserLayout></PrivateRoute>, 
+      children: [
+          {
+            path: "/user-account",
+            element: <MyAccount></MyAccount>
+          },
+          {
+            path: "/user-account/user-order",
+            element: <MyOrder></MyOrder>
+          },
+          {
+            path: "/user-account/user-wishlist",
+            element: <MyWishlist></MyWishlist>
+          },
+      ]
+    } 
     
  
   

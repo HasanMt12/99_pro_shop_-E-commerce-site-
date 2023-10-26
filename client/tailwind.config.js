@@ -9,7 +9,9 @@ export default {
     extend: {},
      fontFamily: {
       Ubuntu: ['Ubuntu', 'sans-serif'],
-     
+      Merriweather: ['Merriweather', 'serif'],
+      Lato: ['Lato', 'sans-serif'],
+      Montserrat: ['Montserrat Alternates', 'sans-serif']
     },
   },
 

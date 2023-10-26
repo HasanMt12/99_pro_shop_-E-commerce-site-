@@ -32,15 +32,15 @@ const Navbar = () => {
   const menuItems = (
     <Fragment>
       <Link to="/">
-        <li className="cursor-Pointer text-white text-[1.1rem] font-medium  hover:text-sky-400">
-          Shopping
+        <li className="cursor-Pointer text-sky-600 text-[1.1rem]   hover:border-sky-400 hover:border-b-2 border-b-[1px] border-[#87ceeb]">
+          Shop
         </li>
       </Link>
 
       <span className="relative inline-block ml-4">
         <Link to="/cart">
           {" "}
-          <AiOutlineShoppingCart className="cursor-Pointer   text-white font-semibold text-3xl  "></AiOutlineShoppingCart>
+          <AiOutlineShoppingCart className="cursor-Pointer hover:text-sky-600  text-white font-medium text-3xl  "></AiOutlineShoppingCart>
 
           <span className="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 animate-bounce font-bold text-[#333333] -translate-y-1/1  rounded-full">
             +{cart?.length || "0"}
@@ -51,7 +51,7 @@ const Navbar = () => {
       <span className="relative inline-block ml-4">
         <Link to="/wishlist">
           {" "}
-          <AiOutlineHeart className="cursor-Pointer  font-semibold text-white text-3xl rounded-lg  "></AiOutlineHeart>
+          <AiOutlineHeart className="cursor-Pointer hover:text-sky-600  font-medium text-white text-3xl rounded-lg  "></AiOutlineHeart>
 
           <span className="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 animate-bounce font-bold text-[#333333]  -translate-y-1/1  rounded-full">
             {data.length}
@@ -60,7 +60,7 @@ const Navbar = () => {
       </span>
 
        {user?.uid ? (
-        <div className="hs-dropdown lg:block hidden relative inline-flex [--placement:bottom-right]">
+        <div className="hs-dropdown lg:block md:block hidden relative inline-flex [--placement:bottom-right]">
           <button
             id="hs-dropdown-with-header"
             type="button"
@@ -83,15 +83,16 @@ const Navbar = () => {
             </div>
             <div className="mt-2 py-2 first:pt-0 last:pb-0">
               {isVisitor ? (
-                <a className="flex justify-center items-center gap-2 w-full text-sky-500 mb-2 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105 " href="">
+                <Link to="/user-account" className="flex justify-center items-center gap-2 w-full text-sky-500 mb-2 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105 " href="">
                   <BiSolidUserAccount />
                   <span>My Account</span>
-                </a>
+                </Link>
               ) : (
-                <a className="flex justify-center items-center gap-2 w-full text-sky-500 mb-2 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105 " href="#">
+                <Link to="/dashboard"> <div className="flex justify-center items-center gap-2 w-full text-sky-500 mb-2 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105 " >
                   <BiSolidDashboard className="text-[#f0d9e2]"></BiSolidDashboard>
                   <span>My Dashboard</span>
-                </a>
+                </div>
+                </Link>
               )}
               <button
                 onClick={handleLogOut}
@@ -117,10 +118,10 @@ const Navbar = () => {
   return (
     <>
 
-<header class="bg-[#87ceeb]  bg-opacity-60 sticky top-0 z-10 print:hidden">
-  <div class="mx-auto px-4 sm:px-6 lg:px-[8rem]">
-    <div class="flex lg:h-14 h-[2.6rem] items-center justify-between">
-      <div class="flex-1 md:flex md:items-center md:gap-12">
+<header className="bg-[#87ceeb]  bg-opacity-60 sticky top-0 z-10 print:hidden">
+  <div className="mx-auto px-4 sm:px-6 lg:px-[8rem]">
+    <div className="flex lg:h-14 h-[2.6rem] items-center justify-between">
+      <div className="flex-1 md:flex md:items-center md:gap-12">
          <a href="/"  className="inline-flex items-center -mb-2"  >
                 <div className="flex items-center justify-center overflow-hidden  rounded-full">
                   <img className="h-[1.8rem] w-[1.8rem] lg:h-[2.2rem] lg:w-[2.2rem] rounded-full" src={logo} />
@@ -128,16 +129,16 @@ const Navbar = () => {
           </a>
       </div>
 
-      <div class="md:flex md:items-center md:gap-12">
-        <nav aria-label="Global" class="hidden md:block">
-          <ul class="flex items-center gap-6 text-sm">
+      <div className="md:flex md:items-center md:gap-12">
+        <nav aria-label="Global" className="hidden md:block">
+          <ul className="flex items-center gap-6 text-sm">
             {menuItems}
           </ul>
         </nav>
 
-        <div class="flex items-center gap-2  lg:hidden">
+        <div className="flex items-center gap-2  lg:hidden">
         
-          <div class="flex md:hidden">
+          <div className="flex md:hidden">
           <div>
              {user?.uid? (
              <div className="hs-dropdown relative inline-flex [--placement:bottom-right] my-auto">
@@ -181,16 +182,16 @@ const Navbar = () => {
           )}
           </div>
           </div>
-          <div class="block md:hidden">
+          <div className="block md:hidden">
             <button  onClick={() => setIsMenuOpen(true)}
-              class="rounded bg-[#87ceeb]/90 p-1 text-pink-400/90 transition hover:text-pink-600/75"
+              className="rounded bg-[#87ceeb]/90 p-1 text-pink-400/90 transition hover:text-pink-600/75"
             >
              <HiMenuAlt1></HiMenuAlt1>
             </button>
               {isMenuOpen && (
-            <div class="absolute top-0 left-0 w-full z-40">
-              <div class="p-5 bg-[#87ceeb] border rounded shadow-sm">
-                <div class="flex items-center justify-between mb-4">
+            <div className="absolute top-0 left-0 w-full z-40">
+              <div className="p-5 bg-[#87ceeb]/90 border rounded shadow-sm">
+                <div className="flex items-center justify-between mb-4">
                   <div>
                      <a href="/"  className="inline-flex items-center"  >
                           <div className="flex items-center justify-center overflow-hidden rounded-full">
@@ -200,10 +201,10 @@ const Navbar = () => {
                   </div>
                   <div>
                     <button
-                      class="p-1 -mt-2 -mr-2 transition duration-200 rounded focus:bg-gray-200 focus:outline-none focus:shadow-outline "
+                      className="p-1 -mt-2 -mr-2 transition duration-200 rounded focus:bg-gray-200 focus:outline-none focus:shadow-outline "
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <svg class="w-4 text-gray-600" viewBox="0 0 24 24">
+                      <svg className="w-4 text-gray-600" viewBox="0 0 24 24">
                         <path
                           fill="currentColor"
                           d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
@@ -213,36 +214,36 @@ const Navbar = () => {
                   </div>
                 </div>
                 <nav>
-                  <ul class="space-y-4">
+                  <ul className="space-y-4">
                       
                     <li>
                       <Link to="/"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Home
                       </Link>
                     </li>
                     {isVisitor?(
                     <li>
-                      <a
-                        href="/myAccount"
+                      <Link
+                        to="/user-account"
                         aria-label="Our product"
                         title="Our product"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         My Account
-                      </a>
+                      </Link>
                     </li>
                     ):(
                       <li>
-                      <a
-                        href="/dashboard"
+                      <Link
+                        to="/dashboard"
                         aria-label="Our product"
                         title="Our product"
-                        class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
                         Dashboard
-                      </a>
+                      </Link>
                     </li>
                     )
                     }

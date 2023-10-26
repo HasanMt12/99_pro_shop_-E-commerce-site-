@@ -14,7 +14,7 @@ const AllProducts = () => {
     const { data: allProduct = { products: [], currentPage: 1, totalPages: 1 }, refetch, isLoading } = useQuery({
         queryKey: ['allProduct', search, currentPage], // Add search and currentPage to the queryKey
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allProducts?search=${search}&page=${currentPage}`);
+            const res = await fetch(`https://99-pro-shop-server.vercel.app/allProducts?search=${search}&page=${currentPage}`);
             const data = await res.json();
             return data;
         },
@@ -47,12 +47,12 @@ const AllProducts = () => {
     
     return (
       <ScrollToMiddle>
-        <div className="mt-10 lg:mx-[8rem] rounded-md shadow-sm shadow-[#b4cbda] bg-[#f3f6f8]">
-            <div className="flex justify-between items-center  px-2 lg:mx-0 mx-2 lg:text-lg md:text-md text-sm">
-            <div className="bg-sky-100/60 flex justify-between gap-1 my-2 py-1 rounded-2xl items-center lg:px-8 md:px-2 px-2 lg:w-[16rem] md:w-[15rem] w-[11rem]"> 
-                <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-                  <h2 className="font-medium  tracking-wide font-[Montserrat]  lg:text-md md:text-sm text-xs text-pink-500">Feature Product</h2>
-                <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+        <div className="mt-10 py-3 lg:mx-[8rem] rounded-md shadow-sm shadow-[#b4cbda] bg-[#f3f6f8]">
+            <div className="flex justify-between items-center  px-2 lg:mx-0 mx-2 lg:text-lg md:text-md text-sm gap-2">
+            <div className="bg-sky-100/60 shadow-lg flex justify-between gap-1 my-2 lg:py-2 md:py-2 py-1 rounded-2xl items-center lg:px-8 md:px-2 px-1 lg:w-[16rem] md:w-[15rem] w-[11rem]"> 
+                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-[10px]"/>
+                  <h2 className="font-medium  tracking-wide font-[Montserrat]  lg:text-md md:text-sm text-[10px] text-pink-500">Feature Product</h2>
+                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-[10px]"/>
               </div>
 
              {/* search input */}
@@ -63,15 +63,15 @@ const AllProducts = () => {
             ref={searchRef}
             placeholder="Search... "
             onBlur={handleInputChange}
-            className="lg:p-[0.4rem] md:p-[0.2rem] p-[0.1rem] bg-sky-100/60 lg:pl-[2.5rem] md:pl-[2rem] pl-[1.5rem] block w-full placeholder-pink-400 placeholder-text-xs outline-pink-300 rounded-lg text-sm border-sky-400/60 border-[1px]"
+            className="lg:p-[0.4rem] lg:w-[16rem] md:w-[12rem] py-1 md:p-[0.2rem] p-[1px] bg-sky-100/60 lg:pl-[2.5rem] md:pl-[2rem] pl-[1.5rem] block w-full placeholder-pink-400 placeholder-text-xs outline-pink-300 rounded-lg  text-sm border-sky-400/60 border-[1px]"
           />
         ) : (
           <button onClick={toggleSearch} className="flex justify-center items-center p-1 cursor-pointer gap-1 rounded-md border-b-[1px] border-sky-400 bg-sky-100  text-sky-500">
           
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
             </svg> 
-            <span className="text-sm text-pink-500 tracking-wide">search here..</span>
+            <span className="lg:text-sm md:text-xs text-[10px] text-pink-500 tracking-wide mx-2">search here..</span>
           </button>
         )}
         {isSearchVisible && (

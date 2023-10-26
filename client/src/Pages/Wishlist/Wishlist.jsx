@@ -3,6 +3,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 import ProductCard from "../products/ProductCard";
 import Loader from "../../components/Shared/Loader";
 import { useQuery } from "@tanstack/react-query";
+import { GiPlainCircle } from "react-icons/gi";
 
 const Wishlist = () => {
   const { user } = useContext(AuthContext);
@@ -23,10 +24,11 @@ const Wishlist = () => {
         <Loader />
       ) : (
         <div className="w-11/12 mx-auto h-screen">
-          <h2 className="text-center lg:text-4xl text-xl font-bold my-3">Favorite Product</h2>
-          <p className="w-2/3 mx-auto mb-2 font-light text-slate-500 lg:mb-2 md:text-lg lg:text-xl text-slate-400 text-center">
-            Your Wishlist
-          </p>
+                <div className="bg-sky-100/60 shadow-lg mx-8 flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
+          <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+            <h2 className="font-medium tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500"> Your Wishlist: {wishlistData.length ? wishlistData.length : "0"}</h2>
+          <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
+        </div>
           <div className="productsDiv">
             {wishlistData.map((product) => (
               <ProductCard product={product} key={product.name} />

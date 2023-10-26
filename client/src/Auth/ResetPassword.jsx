@@ -32,7 +32,7 @@ const ResetPassword = () => {
   
     return (
         <div className="overflow-hidden h-screen"
-             style={{backgroundImage:`url("https://i.ibb.co/pztsXFL/bg.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}> 
+             style={{backgroundImage:`url("https://i.ibb.co/JFWNKMn/bg-min-1.jpg")`, backgroundSize: 'cover', backgroundPosition: 'center' }}> 
         <div className="flex justify-center items-center rounded mt-4">
           <div className="relative bg-white bg-opacity-75 rounded shadow-2xl lg:w-4/12 md:w-6/12 w-8/12 ">
             <div className="p-2 sm:p-7">

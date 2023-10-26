@@ -10,7 +10,7 @@ const System = () => {
                 </div>
                 <div className=" h-[54px] text-sm py-1">
                     <h2>FREE SHIPPING</h2>
-                    <p>For all order over 99$</p>
+                    <p>For all 3 products</p>
                 </div>
 
             </div>
@@ -19,8 +19,8 @@ const System = () => {
                     <img src="https://i.ibb.co/3dkr3k1/images-removebg-preview-1.png" className="w-[54px] h-[54px]"></img>
                 </div>
                 <div className=" h-[54px] text-sm py-1">
-                    <h2>FREE SHIPPING</h2>
-                    <p>For all order over 99$</p>
+                    <h2>DELIVERY ON TIME</h2>
+                    <p>If good have problems</p>
                 </div>
 
             </div>
@@ -29,8 +29,8 @@ const System = () => {
                     <img src="https://i.ibb.co/4Rmn3YH/payment-removebg-preview.png"  className="w-[54px] h-[54px]"></img>
                 </div>
                 <div className=" h-[54px] text-sm py-1">
-                    <h2>FREE SHIPPING</h2>
-                    <p>For all order over 99$</p>
+                    <h2>SECURE PAYMENT</h2>
+                    <p>100% secure payment</p>
                 </div>
 
             </div>

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { Link } from "react-router-dom";
 
-const DashboardNavbar = () => {
+const UserNavbar = () => {
     const { user, logOut } = useContext(AuthContext);
 
    const handleLogOut = () => {
@@ -56,4 +56,4 @@ const DashboardNavbar = () => {
     );
 };
 
-export default DashboardNavbar;
+export default UserNavbar;
