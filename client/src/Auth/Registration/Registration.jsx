@@ -47,7 +47,7 @@ const Registration = () => {
                 <div  className="relative bg-white bg-opacity-75 rounded shadow-2xl lg:p-7 md:p-4 p-2">
                <Link to="/"><div className="bg-sky-100/60 shadow-lg flex justify-between lg:mx-8 md:mx-4 mx-2  py-1 rounded-2xl items-center lg:px-8 md:px-4 px-1"> 
                   <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-                    <h2 className="font-medium tracking-wide  mx-6 text-md text-pink-500  font-[Montserrat]"> Back to Home</h2>
+                    <h2 className="font-medium tracking-wide  mx-6 text-md text-pink-400  font-[Montserrat]"> Back to Home</h2>
                   <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
                 </div></Link> 
                   <RegisterForm></RegisterForm>

@@ -3,15 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&family=Caveat&family=Merriweather&family=Merriweather+Sans&family=Montserrat&family=Montserrat+Alternates&family=Open+Sans&family=Overpass&family=PT+Sans&family=Poppins:ital,wght@0,500;1,500&family=Roboto:ital,wght@1,100&family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat+Alternates&family=Poppins&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-
-
-
-
 
 body {
   margin: 0;

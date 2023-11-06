@@ -1,6 +1,8 @@
 import { SiFacebook} from "react-icons/si";
-
+import comingSoon from '/coming-Soon-min.jpg'
 import { Link } from 'react-router-dom';
+
+
 const Offer = () => {
     return (
           
@@ -16,7 +18,7 @@ const Offer = () => {
         </svg>
         <img
           className="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
-          src="https://i.ibb.co/LzjSS6T/comin-Soon.jpg"
+          src={comingSoon}
           alt=""
         />
       </div>
@@ -24,7 +26,7 @@ const Offer = () => {
         <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
           
           <h2 className = "mb-5 font-sans text-3xl font-bold tracking-tight text-sky-500 sm:text-4xl sm:leading-none" >
-           <span className="text-pink-500">Coming Soon:</span>
+           <span className="text-pink-400">Coming Soon:</span>
            <br></br>  Irresistible Deals Await!
           </h2>
           <h2 className= "mb-5 font-sans text-lg font-semibold tracking-tight text-sky-700 sm:text-2xl sm:leading-none" >
@@ -32,9 +34,8 @@ const Offer = () => {
           </h2>
 
            <button 
-          style={{boxShadow:"0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)"}}
-            className='flex text-[#EEF2F5] justify-center items-center transition duration-200 ease-in-out transform lg:w-[8rem] lg:h-[3.4rem] w-[5rem] h-[2.5rem] border-b-4 border-[#df81a5]  bg-gradient-to-t from-[#cc5a86]  via-[#EA0F62] to-[#e2a1ba] rounded-2xl lg:text-[16px] text-[10px] hover:translate-y-px '>
-          <Link to='/' >Back to home </Link>
+            className='flex justify-center items-center my-2 gap-2 px-16 text-pink-400 mb-2 tracking-wide font-[Montserrat] bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-2 p-[3px] lg:text-sm md:text-xs text-xs font-medium transition hover:scale-105 '>
+           <Link to='/' >Back to home </Link>
           </button>
 
 

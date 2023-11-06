@@ -1,7 +1,6 @@
 import ProductCard from "./ProductCard";
 import { useLoaderData } from "react-router-dom";
 import CategoriesCard from "../../Pages/categories/CategoriesCard";
-import 'react-loading-skeleton/dist/skeleton.css';
 
 
 const ProductsSection = () => {

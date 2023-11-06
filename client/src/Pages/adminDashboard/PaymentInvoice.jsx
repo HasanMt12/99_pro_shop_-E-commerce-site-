@@ -48,7 +48,7 @@ const PaymentInvoice = () => {
     >
 
 
-      <span className="text-[10px] font-medium sm:text-xs">Make a Deliver </span>
+      <span className="text-xs font-medium sm:text-xs">Make a Deliver </span>
     </strong>
                     ) : (
                        <strong
@@ -69,7 +69,7 @@ const PaymentInvoice = () => {
         />
       </svg> 
 
-      <span className="text-[10px] font-medium sm:text-xs">Deliver</span>
+      <span className="text-xs font-medium sm:text-xs">Deliver</span>
     </strong>
                     )}
   </div> 

@@ -90,9 +90,9 @@ const MyWishlist = () => {
   return (
     <>
      <div className="bg-sky-100/60 shadow-lg flex justify-between gap-1 my-2 lg:py-2 md:py-2 py-1 rounded-2xl items-center lg:px-8 md:px-2 px-1 lg:w-[16rem] md:w-[15rem] w-[11rem]"> 
-                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-[10px]"/>
-                  <h2 className="font-medium  tracking-wide font-[Montserrat]  lg:text-md md:text-sm text-[10px] text-pink-500">My Wishlist</h2>
-                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-[10px]"/>
+                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-xs"/>
+                  <h2 className="font-medium  tracking-wide font-[Montserrat]  lg:text-md md:text-sm text-xs text-pink-400">My Wishlist</h2>
+                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-xs"/>
               </div>
          <div className="overflow-hidden">
                 <table className="min-w-full">
@@ -116,7 +116,7 @@ const MyWishlist = () => {
                             <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 <button
                                 onClick={() => handleAddToCart(product)}
-                                className="w-[48%] text-[#333333]   font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
+                                className="w-[48%] text-[#333333]   font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-xs font-medium transition hover:scale-105"
                                 >
                                 <span className="flex justify-center items-center gap-2">putin<AiOutlineShoppingCart className="text-sm"/></span>  
                                 </button>

@@ -157,7 +157,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                 <div className="mt-10 h-[30rem] overflow-y-scroll bg-sky-100/50  px-4  w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-8/12 items-center">
                 <div className="bg-sky-100/60 shadow-lg flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
                         <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500">Users review in this product</h2>
+                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-400">Users review in this product</h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
                       </div>
 
@@ -178,8 +178,8 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                         </div>
                         </div>
                         <div>
-                         <p className=" text-xs leading-4 text-pink-700 hover:underline hover:text-pink-500  ">{userData.postTime}</p>
-                         <p className=" text-xs leading-4 text-pink-700 hover:underline hover:text-pink-500  ">{userData.postDate}</p>
+                         <p className=" text-xs leading-4 text-pink-700 hover:underline hover:text-pink-400  ">{userData.postTime}</p>
+                         <p className=" text-xs leading-4 text-pink-700 hover:underline hover:text-pink-400  ">{userData.postDate}</p>
                         </div>
                        
                     </div>
@@ -197,7 +197,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                 {data.length === 0 && <div className="flex justify-center items-center text-sky-500/80">
                     <div>
                       <h2>No review In this product</h2>
-                      <h2 >Your Feedback Matters – <span className="text-pink-500">Share Your Opinions or Inquiries</span></h2>
+                      <h2 >Your Feedback Matters – <span className="text-pink-400">Share Your Opinions or Inquiries</span></h2>
                     </div>
                     </div> }
                   
@@ -212,7 +212,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                         
                         <div className="bg-sky-100/60 shadow-lg flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
                         <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500">Rate and Review</h2>
+                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-400">Rate and Review</h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
                       </div>
 
@@ -238,8 +238,8 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                              <div className="flex items-start justify-center mb-2">
                                 <label htmlFor="dropzone-file"  className="flex flex-col items-center justify-center w-full h-[3rem] border-2 border-sky-200 rounded-lg cursor-pointer hover:bg-sky-100 bg-sky-50">
                                 <div className="flex  items-center justify-center pt-2 pb-2 gap-2 ">
-                                <h2 className="text-pink-500 font-medium text-sm">Upload</h2>
-                                <BiImageAdd className="text-pink-500 "/>
+                                <h2 className="text-pink-400 font-medium text-sm">Upload</h2>
+                                <BiImageAdd className="text-pink-400 "/>
                                 </div>
                                 <input
                                 id="dropzone-file"
@@ -269,7 +269,7 @@ const url = `https://99-pro-shop-server.vercel.app/review/${_id}`;
                                 </div>
                             )}
                             {errors.image && (
-                                <span className="text-pink-500 text-base mt-1">
+                                <span className="text-pink-400 text-base mt-1">
                                 Please Upload at least One Image :) .
                                 </span>
                             )}

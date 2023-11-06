@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import SIngleCategoriesCard from "./SIngleCategoriesCard";
 import { Link } from "react-router-dom";
-
+import freeDelivery from '/free-Delivery.jpg'
+import bigDeal from '/bigDeal.jpg'
+import specialOffer from '/offer.jpg'
 
 const CategoriesCard = () => {
      const {data: categories = []  } = useQuery({
@@ -23,21 +25,21 @@ const CategoriesCard = () => {
             }
             <Link to='/offer'><div className=" bg-sky-50 cursor-pointer py-1 flex justify-center items-center">
                 <div>
-                    <img src="https://i.ibb.co/P4vYWjJ/bigDeal.jpg" className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover"/>
-                    <h2 className="text-center text-pink-500 lg:text-sm md:text-xs text-[8px]">Big deal</h2>
+                    <img src={bigDeal} className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover"/>
+                    <h2 className="text-center text-pink-400 lg:text-sm md:text-xs text-xs">Big deal</h2>
                 </div>
             </div></Link>
             
              <Link to='/offer'><div className="bg-sky-50 cursor-pointer py-1 flex justify-center items-center">
                 <div>
-                    <img src="https://i.ibb.co/fkfVSp7/free-Delivery.jpg" className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover"/>
-                    <h2 className="text-center text-pink-500 lg:text-sm md:text-xs text-[8px] lg:text-sm md:text-xs text-[8px]">Free delivery</h2>
+                    <img src={freeDelivery} className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover"/>
+                    <h2 className="text-center text-pink-400 lg:text-sm md:text-xs text-xs lg:text-sm md:text-xs text-xs">Free delivery</h2>
                 </div>
             </div></Link>
             <Link to='/offer'><div className="bg-sky-50 cursor-pointer py-1 flex justify-center items-center">
                 <div>
-                    <img src="https://i.ibb.co/3CGpxM3/offer.jpg" className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover"/>
-                    <h2 className="text-center text-pink-500 lg:text-sm md:text-xs text-[8px]">special Offer</h2>
+                    <img src={specialOffer} className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover"/>
+                    <h2 className="text-center text-pink-400 lg:text-sm md:text-xs text-xs">special Offer</h2>
                 </div>
             </div></Link> 
         

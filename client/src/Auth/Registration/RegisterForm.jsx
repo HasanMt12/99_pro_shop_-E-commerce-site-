@@ -194,7 +194,7 @@ const RegisterForm = () => {
                   </div>
               {/*submit <button*/}
                   <div className="mt-2 text-xs">
-                    <button className="w-full  text-pink-500 mb-2  tracking-wide font-[Montserrat] bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
+                    <button className="w-full  text-pink-400 mb-2  tracking-wide font-Montserrat bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-xs font-medium transition hover:scale-105"
                        type="submit"> Sign Up
                     </button>
                    

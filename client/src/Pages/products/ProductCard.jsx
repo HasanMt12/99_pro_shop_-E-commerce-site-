@@ -6,11 +6,10 @@ import useCart from "../../hooks/useCart";
 import Swal from "sweetalert2";
 import { toast } from "react-hot-toast";
 import { useQueryClient } from "@tanstack/react-query";
-import { AiOutlineShoppingCart } from 'react-icons/ai';
-
+import { AiOutlineShoppingCart , AiOutlineHeart} from 'react-icons/ai';
 const ProductCard = ({ product }) => {
   const { photo, name, price, verification, _id } = product;
-  console.log(product)
+console.log(product)
   const [wishlist, setWishlist] = useState([]);
   const { user } = useContext(AuthContext);
   const [cart, refetch] = useCart();
@@ -28,7 +27,7 @@ const ProductCard = ({ product }) => {
     navigate(`categories/product/${_id}`);
   };
 
-  const [fill, setFill] = useState(false);
+  // const [fill, setFill] = useState(false);
 
   const handleWishList = (product) => {
     const dbWishlist = { ...product };
@@ -61,9 +60,9 @@ const ProductCard = ({ product }) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        setFill(true);
+        // setFill(true);
         console.log(result);
-        toast.success("added successfully");
+        toast.success("added to wishlist successfully");
       })
       .catch((err) => toast.error(err.message));
   }};
@@ -135,6 +134,7 @@ const ProductCard = ({ product }) => {
 
   const handleDelete = async (id) => {
     const proceed = window.confirm('Are you sure, you want to cancel this order');
+    
     if (proceed) {
       try {
         const response = await fetch(`https://99-pro-shop-server.vercel.app/wishlist/${id}`, {
@@ -168,44 +168,29 @@ const ProductCard = ({ product }) => {
           alt=""
           className="h-[50%]  w-full cursor-pointer object-cover transition ease-in-out delay-250 hover:-translate-y-1 hover:scale-110  sm:h-[50%]"
         />
-
         <div className="px-1 pt-2">
           <div className="flex justify-between items-start md:text-[0.6rem] text-[0.5rem] lg:text-[0.8rem]">
-            <h3 className="font-semibold text-pink-500"  >
+            <h3 className="font-semibold text-pink-400"  >
               {name}
             </h3>
-            <button onClick={() => handleWishList(product)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill={fill.color? fill.color :"pink"} // Use the dbWishlist color
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="white"
-                className="lg:w-6 lg:h-6 md:h-4 md:w-4 h-3 w-3"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                />
-              </svg>
-            </button>
+            <AiOutlineHeart className="text-pink-400 cursor-pointer lg:text-lg md:text-md text-md hover:font-bold"
+             onClick={() => handleWishList(product)} title="added to wishlist"></AiOutlineHeart>
           </div>
           
           <div className="flex justify-between items-center absolute lg:bottom-12 md:bottom-12 bottom-8">
             <p
-              className="lg:mt-1   lg:text-sm mr-4  text-[10px] text-gray-700"
+              className="lg:mt-1   lg:text-sm mr-4  text-xs text-gray-700"
             >
-              <span className="text-green-500 font-bold">৳ {price}</span>
+              <span className="text-sky-400 font-bold">৳ {price}</span>
             </p>
-            <p>{verification && <h2 className="text-red-300/100 line-through">stock out</h2>}</p>
+            <p>{verification && <h2 className="text-pink-400 line-through">stock out</h2>}</p>
           </div>
 
           <div className="flex justify-between items-center w-[95%] gap-1 inset-x-0 absolute lg:bottom-[5px] bottom-1 mx-auto">
             {showButton && (
               <button
                 onClick={handleRedirectClick}
-                className="w-[48%] text-[#333333] font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
+                className="w-[48%] text-[#333333] font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-xs transition hover:scale-105"
               >
               Details
               </button>
@@ -213,15 +198,15 @@ const ProductCard = ({ product }) => {
 
             <button
               onClick={() => handleAddToCart(product)}
-              className="w-[48%] text-[#333333]   font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
+              className="w-[48%] text-[#333333]   font-[Montserrat] bg-pink-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-xs font-medium transition hover:scale-105"
             >
-              <span className="flex justify-center items-center gap-2">putin<AiOutlineShoppingCart className="text-sm"/></span>  
+              <span className="flex justify-center items-center gap-1">put in<AiOutlineShoppingCart className="text-sm"/></span>  
             </button>
             
             {showDeleteButton && (
               <button
                 onClick={() => handleDelete(_id)}
-                className="w-[48%] text-sky-500 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
+                className="w-[48%] text-sky-500 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-xs transition hover:scale-105"
               >
                 Delete
               </button>

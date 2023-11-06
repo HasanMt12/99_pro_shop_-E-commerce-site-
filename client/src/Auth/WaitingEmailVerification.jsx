@@ -37,7 +37,7 @@ const WaitingEmailVerification = () => {
                      <Link className="flex justify-center items-center lg:text-lg text-md rounded-lg lg:p-3 p-2 lg:text-md text-sm text-[#207198] bg-[#dbe9f6] border-pink-400 hover:border-sky-500 border-b  py-2 cursor-pointer" to='/'>
                        <button className="text-sm text-[#207198] " >
                         Click here and happy shopping 
-                        </button> <BiSmile className="text-pink-500"></BiSmile> 
+                        </button> <BiSmile className="text-pink-400"></BiSmile> 
                     </Link>
                   }
             </div>

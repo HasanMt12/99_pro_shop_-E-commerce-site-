@@ -97,25 +97,25 @@ const ProductDescription = ({ productDetails }) => {
     <div className="lg:h-[30rem] bg-sky-100/60 p-4 shadow-sm rounded-lg shadow-sky-300 w-full sm:w-96 md:w-11/12 md:mx-auto lg:w-6/12 items-center">
       {/* Breadcrumb */}
       <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600">
-        Home <span className="text-pink-500"> / </span> {categoryId}{" "}
-        <span className="text-pink-500">/</span> {name}
+        Home <span className="text-pink-400"> / </span> {categoryId}{" "}
+        <span className="text-pink-400">/</span> {name}
       </p>
 
       {/* Product Name */}
-      <h2 className="font-semibold tracking-wide font-[Montserrat] lg:text-4xl text-3xl lg:leading-9 leading-7 text-pink-500 mt-4">
+      <h2 className="font-semibold tracking-wide font-[Montserrat] lg:text-4xl text-3xl lg:leading-9 leading-7 text-pink-400 mt-10">
         {name}
       </h2>
 
       {/* Reviews */}
       <div className="flex flex-row justify-between mt-5">
-        <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-pink-500 duration-100 cursor-pointer">
+        <p className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-pink-400 duration-100 cursor-pointer">
           22 reviews
         </p>
       </div>
 
       {/* Category */}
-      <div className="font-normal  lg:h-[6rem] text-base text-sky-500 leading-6  mt-7">
-      Product Category:  {categoryId}
+      <div className="font-normal  lg:h-[6rem] text-lg text-gray-600 leading-6  mt-7">
+      Product Category: <span className="text-sky-600">{categoryId}</span> 
       </div>
 
       {/* Price */}

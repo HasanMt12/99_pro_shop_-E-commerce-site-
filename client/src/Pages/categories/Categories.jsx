@@ -6,7 +6,7 @@ const Categories = ({category}) => {
    
     return (
         <Link to={`/categories/${categoryId}`}>
-        <li className = "cursor-pointer tracking-wide font-[Montserrat] hover:text-sky-500 hover:bg-sky-100/60  px-6 py-1  text-[0.9rem]  text-pink-500  text-start flex justify-between start gap-4 items-center" >
+        <li className = "cursor-pointer font-Montserrat hover:text-sky-500 hover:bg-sky-100/60  px-6 py-1  text-[0.9rem]  text-pink-500  text-start flex justify-between start gap-4 items-center" >
             {name}
              <IoIosArrowForward></IoIosArrowForward>
         </li>

@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Shared/Navbar";
 import Footer from "../components/Shared/Footer";
-import MessengerCustomerChat from 'react-messenger-customer-chat';
-const pageId = import.meta.env.VITE_IpageId;
-const appId = import.meta.env.VITE_appId;
+import Whatsapp from "../components/Whatsapp";
+// const pageId = import.meta.env.VITE_IpageId;
+// const appId = import.meta.env.VITE_appId;
 const MainLayout = () => {
      const location = useLocation();
     
@@ -13,11 +13,7 @@ const MainLayout = () => {
         <div className="font-Lato">
            {noHeader || <Navbar></Navbar>}
             <Outlet></Outlet>
-            <div id="fb-customer-chat" className="fb-customerchat">
-            <MessengerCustomerChat 
-                pageId={pageId}
-                appId={appId} />
-            </div>   
+             <Whatsapp></Whatsapp>
            {noFooter || <Footer></Footer>}
         </div>
     );

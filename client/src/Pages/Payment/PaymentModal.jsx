@@ -63,7 +63,7 @@ const PaymentModal = ({ product, modalStatus }) => {
               className="p-2 flex justify-end  right-1 transition duration-200 bg-sky-100 rounded-[100%] focus:outline-none focus:shadow-outline"
               onClick={() => modalStatus(false)}
             >
-              <svg className="w-5 text-pink-500" viewBox="0 0 24 24">
+              <svg className="w-5 text-pink-400" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
                   d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
@@ -170,7 +170,7 @@ const PaymentModal = ({ product, modalStatus }) => {
                             <input
                               value="submit"
                               type="submit"
-                              className="text-[#333333] font-[Montserrat] bg-sky-300/50 rounded border-sky-500 border-b-[1px] p-2 hover:border-pink-500  lg:text-sm md:text-xs text-[10px] transition hover:scale-105 cursor-pointer py-2 w-full"
+                              className="text-[#333333] font-[Montserrat] bg-sky-300/50 rounded border-sky-500 border-b-[1px] p-2 hover:border-pink-500  lg:text-sm md:text-xs text-xs transition hover:scale-105 cursor-pointer py-2 w-full"
                             />
                           </form>
                         </div>
@@ -234,7 +234,7 @@ const PaymentModal = ({ product, modalStatus }) => {
                             </div>
                             <input
                             onClick={()=>handleAlert()}
-                              className="text-[#333333] font-[Montserrat] bg-sky-300/50 rounded border-sky-500 border-b-[1px] p-2 hover:border-pink-500  lg:text-sm md:text-xs text-[10px] transition hover:scale-105 cursor-pointer py-2 w-full"
+                              className="text-[#333333] font-[Montserrat] bg-sky-300/50 rounded border-sky-500 border-b-[1px] p-2 hover:border-pink-500  lg:text-sm md:text-xs text-xs transition hover:scale-105 cursor-pointer py-2 w-full"
                               type="submit"
                               title="cash on delivery not started yet, banking payment please"
                               value="Submit"

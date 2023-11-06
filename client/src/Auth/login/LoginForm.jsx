@@ -139,7 +139,7 @@ const LoginForm = () => {
                   </div>
 
                   <div className="mt-4 mb-1 sm:mb-2">
-                    <button className="w-full text-pink-500 mb-2 tracking-wide font-[Montserrat] bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105 "
+                    <button className="w-full text-pink-400 mb-2 tracking-wide font-[Montserrat] bg-sky-100 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-lg md:text-md text-sm font-medium transition hover:scale-105 "
                        type="submit"> login
                     </button>
                    

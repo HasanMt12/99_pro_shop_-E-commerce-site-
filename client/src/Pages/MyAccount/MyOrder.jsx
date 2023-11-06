@@ -7,9 +7,9 @@ const MyOrder = () => {
             <h1 className="text-xl text-center ">User  <b className='text-sky-500'>Order History</b> Under Maintenance!</h1>
              <p className='text-center my-2'>Stay tuned for something amazing!!! 😊</p>
             <div className="bg-sky-100/60 shadow-lg flex justify-between gap-1 my-2 lg:py-2 md:py-2 py-1 rounded-2xl items-center lg:px-8 md:px-2 px-1 lg:w-[16rem] md:w-[15rem] w-[11rem]"> 
-                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-[10px]"/>
-                  <h2 className="font-medium  tracking-wide font-[Montserrat]  lg:text-md md:text-sm text-[10px] text-pink-500">My Orders</h2>
-                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-[10px]"/>
+                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-xs"/>
+                  <h2 className="font-medium  tracking-wide font-[Montserrat]  lg:text-md md:text-sm text-xs text-pink-400">My Orders</h2>
+                <GiPlainCircle className="text-[#B0DDEF] lg:text-sm md:text-xs text-xs"/>
               </div>
             <div className="flex flex-col">
     <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

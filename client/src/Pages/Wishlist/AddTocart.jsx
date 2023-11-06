@@ -77,7 +77,7 @@ const AddTocart = () => {
      const handleAlert =() => {
       Swal.fire({
         color: "#DC143C",
-        text:"Start by clicking the Pay button to select the items you desire, and then proceed to the checkout.",
+        text:"To get started, simply click the 'Pay' button to choose your desired items, and then proceed to the checkout",
         confirmButtonColor: '#4169E1',
         confirmButtonText: 'Ok i will Do! 😊'
      }) }
@@ -96,7 +96,7 @@ const AddTocart = () => {
     >
        <div className="bg-sky-100/60 shadow-lg mx-8 flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
           <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-            <h2 className="font-medium tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500"> Your Cart: {data.length ? data.length : "0"}</h2>
+            <h2 className="font-medium tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-400"> Your Cart: {data.length ? data.length : "0"}</h2>
           <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
         </div>
       <div className="flex justify-center items-start lg:px-8 lg:flex-row flex-col">
@@ -112,18 +112,18 @@ const AddTocart = () => {
                           />
 
                           <div>
-                            <h3 className="lg:text-sm md:text-xs text-[10px]  font-[Montserrat] text-pink-500">{product.name}</h3>
+                            <h3 className="lg:text-sm md:text-xs text-xs  font-[Montserrat] text-pink-400">{product.name}</h3>
 
-                            <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                            <dl className="mt-0.5 space-y-px text-xs text-gray-600">
                               <div>
-                                <dt className="inline lg:text-xs md:text-[10px] text-[8px] ">Delivery Time:</dt>
-                                <dd className="inline lg:text-xs md:text-[10px] text-[8px] ">2 Days</dd>
+                                <dt className="inline lg:text-xs md:text-xs text-xs ">Delivery Time:</dt>
+                                <dd className="inline lg:text-xs md:text-xs text-xs ">2 Days</dd>
                               </div>
                             </dl>
-                            <dl className="mt-0.5 space-y-px text-[10px] text-sky-600">
+                            <dl className="mt-0.5 space-y-px text-xs text-sky-600">
                               <div>
-                                <dt className="inline lg:text-xs md:text-[10px] text-[8px] ">Price: </dt>
-                                <dd className="inline lg:text-xs md:text-[10px] text-[8px] "> {product.price}</dd>
+                                <dt className="inline lg:text-xs md:text-xs text-xs ">Price: </dt>
+                                <dd className="inline lg:text-xs md:text-xs text-xs "> {product.price}</dd>
                               </div>
                             </dl>
                           </div>
@@ -163,7 +163,7 @@ const AddTocart = () => {
           <div className="mx-auto  border-x-2 lg:px-10 px-10 md:px-10 py-4 bg-sky-50/80 rounded-md  border-sky-500 pt-8">
           <div className="bg-sky-100/60 shadow-lg flex justify-between  my-2 py-1 rounded-2xl items-center lg:px-8 md:px-4 px-2"> 
                         <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-500"> Order summary </h2>
+                          <h2 className="font-medium  tracking-wide font-[Montserrat] lg:mx-6 md:mx-3 mx-2 lg:text-xl mdLtext-lg text-md  text-pink-400"> Order summary </h2>
                         <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
                       </div>
             {selectedProduct  && <>   
@@ -188,7 +188,7 @@ const AddTocart = () => {
                   <div className="flex justify-end">
                     <button  onClick={() => {selectedProduct 
                             setModalStatus(true);}} 
-                      className="text-sky-500 px-8 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] py-1 lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
+                      className="text-sky-500 px-8 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] py-1 lg:text-sm md:text-xs text-xs transition hover:scale-105"
                     >
                       Checkout
                     </button>
@@ -219,7 +219,7 @@ const AddTocart = () => {
                     <button  
                     onClick={()=>handleAlert()}
                     title="Start by clicking the 'Pay' button to select the items you desire, and then proceed to the checkout."
-                      className="text-sky-500 px-8 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] py-1 lg:text-sm md:text-xs text-[10px] transition hover:scale-105"
+                      className="text-sky-500 px-8 tracking-wide font-[Montserrat] bg-sky-50 rounded border-sky-500 border-b-[1px] py-1 lg:text-sm md:text-xs text-xs transition hover:scale-105"
                     >
                       Checkout
                     </button>

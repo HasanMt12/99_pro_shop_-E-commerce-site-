@@ -32,10 +32,10 @@ const Home = () => {
               
               <div className="bg-sky-100/60 shadow-lg flex justify-between mx-8 my-3 py-1 rounded-2xl items-center px-8"> 
                 <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
-                  <h2 className="font-medium tracking-wide  mx-6 text-md text-pink-500  font-[Montserrat]"> Categories</h2>
+                  <h2 className="font-medium mx-6 text-md text-pink-500  font-Montserrat"> Categories</h2>
                 <GiPlainCircle className="text-[#B0DDEF] text-sm"/>
               </div>
-              <Link to='/allProducts'> <li className= "cursor-pointer tracking-wide font-[Montserrat]  hover:text-sky-500 hover:bg-sky-100/60  px-6 py-1  text-[0.9rem]  text-pink-500  text-start flex justify-between start gap-4 items-center">
+              <Link to='/allProducts'> <li className= "cursor-pointer font-Montserrat  hover:text-sky-500 hover:bg-sky-100/60  px-6 py-1  text-[0.9rem]  text-pink-500  text-start flex justify-between start gap-4 items-center">
                   <h2>All product  </h2>
                   <IoIosArrowForward className=""></IoIosArrowForward>
                 </li> 

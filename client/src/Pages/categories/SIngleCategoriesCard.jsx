@@ -17,7 +17,7 @@ const SIngleCategoriesCard = ({category}) => {
         <div className="mx-auto">
                 <img src={imageUrl} className="lg:w-[8rem] lg:h-[8rem] md:w-[5.rem] md:h-[5.5rem] w-[4rem] h-[4rem] rounded-sm object-cover">
                 </img>
-                <h2 className="text-center text-pink-500 lg:text-sm md:text-xs text-[8px]">{categoryId}</h2>
+                <h2 className="text-center text-pink-400 lg:text-sm md:text-xs text-xs">{categoryId}</h2>
             </div>
         </div>
        

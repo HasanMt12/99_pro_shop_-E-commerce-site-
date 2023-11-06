@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Work+Sans&display=swap');
 #root {
 
   margin: 0;
@@ -5,8 +8,7 @@
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Work+Sans&display=swap');
+
 
 /* scrollbar */
 ::-webkit-scrollbar {

@@ -40,7 +40,7 @@ const UserNavbar = () => {
                     {user?.uid ? (
                       <>
                         <button onClick={handleLogOut}
-                          className="flex justify-center items-center gap-2 w-full text-pink-500  tracking-wide font-[Montserrat] bg-sky-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-[10px] font-medium transition hover:scale-105"
+                          className="flex justify-center items-center gap-2 w-full text-pink-400  tracking-wide font-[Montserrat] bg-sky-50 rounded border-pink-500 border-b-[1px] lg:p-1 p-[3px] lg:text-sm md:text-xs text-xs font-medium transition hover:scale-105"
                         >
                       log out
                         </button>

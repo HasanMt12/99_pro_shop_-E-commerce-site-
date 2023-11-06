@@ -37,7 +37,7 @@ const ResetPassword = () => {
           <div className="relative bg-white bg-opacity-75 rounded shadow-2xl lg:w-4/12 md:w-6/12 w-8/12 ">
             <div className="p-2 sm:p-7">
               <div className="text-center">
-                <h1 className="block lg:text-2xl md:text-lg text-md font-bold text-pink-500">Forgot password?</h1>
+                <h1 className="block lg:text-2xl md:text-lg text-md font-bold text-pink-400">Forgot password?</h1>
                 
               </div>
 
@@ -47,7 +47,7 @@ const ResetPassword = () => {
                   <div className="grid gap-y-4">
                     {/* reset input field */}
                     <div>
-                      <label htmlFor="email" className="block lg: text-md text-sm mb-2 text-pink-500">Your Email address</label>
+                      <label htmlFor="email" className="block lg: text-md text-sm mb-2 text-pink-400">Your Email address</label>
                       <div className="relative">
                         <input type="email" id="email" name="email" placeholder="Enter Your Email Here" className="flex justify-center  outline-none  w-full items-center lg:text-lg text-md rounded-lg lg:p-3 p-2 lg:text-md text-sm text-[#207198] bg-[#dbe9f6] border-pink-400 hover:border-sky-500 border-b placeholder:text-center   py-2 cursor-pointer" required aria-describedby="email-error"/>                    
                        </div>                     
