@@ -1,9 +1,8 @@
-# 99_pro_shop_-E-commerce-site-
 99_pro_shop (E-commerce website)
 
 ## Business Website Project
 Welcome to the Business Website Project repository! This project is a full-stack web application built using React, Firebase, Node.js, MongoDB, and other technologies. 
-It offers a wide range of features, including authentication, product management, user reviews, payment processing, and more. 
+It offers many features, including authentication, product management, Add to cart and wishlist, user reviews per Product, payment processing, Invoice, and more. 
 
 ## Table of Contents
 - Demo
@@ -27,6 +26,7 @@ Before you dive in, check out our live demo: [Business Website Demo](https://pro
 * Payment processing using SSL Commerz
 * Invoice generation with watermark logo
 * Admin dashboard for managing users and products
+* * Admin dashboard for managing order and wishlist
 * Secure and efficient server-side with Node.js and MongoDB
 * Error handling and following best practices
 ...
@@ -70,8 +70,18 @@ server - Run the application with this command:
 nodemon server.js
 ```
 
-## Admin Dashboard
-* Explain how to access and use the admin dashboard. Provide information on managing users, products, and performing admin-specific actions.
+## Screenshots
+* Desktop view -Home Page
+![e-coomerce](https://github.com/HasanMt12/99_pro_shop_-E-commerce-site-/assets/108423290/f5c9a614-0ea4-44e8-9af1-207b0207a03c)
 
-Screenshots
-Include a few screenshots or images of your project in action. This can help users visualize the application's interface and features.
+* phone view -Home Page
+![e-commerceMobilApp](https://github.com/HasanMt12/99_pro_shop_-E-commerce-site-/assets/108423290/85639752-3ff9-4dde-9509-c93cf5b20d11)
+
+* Product Details page
+![product_details](https://github.com/HasanMt12/99_pro_shop_-E-commerce-site-/assets/108423290/d1ab4280-c8e3-4f3f-b6ba-2f24ac4cbd12)
+
+* User Dashboard
+
+![user_dashboard](https://github.com/HasanMt12/99_pro_shop_-E-commerce-site-/assets/108423290/588efc41-80ed-4906-b205-8903289139b4)
+
+
